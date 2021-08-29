@@ -1,0 +1,10 @@
+mutation UpdateKoi($koiId: String!, $variety: String!) {
+  updateKoi(koiId: $koiId, variety: $variety) {
+    id
+    variety
+    user {
+      id
+      name
+    }
+  }
+}

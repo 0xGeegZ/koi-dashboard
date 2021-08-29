@@ -35,26 +35,11 @@ export default function Dashboard() {
           </li>
         ))}
       </ul>
-      <input
-        placeholder="Hooli Inc."
-        value={name}
-        onChange={(evt) => setName(evt.target.value)}
-      />
-      <button
-        disabled={!name}
-        onClick={() => {
-          createProject({
-            name,
-          }).then((result) => {
-            const slug = result.data?.createProject?.slug;
-            if (slug) router.push(`/app/${slug}`);
-          });
-        }}
-      >
-        Create project
-      </button>
+    
+      <Link href="/koi/create">Create koi</Link>
       <Link href="/app/settings">Settings</Link>
       <Link href="/api/auth/logout">Logout</Link>
+      
     </>
   );
 }

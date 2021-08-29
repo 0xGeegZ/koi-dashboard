@@ -1,0 +1,5 @@
+mutation CreateKoi($variety: String!) {
+  createKoi(variety: $variety) {
+    variety
+  }
+}

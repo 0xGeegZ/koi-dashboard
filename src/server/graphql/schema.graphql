@@ -12,16 +12,25 @@ type Koi {
   modifiedAt: DateTime!
   sex: String
   skinType: String
+  user: User!
   variety: String!
   youtube: String
 }
 
+type KoiHistory {
+  date: DateTime!
+  image: String!
+  length: Int!
+}
+
 type Mutation {
+  createKoi(variety: String!): Koi
   createProject(name: String!, slug: String): Project
   createStripeCheckoutBillingPortalUrl(projectId: String!): String
   createStripeCheckoutSession(plan: PaidPlan!, projectId: String!): String
   inviteToProject(email: String!, projectId: String!): Boolean
   removeUserFromProject(projectId: String!, userId: String!): Project
+  updateKoi(koiId: String!, variety: String!): Koi
   updateUser(name: String, userId: String!): User
 }
 
@@ -47,6 +56,7 @@ input ProjectWhereUniqueInput {
 type Query {
   currentUser: User
   koi(id: String!): Koi
+  koiHistory(id: String!): KoiHistory
   project(id: String, slug: String): Project
 }
 

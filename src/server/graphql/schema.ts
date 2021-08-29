@@ -4,6 +4,7 @@ import path from "path";
 import User from "./User";
 import Koi from "./Koi";
 import Project, { PaidPlan } from "./Project";
+import KoiHistory from "./KoiHistory";
 
 // Only generate in development or when the yarn run generate:nexus command is run
 // This fixes deployment on Netlify, otherwise you'll run into an EROFS error during building
@@ -11,7 +12,7 @@ const shouldGenerateArtifacts =
   process.env.NODE_ENV === "development" || !!process.env.GENERATE;
 
 export const schema = makeSchema({
-  types: [User, Project, PaidPlan, Koi],
+  types: [User, Project, PaidPlan, Koi, KoiHistory],
   plugins: [
     nexusPrisma({
       shouldGenerateArtifacts,

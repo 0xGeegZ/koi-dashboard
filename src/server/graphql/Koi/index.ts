@@ -14,6 +14,8 @@ const Koi = objectType({
     t.model.bloodline();
     t.model.skinType();
     t.model.sex();
+    t.model.user();
+    // t.model.updates();
   },
 });
 
@@ -30,9 +32,15 @@ const queries = extendType({
         // Only let authenticated users fetch posts
         if (!ctx.user?.id) return null;
 
-        return prisma.koi.findUnique({
+        return prisma.koi.findFirst({
           where: {
-            id: id,
+            user: {
+              is: {
+                // only fetch your own koi
+                id: ctx.user.id,
+              },
+            },
+            id,
           },
         });
       },
@@ -40,4 +48,59 @@ const queries = extendType({
   },
 });
 
-export default [Koi, queries];
+const mutations = extendType({
+  type: "Mutation",
+  definition: (t) => {
+    t.nullable.field("createKoi", {
+      type: "Koi",
+      args: {
+        variety: nonNull(stringArg()),
+      },
+      resolve: async (_, args, ctx) => {
+        if (!ctx.user?.id) return null;
+
+        return await prisma.koi.create({
+          data: {
+            variety: args.variety,
+            user: {
+              connect: {
+                id: ctx.user.id,
+              },
+            },
+          },
+        });
+      },
+    });
+
+    t.nullable.field("updateKoi", {
+      type: "Koi",
+      args: {
+        koiId: nonNull(stringArg()),
+        variety: nonNull(stringArg())
+      },
+      resolve: async (_, { koiId, variety }, ctx) => {
+        if (!ctx.user?.id ) return null;
+
+        const hasAccess = await prisma.koi.findFirst({
+          where: {
+            user: {
+              is: {
+                id: ctx.user.id,
+              },
+            },
+            id: koiId,
+          },
+        });
+
+        if (!hasAccess) return null;
+
+        return await prisma.koi.update({
+          where: { id: koiId },
+          data: { variety },
+        });
+      },
+    });
+  },
+});
+
+export default [Koi, queries, mutations];

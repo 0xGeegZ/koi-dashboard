@@ -14,7 +14,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_API_KEY, {
   // @ts-ignore The Stripe docs state that null denotes the Stripe account's default version and to use ts-ignore
   apiVersion: null,
   appInfo: {
-    name: "Bedrock",
+    name: "koi-dashboard",
     // NOTE: Do not change this
     partner_id: "pp_partner_IsY1mtoxV00gSQ",
   },
