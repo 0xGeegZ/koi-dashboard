@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  modifiedAt DateTime  @default(now())
+  email      String    @unique
+  projects   Project[]
+  name       String?
+  Koi        Koi[]
+}
+
+model Project {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @default(now())
+  users      User[]
+  name       String
+  slug       String   @unique
+
+  stripeCustomerId       String?   @unique
+  stripeSubscriptionId   String?   @unique
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
+}
+
+model Update {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @default(now())
+
+  length Int
+  date   DateTime
+  image  String
+  Koi    Koi?     @relation(fields: [koiId], references: [id])
+  koiId  String?
+}
+
+model Koi {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @default(now())
+  name       String
+
+  birthDate DateTime?
+  youtube   String?
+  variety   String
+  breeder   String?
+  bloodline String?
+  skinType  String?
+  sex       String?
+  updates   Update[]
+  users     User      @relation(fields: [userId], references: [id])
+  userId    String
+}

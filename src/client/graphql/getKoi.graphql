@@ -1,0 +1,14 @@
+# src/client/graphql/getKoi.graphql
+query getKoi($id: String!) {
+  koi(id: $id) {
+    id
+    modifiedAt
+    birthDate
+    youtube
+    variety
+    breeder
+    bloodline
+    skinType
+    sex
+  }
+}
