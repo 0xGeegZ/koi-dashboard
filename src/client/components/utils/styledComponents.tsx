@@ -63,14 +63,14 @@ export const Title = styled.div`
   line-height: 2.3rem;
   color: ${(props) => props.theme.mainColor};
   padding-top: 0;
-  padding-bottom: ${(props) => props.paddingBottom && props.paddingBottom};
+  padding-bottom: 0;
 
   ${media.lg} {
     font-size: 2rem;
     line-height: 3rem;
     padding: 1.5rem 2rem;
     padding-top: 0;
-    padding-bottom: ${(props) => props.paddingBottom && props.paddingBottom};
+    padding-bottom: 0;
 }
 `;
 export const SubTitle = styled.div`

@@ -1,9 +1,20 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useUpdateUserMutation } from "../../client/graphql/updateUser.generated";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import styled from 'styled-components';
 import toast from "react-hot-toast";
+import { AiOutlineSave } from '@react-icons/all-files/ai/AiOutlineSave';
+import { useUpdateUserMutation } from "../../client/graphql/updateUser.generated";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
+import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
+import { Title, Wrapper} from '../../client/components/utils/styledComponents';
+
+const ButtonContainer = styled.div`
+  padding:2rem;
+  padding-top:0;
+`;
 
 export default function Dashboard() {
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
@@ -17,7 +28,7 @@ export default function Dashboard() {
     if (currentUser?.name) setName(currentUser.name);
   }, [currentUser]);
 
-  if (fetching) return <p>Loading...</p>;
+  if (fetching) return <div/>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -32,33 +43,37 @@ export default function Dashboard() {
   }
 
   return (
-    <>
-      <h1>{currentUser.name} Settings</h1>
-      <input
-        value={name}
-        placeholder="Arnold Schwarzenegger"
-        onChange={(evt) => setName(evt.target.value)}
-      />
-      <button
+    <Wrapper>
+      <Breadcrumbs links={[]} currentBreadcrumbText="Settings" />
+      <Title>{currentUser.name} Settings</Title>
+      <div className='cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3'>
+        <div className='cp-i-33'>
+            <TextField fullWidth value={name} label="Name" variant="outlined" onChange={(evt) => setName(evt.target.value)} />
+        </div>
+      </div>
+    <ButtonContainer>
+      <Button
+        startIcon={<AiOutlineSave />}
+        variant="contained"
         disabled={!name}
         onClick={() => {
-          if (!name) return;
-          toast.promise(
-            updateUser({
-              name,
-              userId: currentUser.id,
-            }),
-            {
-              loading: `Updating settings...`,
-              success: `Settings updated!`,
-              error: (err) => err,
-            }
-          );
-        }}
-      >
-        Save
-      </button>
-      <Link href="/app">Back to dashboard</Link>
-    </>
+            if (!name) return;
+            toast.promise(
+              updateUser({
+                name,
+                userId: currentUser.id,
+              }),
+              {
+                loading: `Updating settings...`,
+                success: `Settings updated!`,
+                error: (err) => err,
+              }
+            );
+          }}
+        >
+          Save
+      </Button>
+    </ButtonContainer>
+    </Wrapper>
   );
 }

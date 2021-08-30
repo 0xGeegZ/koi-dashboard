@@ -10,10 +10,12 @@ import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import DatePicker from '@material-ui/lab/DatePicker';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
-import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
+import { AiOutlineSave } from '@react-icons/all-files/ai/AiOutlineSave';
+import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";
+import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
-import { CreateKoiMutationVariables, useCreateKoiMutation } from '../../../client/graphql/createKoi.generated';
-import { Title, Wrapper } from "../../../client/components/utils/styledComponents";
+import { CreateKoiMutationVariables } from '../../../client/graphql/createKoi.generated';
+import { Title, Wrapper,slugify } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import Upload from "../../../client/components/Upload/Upload";
 
@@ -30,8 +32,11 @@ const ButtonContainer = styled.div`
 
 export default function CreateKoi() {
   const router = useRouter();
-  const [, createKoi] = useCreateKoiMutation();
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
+  const { id } = router.query;
+  const [, updateKoi] = useUpdateKoiMutation();
+  const [{ data, fetching, error }] =  useGetCurrentUserQuery();
+  const koiData = useGetKoiQuery({variables: {id}});
+  const fetchedKoi = koiData[0]?.data?.koi;
   const currentUser = data?.currentUser;
   const [koi, setKoi] = useState<CreateKoiMutationVariables>({
     variety: '',
@@ -41,12 +46,12 @@ export default function CreateKoi() {
     sex: '',
     youtube: '',
   });
-
+  console.log(koi)
   useEffect(() => {
-    if (currentUser) {
-      setKoi(k => ({ ...k, userId: currentUser.id }));
+    if (fetchedKoi) {
+      setKoi(k => ({ ...k, ...fetchedKoi }));
     }
-  }, [currentUser]);
+  }, [fetchedKoi]);
 
   if (fetching) return <div/>;
 
@@ -64,20 +69,26 @@ export default function CreateKoi() {
 
   return (
     <Wrapper>
-      <Breadcrumbs links={[]} currentBreadcrumbText="Create koi" />
+       <Breadcrumbs
+        links={[
+        { to: `/koi/${koi.id}`, text: `${koi.breeder} ${koi.bloodline? koi.bloodline : ''} ${koi.variety}` }]}
+        currentBreadcrumbText='Edit koi'
+      />
       <Title>Add your koi</Title>
       <div className='cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3'>
         <div className='cp-i-33'>
           <Autocomplete
             disablePortal
+            value={koi.variety}
             options={varieties}
             onChange={(e, value) => setKoi(k => ({ ...k, variety: value }))}
-            renderInput={(params) => <TextField {...params} label="Variety" />}
+            renderInput={(params) => <TextField {...params} label="Variety"  />}
           />
         </div>
         <div className='cp-i-33'>
           <Autocomplete
             disablePortal
+            value={koi.breeder}
             options={breeders}
             onChange={(e, value) => setKoi(k => ({ ...k, breeder: value }))}
             renderInput={(params) => <TextField {...params} label="Breeder" />}
@@ -86,6 +97,7 @@ export default function CreateKoi() {
         <div className='cp-i-33'>
           <Autocomplete
             disablePortal
+            value={koi.bloodline}
             options={bloodlines}
             onChange={(e, value) => setKoi(k => ({ ...k, bloodline: value }))}
             renderInput={(params) => <TextField {...params} label="Bloodline" />}
@@ -94,6 +106,7 @@ export default function CreateKoi() {
         <div className='cp-i-33'>
           <Autocomplete
             disablePortal
+            value={koi.skinType}
             options={skinTypes}
             onChange={(e, value) => setKoi(k => ({ ...k, skinType: value }))}
             renderInput={(params) => <TextField {...params} label="Skin type" />}
@@ -102,13 +115,14 @@ export default function CreateKoi() {
         <div className='cp-i-33'>
           <Autocomplete
             disablePortal
+            value={koi.sex}
             options={sex}
             onChange={(e, value) => setKoi(k => ({ ...k, sex: value }))}
             renderInput={(params) => <TextField {...params} label="Sex" />}
           />
         </div>
         <div className='cp-i-33'>
-          <TextField fullWidth label="Youtube link" variant="outlined" onChange={(evt) => setKoi(k => ({ ...k, youtube: evt.target.value }))} />
+          <TextField value={koi.youtube} fullWidth label="Youtube link" variant="outlined" onChange={(evt) => setKoi(k => ({ ...k, youtube: evt.target.value }))} />
         </div>
         <div className='cp-i-33'>
           <LocalizationProvider dateAdapter={AdapterDateFns} locale={enLocale} >
@@ -127,18 +141,18 @@ export default function CreateKoi() {
       </div>
       <ButtonContainer>
         <Button
-        startIcon={<AiOutlinePlus />} disabled={!koi.variety} variant="contained" size="large" onClick={() => {
+        startIcon={<AiOutlineSave />} disabled={!koi.variety} variant="contained" size="large" onClick={() => {
           if (!koi) return;
           toast.promise(
-            createKoi(koi),
+            updateKoi(koi),
             {
-              loading: `Creating koi...`,
-              success: `Koi Created!`,
+              loading: `Updating koi...`,
+              success: `Koi updated!`,
               error: (err) => err,
             }
           );
         }}>
-          Add koi
+          Update koi
         </Button>
       </ButtonContainer>
 
