@@ -28,18 +28,16 @@ export default function Dashboard() {
   return (
     <>
       <h1>Hello {data.currentUser.name}!</h1>
-      <ul>
-        {data.currentUser.projects.map((project) => (
-          <li key={project.slug}>
-            <Link href={`/app/${project.slug}`}>{project.name}</Link>
-          </li>
-        ))}
-      </ul>
-    
-      <Link href="/koi/create">Create koi</Link>
-      <Link href="/app/settings">Settings</Link>
-      <Link href="/api/auth/logout">Logout</Link>
-      
+      <div>
+        <Link href="/koi/create">Create koi</Link>
+      </div>
+      <div>
+        <Link href="/app/settings">Settings</Link>
+      </div>
+      <div>
+        <Link href="/api/auth/logout">Logout</Link>
+      </div>
+
     </>
   );
 }

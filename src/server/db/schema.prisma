@@ -14,7 +14,7 @@ model User {
   email      String    @unique
   projects   Project[]
   name       String?
-  Koi        Koi[]
+  kois       Koi[]
 }
 
 model Project {
@@ -39,8 +39,8 @@ model KoiHistory {
   length Int
   date   DateTime
   image  String
-  Koi    Koi?     @relation(fields: [koiId], references: [id])
-  koiId  String?
+  koi    Koi      @relation(fields: [koiId], references: [id])
+  koiId  String
 }
 
 model Koi {
