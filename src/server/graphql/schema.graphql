@@ -28,7 +28,7 @@ input KoiWhereUniqueInput {
 }
 
 type Mutation {
-  createKoi(variety: String!): Koi
+  createKoi(bloodline: String, breeder: String, sex: String, skinType: String, variety: String!, youtube: String): Koi
   createProject(name: String!, slug: String): Project
   createStripeCheckoutBillingPortalUrl(projectId: String!): String
   createStripeCheckoutSession(plan: PaidPlan!, projectId: String!): String

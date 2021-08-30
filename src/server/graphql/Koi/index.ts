@@ -55,6 +55,11 @@ const mutations = extendType({
       type: "Koi",
       args: {
         variety: nonNull(stringArg()),
+        breeder: stringArg(),
+        bloodline: stringArg(),
+        skinType: stringArg(),
+        sex: stringArg(),
+        youtube: stringArg(),
       },
       resolve: async (_, args, ctx) => {
         if (!ctx.user?.id) return null;
@@ -62,6 +67,11 @@ const mutations = extendType({
         return await prisma.koi.create({
           data: {
             variety: args.variety,
+            breeder: args.breeder,
+            bloodline: args.bloodline,
+            skinType: args.skinType,
+            sex: args.sex,
+            youtube: args.youtube,
             user: {
               connect: {
                 id: ctx.user.id,
@@ -79,7 +89,7 @@ const mutations = extendType({
         variety: nonNull(stringArg())
       },
       resolve: async (_, { koiId, variety }, ctx) => {
-        if (!ctx.user?.id ) return null;
+        if (!ctx.user?.id) return null;
 
         const hasAccess = await prisma.koi.findFirst({
           where: {

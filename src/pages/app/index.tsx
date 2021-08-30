@@ -35,7 +35,7 @@ export default function Dashboard() {
         <Link href="/koi/create">Create koi</Link>
       </div>
       <div>
-        <Link href="/app/settings">Settings</Link>
+        <Link href="/app/settings">User Settings</Link>
       </div>
       <div>
         <Link href="/api/auth/logout">Logout</Link>
