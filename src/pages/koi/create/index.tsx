@@ -8,8 +8,14 @@ import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import enLocale from 'date-fns/locale/en-GB';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import DatePicker from '@material-ui/lab/DatePicker';
+import Button from '@material-ui/core/Button';
+import styled from 'styled-components';
+import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 import { CreateKoiMutationVariables, useCreateKoiMutation } from '../../../client/graphql/createKoi.generated';
+import { Title, Wrapper } from "../../../client/components/utils/styledComponents";
+import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
+import Upload from "../../../client/components/Upload/Upload";
 
 const varieties = ['Showa', 'Sanke', 'Kohaku'];
 const breeders = ['Dainichi', 'SFF', 'Momotaro'];
@@ -17,6 +23,10 @@ const bloodlines = ['SuperMonster', 'Stardust', 'NewMiharaX'];
 const skinTypes = ['Scaled', 'Ginrin', 'Doitsu'];
 const sex = ['Male', 'Female'];
 
+const ButtonContainer = styled.div`
+  padding:2rem;
+  padding-top:0;
+`;
 
 export default function CreateKoi() {
   const router = useRouter();
@@ -53,9 +63,10 @@ export default function CreateKoi() {
   }
 
   return (
-    <>
-      <h1>Add your koi</h1>
-      <div className='cp-c-row cp-c-wrap cp-c-padding-2'>
+    <Wrapper>
+      <Breadcrumbs links={[]} currentBreadcrumbText="Create koi" />
+      <Title paddingBottom={0}>Add your koi</Title>
+      <div className='cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3'>
         <div className='cp-i-33'>
           <Autocomplete
             disablePortal
@@ -112,13 +123,12 @@ export default function CreateKoi() {
             />
           </LocalizationProvider>
         </div>
-
+        <Upload />
       </div>
-      <button
-        disabled={!koi.variety}
-        onClick={() => {
+      <ButtonContainer>
+        <Button
+        startIcon={<AiOutlinePlus />} disabled={!koi.variety} variant="contained" size="large" onClick={() => {
           if (!koi) return;
-          console.log(koi)
           toast.promise(
             createKoi(koi),
             {
@@ -127,11 +137,11 @@ export default function CreateKoi() {
               error: (err) => err,
             }
           );
-        }}
-      >
-        Save
-      </button>
-      <Link href="/app">Back to dashboard</Link>
-    </>
+        }}>
+          Add koi
+        </Button>
+      </ButtonContainer>
+
+    </Wrapper>
   );
 }
