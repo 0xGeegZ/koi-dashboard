@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useMutation } from "urql";
-import { CreateProjectDocument } from "../../client/graphql/createProject.generated";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
 
 export default function Dashboard() {
   const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
-  const [, createProject] = useMutation(CreateProjectDocument);
-  const [name, setName] = useState("");
+
 
   if (fetching) return <p>Loading...</p>;
 
@@ -27,20 +23,14 @@ export default function Dashboard() {
 
   return (
     <>
-      <h1>Hello {data.currentUser.name}!</h1>
-      <div>
-        <Link href="/koi">Koi</Link>
-      </div>
-      <div>
-        <Link href="/koi/create">Create koi</Link>
-      </div>
-      <div>
-        <Link href="/app/settings">Settings</Link>
-      </div>
-      <div>
-        <Link href="/api/auth/logout">Logout</Link>
-      </div>
-
+      <ul>
+        {data.currentUser.kois.map((koi) => (
+          <li key={koi.id}>
+            <Link href={`/koi/${koi.id}`}>{koi.variety}</Link>
+          </li>
+        ))}
+      </ul>
+      <Link href="/app">App</Link>
     </>
   );
 }

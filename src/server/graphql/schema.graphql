@@ -23,6 +23,10 @@ type KoiHistory {
   length: Int!
 }
 
+input KoiWhereUniqueInput {
+  id: String
+}
+
 type Mutation {
   createKoi(variety: String!): Koi
   createProject(name: String!, slug: String): Project
@@ -63,6 +67,7 @@ type Query {
 type User {
   email: String!
   id: String!
+  kois(after: KoiWhereUniqueInput, before: KoiWhereUniqueInput, first: Int, last: Int): [Koi!]!
   name: String
   projects(after: ProjectWhereUniqueInput, before: ProjectWhereUniqueInput, first: Int, last: Int): [Project!]!
 }

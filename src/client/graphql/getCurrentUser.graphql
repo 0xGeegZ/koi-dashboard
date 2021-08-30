@@ -9,5 +9,9 @@ query GetCurrentUser {
       slug
       paidPlan
     }
+    kois {
+      variety
+      id
+    }
   }
 }

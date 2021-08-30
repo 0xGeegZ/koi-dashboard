@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
 // Import the generated React hook for fetching a post
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
 
@@ -14,7 +15,12 @@ const Koi = () => {
     },
   });
 
-  return <div>{/* ...render your post here... */}</div>;
+  return (
+    <div>
+      <div>{data?.koi?.variety}</div>
+      <Link href="/koi">Koi</Link>
+    </div>
+  );
 };
 
 export default Koi;
