@@ -15,7 +15,7 @@ import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generate
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 import { CreateKoiMutationVariables } from '../../../client/graphql/createKoi.generated';
-import { Title, Wrapper,slugify } from "../../../client/components/utils/styledComponents";
+import { Title, Wrapper } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import Upload from "../../../client/components/Upload/Upload";
 
@@ -35,9 +35,9 @@ export default function CreateKoi() {
   const { id } = router.query;
   const [, updateKoi] = useUpdateKoiMutation();
   const [{ data, fetching, error }] =  useGetCurrentUserQuery();
+  const currentUser = data?.currentUser;
   const koiData = useGetKoiQuery({variables: {id}});
   const fetchedKoi = koiData[0]?.data?.koi;
-  const currentUser = data?.currentUser;
   const [koi, setKoi] = useState<CreateKoiMutationVariables>({
     variety: '',
     breeder: '',
@@ -46,7 +46,6 @@ export default function CreateKoi() {
     sex: '',
     youtube: '',
   });
-  console.log(koi)
   useEffect(() => {
     if (fetchedKoi) {
       setKoi(k => ({ ...k, ...fetchedKoi }));

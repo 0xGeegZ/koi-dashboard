@@ -35,7 +35,6 @@ export default function AllUsersKoi() {
   }
 
   const kois = data.currentUser.kois;
-  console.log(kois)
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="All your koi" />
@@ -44,7 +43,6 @@ export default function AllUsersKoi() {
         <VerticalCard kois={getSortedKois(kois, dropdown)} />
       </div>
 
-      <Link href="/app">App</Link>
     </>
   );
 }

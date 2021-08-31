@@ -1,5 +1,12 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import styled from 'styled-components';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const ButtonContainer = styled.div`
+padding: 1rem 0;
+`;
 
 /**
  * Used on the Login and Sign Up screens to handle authentication. Can be shared between those as Passport.js doesn't differentiate between logging in and signing up.
@@ -34,13 +41,10 @@ export default function AuthenticationForm() {
           });
       }}
     >
-      <input
-        type="email"
-        placeholder="me@hello.com"
-        value={email}
-        onChange={(evt) => setEmail(evt.target.value)}
-      />
-      <button type="submit">Let's go!</button>
+      <TextField size="small" value={email} fullWidth label="Email" variant="outlined" onChange={(evt) => setEmail(evt.target.value)} />
+      <ButtonContainer>
+       <Button fullWidth type="submit" variant="contained">Let's go!</Button>
+      </ButtonContainer>
     </form>
   );
 }
