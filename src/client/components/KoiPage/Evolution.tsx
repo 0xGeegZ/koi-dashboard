@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Image from 'next/image';
-import { Line } from 'react-chartjs-2';
-import Lightbox from 'react-image-lightbox';
-import { Card, SubTitle, media } from '../../components/utils/styledComponents';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Image from "next/image";
+import { Line } from "react-chartjs-2";
+import Lightbox from "react-image-lightbox";
+import { Card, SubTitle, media } from "../../components/utils/styledComponents";
 import {
   getAgeDifferenceDate,
   getCurrentAgeText,
   getFormattedDate,
-} from '../../components/utils/ageCalculator';
+} from "../../components/utils/ageCalculator";
 
-import 'react-image-lightbox/style.css';
+import "react-image-lightbox/style.css";
 
 export const CardContainer = styled.div`
   padding: 0 1rem;
@@ -29,6 +29,9 @@ export const ImageContainer = styled.div`
   :hover {
     cursor: pointer;
   }
+`;
+const StyledCard = styled(Card)`
+  padding: 0;
 `;
 const Date = styled.div`
   padding-top: 0.5rem;
@@ -118,11 +121,11 @@ const Evolution = ({ koi }) => {
   const data = {
     datasets: [
       {
-        label: 'Size (cm)',
+        label: "Size (cm)",
         data: [],
         // data: getData(koi),
-        borderColor: '#3A3878',
-        backgroundColor: '#3A3878',
+        borderColor: "#3A3878",
+        backgroundColor: "#3A3878",
         tension: 0.4,
       },
     ],
@@ -160,22 +163,21 @@ const Evolution = ({ koi }) => {
       </CardContainer>
       <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
-          <Card padding="0">
+          <StyledCard>
             <IframeContainer>
               <StyledReactPlayer
-                type="text/html"
                 width="100%"
                 height="100%"
                 src={koi.youtube}
                 frameBorder="0"
               />
             </IframeContainer>
-          </Card>
+          </StyledCard>
         </div>
         <div className="cp-i-100 cp-i-md-50">
           <Card>
             <SubTitle>Size evolution</SubTitle>
-            <Line data={data} width={null} height={null} options={options} />
+            <Line data={data} options={options} />
           </Card>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import Document, { Head, Main, NextScript, Html } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Head, Main, NextScript, Html } from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
 
     // Step 2: Retrieve styles from components in the page
     const page = renderPage((App) => (props) =>
-      sheet.collectStyles(<App {...props} />),
+      sheet.collectStyles(<App {...props} />)
     );
 
     // Step 3: Extract the styles as <style> tags
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@100;300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
-          {this.props.styleTags}
+          {(this.props as any).styleTags}
         </Head>
         <body>
           <Main />

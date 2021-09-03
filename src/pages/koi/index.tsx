@@ -34,7 +34,6 @@ export default function AllUsersKoi() {
       </p>
     );
   }
-  console.log(kois);
   const kois = data.currentUser.kois;
   return (
     <>

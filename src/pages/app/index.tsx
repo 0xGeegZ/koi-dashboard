@@ -15,7 +15,9 @@ const StyledCard = styled(Card)`
   position: relative;
   overflow: hidden;
   padding-top: 65%;
+
   :hover {
+    cursor: pointer;
     box-shadow: ${(props) => props.theme.boxShadowHover};
   }
 `;
@@ -94,20 +96,18 @@ export default function Dashboard() {
             key={title}
           >
             <Link href={path}>
-              <a>
-                <StyledCard className="cp-c-column cp-c-align-center-center">
-                  <Container>
-                    {icon ? (
-                      <IconContainer>{icon}</IconContainer>
-                    ) : (
-                      <StyledKoiIcon>
-                        <KoiIcon />
-                      </StyledKoiIcon>
-                    )}
-                    <Text>{title}</Text>
-                  </Container>
-                </StyledCard>
-              </a>
+              <StyledCard className="cp-c-column cp-c-align-center-center">
+                <Container>
+                  {icon ? (
+                    <IconContainer>{icon}</IconContainer>
+                  ) : (
+                    <StyledKoiIcon>
+                      <KoiIcon />
+                    </StyledKoiIcon>
+                  )}
+                  <Text>{title}</Text>
+                </Container>
+              </StyledCard>
             </Link>
           </div>
         ))}

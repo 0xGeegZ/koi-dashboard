@@ -20,16 +20,15 @@ const KoiDetailPage = () => {
 
   const [{ data, fetching, error }] = useGetKoiQuery({
     variables: {
-      id,
+      id: String(id),
     },
   });
 
-  if (fetching) return <div />;
+  if (fetching || data == null || data.koi == null) return <div />;
 
   if (error) return <p>{error.message}</p>;
 
-  const koi = data?.koi;
-
+  const koi = data.koi;
   const options = [
     {
       title: "History",
@@ -74,9 +73,6 @@ const KoiDetailPage = () => {
         title={`${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
           koi.variety
         }`}
-        link={`/koi/${koi.id}/edit`}
-        linkText="Edit"
-        linkIcon={<BiPencil />}
         options={options}
         activeIndex={router.query.view == "Evolution" ? 1 : 0}
       />

@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
@@ -18,14 +17,16 @@ const IconContainer = styled.div`
   font-size: 1rem;
 `;
 const Text = styled.div`
-  color: ${(props) =>
-    props.delete ? props.theme.redColor : props.theme.mainColor};
+  color: ${(props) => props.theme.mainColor};
+`;
+const TextDelete = styled.div`
+  color: ${(props) => props.theme.redColor};
 `;
 
 export default function SplitButton({ options, activeIndex }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const anchorRef = useRef(null);
+  const anchorRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(activeIndex || 0);
 
   const handleClick = () => {
@@ -92,13 +93,17 @@ export default function SplitButton({ options, activeIndex }) {
                         handleMenuItemClick(event, index, src)
                       }
                     >
-                      <Text
-                        delete={title == "Delete"}
-                        className="cp-c-row cp-c-align-start-center"
-                      >
-                        <IconContainer>{icon}</IconContainer>
-                        <div>{title}</div>
-                      </Text>
+                      {title == "Delete" ? (
+                        <Text className="cp-c-row cp-c-align-start-center">
+                          <IconContainer>{icon}</IconContainer>
+                          <div>{title}</div>
+                        </Text>
+                      ) : (
+                        <TextDelete className="cp-c-row cp-c-align-start-center">
+                          <IconContainer>{icon}</IconContainer>
+                          <div>{title}</div>
+                        </TextDelete>
+                      )}
                     </MenuItem>
                   ))}
                 </MenuList>

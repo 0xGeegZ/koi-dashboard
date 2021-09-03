@@ -14,8 +14,7 @@ import { isEqual } from "lodash";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
-import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
-import { CreateKoiMutationVariables } from "../../../client/graphql/createKoi.generated";
+import { UpdateKoiMutationVariables } from "../../../client/graphql/updateKoi.generated";
 import {
   Title,
   Wrapper,
@@ -39,11 +38,13 @@ export default function CreateKoi() {
   const router = useRouter();
   const { id } = router.query;
   const [, updateKoi] = useUpdateKoiMutation();
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
-  const currentUser = data?.currentUser;
-  const koiData = useGetKoiQuery({ variables: { id } });
-  const fetchedKoi = koiData[0]?.data?.koi;
-  const [koi, setKoi] = useState<CreateKoiMutationVariables>({
+  const [{ data, fetching, error }] = useGetKoiQuery({
+    variables: {
+      id: String(id),
+    },
+  });
+  const [koi, setKoi] = useState<UpdateKoiMutationVariables>({
+    id: "",
     variety: "",
     breeder: "",
     bloodline: "",
@@ -51,25 +52,16 @@ export default function CreateKoi() {
     sex: "",
     youtube: "",
   });
-  useEffect(() => {
-    if (fetchedKoi) {
-      setKoi((k) => ({ ...k, ...fetchedKoi }));
-    }
-  }, [fetchedKoi]);
 
-  if (fetching) return <div />;
+  useEffect(() => {
+    if (data) {
+      setKoi((k) => ({ ...k, ...data }));
+    }
+  }, [data]);
+
+  if (fetching || data == null || data.koi == null) return <div />;
 
   if (error) return <p>{error.message}</p>;
-
-  if (!currentUser) {
-    if (process.browser) router.push("/login");
-    return (
-      <p>
-        Redirecting to <Link href="/login">/login</Link>
-        ...
-      </p>
-    );
-  }
 
   return (
     <>
@@ -94,7 +86,9 @@ export default function CreateKoi() {
               disablePortal
               value={koi.variety}
               options={varieties}
-              onChange={(e, value) => setKoi((k) => ({ ...k, variety: value }))}
+              onChange={(e, value) =>
+                setKoi((k) => ({ ...k, variety: value || "" }))
+              }
               renderInput={(params) => (
                 <TextField {...params} label="Variety" />
               )}
@@ -175,11 +169,11 @@ export default function CreateKoi() {
           </div>
           <Upload />
         </div>
-        {console.log({ fetchedKoi, koi }, fetchedKoi == koi)}
+        {console.log({ data, koi }, data == koi)}
         <ButtonContainer>
           <Button
             startIcon={<AiOutlineSave />}
-            disabled={isEqual(fetchedKoi, koi) || !koi.variety}
+            disabled={isEqual(data, koi) || !koi.variety}
             variant="contained"
             size="large"
             onClick={() => {

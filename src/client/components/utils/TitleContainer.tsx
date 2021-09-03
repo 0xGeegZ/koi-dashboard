@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 import ButtonGroup from "./Buttongroup";
 import { Title, media } from "./styledComponents";
 
@@ -11,9 +10,6 @@ const Container = styled.div`
     padding-bottom: 1.5rem;
     padding-right: 2rem;
   }
-`;
-const StyledButton = styled(Button)`
-  background: red;
 `;
 
 const TitleContainer = ({ title, options, activeIndex }) => (

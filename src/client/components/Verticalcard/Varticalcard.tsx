@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Card, media, ImageContainer } from '../utils/styledComponents';
-import { getCurrentAgeTextCard } from '../utils/ageCalculator';
+import React from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import Image from "next/image";
+import { Card, media, ImageContainer } from "../utils/styledComponents";
+import { getCurrentAgeText } from "../utils/ageCalculator";
 
 const Container = styled.div`
   ${media.xxl} {
@@ -40,12 +40,10 @@ const VerticalCard = ({ kois }) =>
         <a>
           <StyledCard>
             <div>
-              <ImageContainer>
-                Insert Image here
-              </ImageContainer>
+              <ImageContainer>Insert Image here</ImageContainer>
               <CardText>
-                <Text>{`${getCurrentAgeTextCard(birthDate)} ${breeder}`}</Text>
-                <Text>{`${bloodline ? bloodline : ''} ${sex}`}</Text>
+                <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
+                <Text>{`${bloodline ? bloodline : ""} ${sex}`}</Text>
               </CardText>
             </div>
           </StyledCard>

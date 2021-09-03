@@ -78,7 +78,9 @@ export default function CreateKoi() {
             <Autocomplete
               disablePortal
               options={varieties}
-              onChange={(e, value) => setKoi((k) => ({ ...k, variety: value }))}
+              onChange={(e, value) =>
+                setKoi((k) => ({ ...k, variety: value || "" }))
+              }
               renderInput={(params) => (
                 <TextField {...params} label="Variety" />
               )}

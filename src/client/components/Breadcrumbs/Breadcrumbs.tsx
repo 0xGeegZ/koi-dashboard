@@ -41,11 +41,11 @@ const StyledIcon = styled(AiOutlineHome)`
   ${iconCss}
 `;
 
-const Breadcrumbs = ({ news, links, currentBreadcrumbText }) => {
+const Breadcrumbs = ({ links, currentBreadcrumbText }) => {
   return (
     <Container className="cp-c-row cp-c-align-start-center">
       <Link href="/app" passHref>
-        <StyledLink aria-label="home" href="/app" news={news}>
+        <StyledLink aria-label="home" href="/app">
           <StyledIcon />
         </StyledLink>
       </Link>
@@ -54,7 +54,7 @@ const Breadcrumbs = ({ news, links, currentBreadcrumbText }) => {
           <div key={text}>
             <Seperator>/</Seperator>
             <Link href={to} passHref>
-              <StyledLink aria-label={to} href={to} news={news}>
+              <StyledLink aria-label={to} href={to}>
                 {text}
               </StyledLink>
             </Link>

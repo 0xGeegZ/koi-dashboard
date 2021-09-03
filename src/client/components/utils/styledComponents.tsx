@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 export const theme = {
@@ -15,43 +15,21 @@ export const theme = {
   boxShadowHover: "0px 11px 20px rgba(20, 61, 123, 0.15)",
 };
 
-export const sizes = {
-  sm: 568,
-  md: 768,
-  lg: 1024,
-  wrapper: 1120,
-  xl: 1280,
-  xxl: 1500,
+export const media = {
+  sm: `@media screen and (min-width: ${568 / 16}em)`,
+  md: `@media screen and (min-width: ${768 / 16}em)`,
+  lg: `@media screen and (min-width: ${1024 / 16}em)`,
+  wrapper: `@media screen and (min-width: ${1120 / 16}em)`,
+  xl: `@media screen and (min-width: ${1280 / 16}em)`,
+  xxl: `@media screen and (min-width: ${1500 / 16}em)`,
 };
 
-export const media = Object.keys(sizes).reduce((acc, label) => {
-  acc[label] = `@media screen and (min-width: ${sizes[label] / 16}em)`;
-  return acc;
-}, {});
-
 export const Wrapper = styled("div")`
-  padding: ${(props) => props.padding && "0.5rem"};
   box-sizing: border-box;
   max-width: 1120px;
   margin: 0 auto;
 `;
 
-export const useWindowSize = () => {
-  const [width, setWindowSize] = useState(undefined);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize(window.innerWidth);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  return width;
-};
 export const iconCss = css`
   font-size: 1rem;
   line-height: 1rem;
@@ -90,7 +68,7 @@ export const SubTitle = styled.div`
 export const Card = styled.div`
   transition: all 0.2s;
   width: 100%;
-  padding: ${(props) => (props.padding ? props.padding : "1rem")};
+  padding: 1rem;
   background: #ffffff;
   box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
   border-radius: 20px;
