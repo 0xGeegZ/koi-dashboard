@@ -1,7 +1,31 @@
-mutation UpdateKoi($koiId: String!, $variety: String!) {
-  updateKoi(koiId: $koiId, variety: $variety) {
+mutation UpdateKoi(
+  $id: String!
+  $variety: String!
+  $birthDate: String
+  $breeder: String
+  $bloodline: String
+  $skinType: String
+  $sex: String
+  $youtube: String
+) {
+  updateKoi(
+    id: $id
+    variety: $variety
+    birthDate: $birthDate
+    breeder: $breeder
+    bloodline: $bloodline
+    skinType: $skinType
+    sex: $sex
+    youtube: $youtube
+  ) {
     id
     variety
+    birthDate
+    breeder
+    bloodline
+    skinType
+    sex
+    youtube
     user {
       id
       name

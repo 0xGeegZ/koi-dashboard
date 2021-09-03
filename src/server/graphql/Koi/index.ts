@@ -59,6 +59,7 @@ const mutations = extendType({
         bloodline: stringArg(),
         skinType: stringArg(),
         sex: stringArg(),
+        birthDate: stringArg(),
         youtube: stringArg(),
       },
       resolve: async (_, args, ctx) => {
@@ -71,6 +72,7 @@ const mutations = extendType({
             bloodline: args.bloodline,
             skinType: args.skinType,
             sex: args.sex,
+            birthDate: args.birthDate,
             youtube: args.youtube,
             user: {
               connect: {
@@ -85,10 +87,16 @@ const mutations = extendType({
     t.nullable.field("updateKoi", {
       type: "Koi",
       args: {
-        koiId: nonNull(stringArg()),
-        variety: nonNull(stringArg())
+        id: nonNull(stringArg()),
+        variety: nonNull(stringArg()),
+        breeder: stringArg(),
+        bloodline: stringArg(),
+        skinType: stringArg(),
+        sex: stringArg(),
+        birthDate: stringArg(),
+        youtube: stringArg(),
       },
-      resolve: async (_, { koiId, variety }, ctx) => {
+      resolve: async (_, args, ctx) => {
         if (!ctx.user?.id) return null;
 
         const hasAccess = await prisma.koi.findFirst({
@@ -98,15 +106,23 @@ const mutations = extendType({
                 id: ctx.user.id,
               },
             },
-            id: koiId,
+            id: args.id,
           },
         });
 
         if (!hasAccess) return null;
 
         return await prisma.koi.update({
-          where: { id: koiId },
-          data: { variety },
+          where: { id: args.id },
+          data: {
+            variety: args.variety,
+            breeder: args.breeder,
+            bloodline: args.bloodline,
+            skinType: args.skinType,
+            sex: args.sex,
+            birthDate: args.birthDate,
+            youtube: args.youtube,
+          },
         });
       },
     });

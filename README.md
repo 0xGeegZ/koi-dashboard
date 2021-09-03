@@ -92,8 +92,6 @@ The **three most important commands** you'll run frequently during development:
 
 - `yarn prisma:studio`: Starts [Prisma Studio](https://prisma.io/studio) on `localhost:5555` where you can inspect your local development database.
 
-- `yarn cypress:open`: Opens Cypress so you can write and run your end-to-end tests. ([docs](https://docs.cypress.io/guides/getting-started/installing-cypress.html#Adding-npm-scripts))
-
 All the others are used in CI or by those three main scripts, but you should only rarely need to run them manually.
 
 ---

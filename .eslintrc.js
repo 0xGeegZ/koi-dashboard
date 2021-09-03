@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:cypress/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:import/typescript",

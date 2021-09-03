@@ -17,11 +17,8 @@
     "generate:graphql-codegen": "graphql-codegen",
     "prisma:migrate": "yarn prisma migrate dev --preview-feature",
     "prisma:studio": "prisma studio",
-    "test": "jest",
     "typecheck": "concurrently --raw yarn:typecheck:*",
-    "typecheck:app": "tsc --noEmit",
-    "typecheck:cypress": "tsc --noEmit -p cypress/tsconfig.json",
-    "cypress:open": "cypress open"
+    "typecheck:app": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -86,10 +83,8 @@
     "common-tags": "1.8.0",
     "concurrently": "^6.0.0",
     "cross-env": "^7.0.3",
-    "cypress": "^7.3.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
     "husky": ">=4",
     "jest": "^26.6.3",

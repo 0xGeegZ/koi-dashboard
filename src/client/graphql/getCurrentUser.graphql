@@ -12,6 +12,12 @@ query GetCurrentUser {
     kois {
       variety
       id
+      birthDate
+      breeder
+      bloodline
+      skinType
+      sex
+      youtube
     }
   }
 }

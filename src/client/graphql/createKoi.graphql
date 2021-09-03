@@ -1,6 +1,23 @@
-mutation CreateKoi($variety: String!, $breeder: String, $bloodline: String, $skinType: String, $sex: String, $youtube: String) {
-  createKoi(variety: $variety, breeder: $breeder, bloodline: $bloodline, skinType: $skinType, sex: $sex, youtube: $youtube) {
+mutation CreateKoi(
+  $variety: String!
+  $birthDate: String
+  $breeder: String
+  $bloodline: String
+  $skinType: String
+  $sex: String
+  $youtube: String
+) {
+  createKoi(
+    variety: $variety
+    birthDate: $birthDate
+    breeder: $breeder
+    bloodline: $bloodline
+    skinType: $skinType
+    sex: $sex
+    youtube: $youtube
+  ) {
     variety
+    birthDate
     breeder
     bloodline
     skinType
