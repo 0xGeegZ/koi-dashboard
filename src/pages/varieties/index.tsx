@@ -6,7 +6,6 @@ import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.gene
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../client/components/utils/styledComponents";
 import VerticalCard from "../../client/components/Verticalcard/Varticalcard";
-import EmptyKoi from "../../client/components/Koi/EmptyKoi";
 
 export const getSortedKois = (kois, order) => {
   if (order == "Most recent") {
@@ -16,7 +15,7 @@ export const getSortedKois = (kois, order) => {
   }
 };
 
-export default function AllUsersKoi() {
+export default function Varieties() {
   const router = useRouter();
   const [dropdown, setDropdown] = useState(undefined);
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
@@ -34,21 +33,15 @@ export default function AllUsersKoi() {
       </p>
     );
   }
-  console.log(kois);
+
   const kois = data.currentUser.kois;
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="All your koi" />
-      {kois.length > 0 ? (
-        <>
-          <Title>All your koi</Title>
-          <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-            <VerticalCard kois={getSortedKois(kois, dropdown)} />
-          </div>
-        </>
-      ) : (
-        <EmptyKoi />
-      )}
+      <Title>All your koi</Title>
+      <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
+        <VerticalCard kois={getSortedKois(kois, dropdown)} />
+      </div>
     </>
   );
 }
