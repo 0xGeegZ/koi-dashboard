@@ -1,13 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { AiOutlineHome } from '@react-icons/all-files/ai/AiOutlineHome';
-import Link from 'next/link';
-import { media, iconCss } from '../utils/styledComponents';
+import React from "react";
+import styled from "styled-components";
+import { AiOutlineHome } from "@react-icons/all-files/ai/AiOutlineHome";
+import Link from "next/link";
+import { media, iconCss } from "../utils/styledComponents";
 
-const StyledLink = styled('a')`
+const StyledLink = styled("a")`
   font-weight: inherit;
   transition: color 200ms ease;
   color: rgba(0, 0, 0, 0.45);
+
+  :hover {
+    color: ${(props) => props.theme.materialColor};
+  }
 `;
 
 const Container = styled.div`

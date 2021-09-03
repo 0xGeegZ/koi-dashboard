@@ -62,7 +62,10 @@ const KoiDetailPage = () => {
   return (
     <div>
       <Breadcrumbs
-        links={[{ to: `/${slugify(koi.variety)}`, text: koi.variety }]}
+        links={[
+          { to: `/koi`, text: "All your koi" },
+          { to: `/${slugify(koi.variety)}`, text: koi.variety },
+        ]}
         currentBreadcrumbText={`${koi.breeder} ${
           koi.bloodline ? koi.bloodline : ""
         } ${koi.variety}`}
@@ -75,6 +78,7 @@ const KoiDetailPage = () => {
         linkText="Edit"
         linkIcon={<BiPencil />}
         options={options}
+        activeIndex={router.query.view == "Evolution" ? 1 : 0}
       />
       <Evolution koi={koi} />
     </div>

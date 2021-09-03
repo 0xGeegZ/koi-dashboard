@@ -16,10 +16,10 @@ const StyledButton = styled(Button)`
   background: red;
 `;
 
-const TitleContainer = ({ title, options }) => (
+const TitleContainer = ({ title, options, activeIndex }) => (
   <Container className="cp-c-row cp-c-align-spacebetween-center">
     <Title>{title}</Title>
-    <ButtonGroup options={options} />
+    <ButtonGroup options={options} activeIndex={activeIndex} />
   </Container>
 );
 

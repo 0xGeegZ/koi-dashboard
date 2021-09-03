@@ -19,14 +19,14 @@ const IconContainer = styled.div`
 `;
 const Text = styled.div`
   color: ${(props) =>
-    props.delete ? props.theme.redColor : props.theme.materialColor};
+    props.delete ? props.theme.redColor : props.theme.mainColor};
 `;
 
-export default function SplitButton({ options }) {
+export default function SplitButton({ options, activeIndex }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(activeIndex || 0);
 
   const handleClick = () => {
     router.push(options[selectedIndex].buttonSrc);
@@ -88,8 +88,6 @@ export default function SplitButton({ options }) {
                   {options.map(({ icon, title, src }, index) => (
                     <MenuItem
                       key={title}
-                      disabled={index === selectedIndex}
-                      selected={index === selectedIndex}
                       onClick={(event) =>
                         handleMenuItemClick(event, index, src)
                       }

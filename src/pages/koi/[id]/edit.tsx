@@ -19,6 +19,7 @@ import { CreateKoiMutationVariables } from "../../../client/graphql/createKoi.ge
 import {
   Title,
   Wrapper,
+  slugify,
 } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import Upload from "../../../client/components/Upload/Upload";
@@ -74,6 +75,8 @@ export default function CreateKoi() {
     <>
       <Breadcrumbs
         links={[
+          { to: `/koi`, text: "All your koi" },
+          { to: `/${slugify(koi.variety)}`, text: koi.variety },
           {
             to: `/koi/${koi.id}`,
             text: `${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
