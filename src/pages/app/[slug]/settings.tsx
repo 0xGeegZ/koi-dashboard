@@ -75,40 +75,6 @@ function ProjectSettings() {
     <>
       <h1>{project.name} Settings</h1>
       <h2>Users</h2>
-      <ul>
-        {project.users.map((user) => (
-          <li key={user.id}>
-            {user.name || user.email}{" "}
-            {user.id !== currentUser.id && (
-              <button
-                onClick={() => {
-                  if (
-                    window.confirm(
-                      `Are you sure you want to remove ${user.email} from ${
-                        project.name || "this project"
-                      }?`
-                    )
-                  ) {
-                    toast.promise(
-                      removeUserFromProject({
-                        projectId: project.id,
-                        userId: user.id,
-                      }),
-                      {
-                        loading: `Removing ${user.email}...`,
-                        success: `Removed ${user.email}!`,
-                        error: (err) => err,
-                      }
-                    );
-                  }
-                }}
-              >
-                ｘ
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
       <InvitationForm projectId={project.id} />
       {!project.paidPlan ? (
         <UpgradeButton projectId={project.id} />
