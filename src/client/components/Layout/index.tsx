@@ -8,5 +8,5 @@ interface Props {
 export default function Layout({ children }: Props) {
   const [{ data }] = useGetCurrentUserQuery();
   const isAuthenticated = !!data?.currentUser;
-  return isAuthenticated ? <Navbar>{children}</Navbar> : <div />;
+  return isAuthenticated ? <Navbar>{children}</Navbar> : <div>{children}</div>;
 }
