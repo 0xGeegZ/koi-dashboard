@@ -55,7 +55,7 @@ export default function CreateKoi() {
 
   useEffect(() => {
     if (data) {
-      setKoi((k) => ({ ...k, ...data }));
+      setKoi((k) => ({ ...k, ...data.koi }));
     }
   }, [data]);
 
@@ -169,11 +169,10 @@ export default function CreateKoi() {
           </div>
           <Upload />
         </div>
-        {console.log({ data, koi }, data == koi)}
         <ButtonContainer>
           <Button
             startIcon={<AiOutlineSave />}
-            disabled={isEqual(data, koi) || !koi.variety}
+            disabled={isEqual(data.koi, koi) || !koi.variety}
             variant="contained"
             size="large"
             onClick={() => {

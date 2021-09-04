@@ -93,7 +93,7 @@ export default function SplitButton({ options, activeIndex }) {
                         handleMenuItemClick(event, index, src)
                       }
                     >
-                      {title == "Delete" ? (
+                      {title != "Delete" ? (
                         <Text className="cp-c-row cp-c-align-start-center">
                           <IconContainer>{icon}</IconContainer>
                           <div>{title}</div>
