@@ -19,6 +19,7 @@ import {
   Title,
   Wrapper,
   slugify,
+  FormButtonContainer,
 } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import Upload from "../../../client/components/Upload/Upload";
@@ -28,11 +29,6 @@ const breeders = ["Dainichi", "SFF", "Momotaro"];
 const bloodlines = ["SuperMonster", "Stardust", "NewMiharaX"];
 const skinTypes = ["Scaled", "Ginrin", "Doitsu"];
 const sex = ["Male", "Female"];
-
-const ButtonContainer = styled.div`
-  padding: 2rem;
-  padding-top: 0;
-`;
 
 export default function CreateKoi() {
   const router = useRouter();
@@ -81,7 +77,7 @@ export default function CreateKoi() {
       <Wrapper>
         <Title>Edit your koi</Title>
         <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <Autocomplete
               disablePortal
               value={koi.variety}
@@ -94,7 +90,7 @@ export default function CreateKoi() {
               )}
             />
           </div>
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <Autocomplete
               disablePortal
               value={koi.breeder}
@@ -105,7 +101,7 @@ export default function CreateKoi() {
               )}
             />
           </div>
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <Autocomplete
               disablePortal
               value={koi.bloodline}
@@ -118,7 +114,7 @@ export default function CreateKoi() {
               )}
             />
           </div>
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <Autocomplete
               disablePortal
               value={koi.skinType}
@@ -131,7 +127,7 @@ export default function CreateKoi() {
               )}
             />
           </div>
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <Autocomplete
               disablePortal
               value={koi.sex}
@@ -140,7 +136,7 @@ export default function CreateKoi() {
               renderInput={(params) => <TextField {...params} label="Sex" />}
             />
           </div>
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <TextField
               value={koi.youtube}
               fullWidth
@@ -151,7 +147,7 @@ export default function CreateKoi() {
               }
             />
           </div>
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-sm-i-33">
             <LocalizationProvider
               dateAdapter={AdapterDateFns}
               locale={enLocale}
@@ -169,8 +165,9 @@ export default function CreateKoi() {
           </div>
           <Upload />
         </div>
-        <ButtonContainer>
+        <FormButtonContainer>
           <Button
+            fullWidth
             startIcon={<AiOutlineSave />}
             disabled={isEqual(data.koi, koi) || !koi.variety}
             variant="contained"
@@ -186,7 +183,7 @@ export default function CreateKoi() {
           >
             Update koi
           </Button>
-        </ButtonContainer>
+        </FormButtonContainer>
       </Wrapper>
     </>
   );

@@ -32,7 +32,7 @@ const Container = styled.div`
   width: 100%;
   text-align: center;
   font-size: 1.5rem;
-  color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.secondaryColor};
 `;
 const Text = styled.div`
   padding-top: 2rem;
@@ -54,7 +54,7 @@ const StyledKoiIcon = styled.svg`
   width: 2rem;
   height: 2rem;
   stroke-width: 100px;
-  stroke: ${(props) => props.theme.mainColor};
+  stroke: ${(props) => props.theme.secondaryColor};
 
   ${media.md} {
     width: 2.5rem;
@@ -66,7 +66,7 @@ export const KoiIcon = (props) => <KoiSVG {...props} />;
 
 export const links = [
   {
-    title: "My koi",
+    title: "All koi",
     path: "/koi",
   },
   {
@@ -75,12 +75,12 @@ export const links = [
     icon: <AiOutlineApartment />,
   },
   {
-    title: "Add new koi",
+    title: "Create koi",
     path: "/koi/create",
     icon: <AiOutlinePlus />,
   },
   {
-    title: "User settings",
+    title: "Settings",
     path: "/app/settings",
     icon: <AiOutlineSetting />,
   },

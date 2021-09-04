@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import type { AppProps } from "next/app";
 import { Provider } from "urql";
@@ -11,6 +12,12 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Provider value={client}>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no"
+          />
+        </Head>
         <Layout>
           <Component {...pageProps} />
           <Toaster />

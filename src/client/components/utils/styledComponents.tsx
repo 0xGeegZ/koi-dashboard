@@ -6,7 +6,7 @@ export const theme = {
   textColorLight: "#949494",
   textColorDark: "#404040",
   mainColor: "#0C4184",
-  secondaryColor: "#123e78",
+  secondaryColor: "#0b366f",
   materialColor: "#1976d2",
   redColor: "#f26565",
   lightColor: "#e7f5fe",
@@ -33,6 +33,20 @@ export const Wrapper = styled("div")`
 export const iconCss = css`
   font-size: 1rem;
   line-height: 1rem;
+`;
+
+export const FormButtonContainer = styled.div`
+  padding: 1rem;
+  padding-top: 0;
+
+  ${media.md} {
+    max-width: fit-content;
+  }
+
+  ${media.lg} {
+    padding: 2rem;
+    padding-top: 0;
+  }
 `;
 
 export const Title = styled.div`
@@ -69,9 +83,8 @@ export const Card = styled.div`
   transition: all 0.2s;
   width: 100%;
   padding: 1rem;
-  // background: #ffffff;
-  // box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
-  box-shadow: 5px 5px 20px rgba(20, 61, 123, 0.1);
+  background: #ffffff;
+  box-shadow: 5px 5px 40px rgba(20, 61, 123, 0.1);
 
   border-radius: 20px;
 `;

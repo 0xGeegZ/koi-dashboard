@@ -15,6 +15,11 @@
     "jsx": "preserve",
     "noImplicitAny": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/client/components/Navbar"
+  ],
   "exclude": ["node_modules"]
 }

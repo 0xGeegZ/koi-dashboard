@@ -9,12 +9,11 @@ import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateUserMutation } from "../../client/graphql/updateUser.generated";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
-import { Title, Wrapper } from "../../client/components/utils/styledComponents";
-
-const ButtonContainer = styled.div`
-  padding: 2rem;
-  padding-top: 0;
-`;
+import {
+  Title,
+  Wrapper,
+  FormButtonContainer,
+} from "../../client/components/utils/styledComponents";
 
 export default function Dashboard() {
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
@@ -48,7 +47,7 @@ export default function Dashboard() {
       <Wrapper>
         <Title>{currentUser.name} Settings</Title>
         <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-          <div className="cp-i-33">
+          <div className="cp-i-50 cp-i-sm-33">
             <TextField
               fullWidth
               value={name}
@@ -58,8 +57,9 @@ export default function Dashboard() {
             />
           </div>
         </div>
-        <ButtonContainer>
+        <FormButtonContainer>
           <Button
+            fullWidth
             startIcon={<AiOutlineSave />}
             variant="contained"
             disabled={!name}
@@ -80,7 +80,7 @@ export default function Dashboard() {
           >
             Save
           </Button>
-        </ButtonContainer>
+        </FormButtonContainer>
       </Wrapper>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Drawer from "@material-ui/core/Drawer";
@@ -16,6 +16,13 @@ const StyledBox = styled(Box)`
   background-color: unset !important;
   padding: 0 !important;
 `;
+const StyledDrawer = styled(Drawer)`
+  & .MuiPaper-root {
+    border-right: 0;
+    box-shadow: 0 12px 15px -4px rgba(31, 73, 125, 0.2),
+      0 -12px 8px -4px rgba(31, 73, 125, 0.8);
+  }
+`;
 const IconContainer = styled.div`
   font-size: 1rem;
   margin-right: 1rem;
@@ -24,11 +31,11 @@ const StyledKoiIcon = styled.svg`
   width: 1rem;
   height: 1rem;
   stroke-width: 100px;
-  stroke: ${(props) => props.theme.textColorDark};
+  stroke: ${(props) => props.theme.secondaryColor};
   margin-right: 1rem;
 `;
 const Text = styled.div`
-  color: ${(props) => props.theme.textColorDark};
+  color: ${(props) => props.theme.secondaryColor};
   line-height: 1rem;
 `;
 
@@ -39,7 +46,7 @@ export default function PermanentDrawerLeft({ children }) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Drawer
+      <StyledDrawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -94,7 +101,7 @@ export default function PermanentDrawerLeft({ children }) {
             </Text>
           </ListItemButton>
         </List>
-      </Drawer>
+      </StyledDrawer>
       <StyledBox
         component="main"
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
