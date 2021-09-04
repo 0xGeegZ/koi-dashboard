@@ -59,6 +59,7 @@ export default function Dashboard() {
         </div>
         <FormButtonContainer>
           <Button
+            size="large"
             fullWidth
             startIcon={<AiOutlineSave />}
             variant="contained"
