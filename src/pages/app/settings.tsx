@@ -15,9 +15,6 @@ const ButtonContainer = styled.div`
   padding: 2rem;
   padding-top: 0;
 `;
-const StyledTitle = styled(Title)`
-  text-align: center;
-`;
 
 export default function Dashboard() {
   const [{ data, fetching, error }] = useGetCurrentUserQuery();

@@ -86,7 +86,7 @@ export default function SplitButton({ options, activeIndex }) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu">
-                  {options.map(({ icon, title, src }, index) => (
+                  {options.map(({ icon, title, src, handleClick }, index) => (
                     <MenuItem
                       key={title}
                       onClick={(event) =>
@@ -99,7 +99,10 @@ export default function SplitButton({ options, activeIndex }) {
                           <div>{title}</div>
                         </Text>
                       ) : (
-                        <TextDelete className="cp-c-row cp-c-align-start-center">
+                        <TextDelete
+                          onClick={() => handleClick()}
+                          className="cp-c-row cp-c-align-start-center"
+                        >
                           <IconContainer>{icon}</IconContainer>
                           <div>{title}</div>
                         </TextDelete>

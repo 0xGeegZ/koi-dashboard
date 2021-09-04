@@ -126,6 +126,37 @@ const mutations = extendType({
         });
       },
     });
+
+    t.nullable.field("deleteKoi", {
+      type: "Koi",
+      args: {
+        id: nonNull(stringArg()),
+      },
+      resolve: async (_, { id }, ctx) => {
+        if (!ctx.user?.id) return null;
+
+        const hasAccess = await prisma.koi.findFirst({
+          where: {
+            user: {
+              is: {
+                id: ctx.user.id,
+              },
+            },
+            id: id,
+          },
+        });
+
+        if (!hasAccess) return null;
+
+        const koi = await prisma.koi.delete({
+          where: {
+            id: id,
+          },
+        });
+
+        return koi;
+      },
+    });
   },
 });
 

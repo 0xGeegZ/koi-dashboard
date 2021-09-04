@@ -237,45 +237,6 @@ const mutations = extendType({
         return true;
       },
     });
-
-    t.nullable.field("removeUserFromProject", {
-      type: "Project",
-      args: {
-        projectId: nonNull(stringArg()),
-        userId: nonNull(stringArg()),
-      },
-      resolve: async (_, { projectId, userId }, ctx) => {
-        if (!ctx.user?.id) return null;
-
-        const hasAccess = await prisma.project.findFirst({
-          where: {
-            users: {
-              some: {
-                id: ctx.user.id,
-              },
-            },
-            id: projectId,
-          },
-        });
-
-        if (!hasAccess) return null;
-
-        const project = await prisma.project.update({
-          where: {
-            id: projectId,
-          },
-          data: {
-            users: {
-              disconnect: {
-                id: userId,
-              },
-            },
-          },
-        });
-
-        return project;
-      },
-    });
   },
 });
 

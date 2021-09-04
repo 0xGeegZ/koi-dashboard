@@ -6,7 +6,6 @@ const User = objectType({
   definition(t) {
     t.model.id();
     t.model.name();
-    t.model.projects();
     t.model.kois();
     t.model.email();
   },

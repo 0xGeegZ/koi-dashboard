@@ -4,10 +4,5 @@ query GetProject($id: String, $slug: String) {
     name
     slug
     paidPlan
-    users {
-      id
-      name
-      email
-    }
   }
 }

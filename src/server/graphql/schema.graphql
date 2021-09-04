@@ -32,8 +32,8 @@ type Mutation {
   createProject(name: String!, slug: String): Project
   createStripeCheckoutBillingPortalUrl(projectId: String!): String
   createStripeCheckoutSession(plan: PaidPlan!, projectId: String!): String
+  deleteKoi(id: String!): Koi
   inviteToProject(email: String!, projectId: String!): Boolean
-  removeUserFromProject(projectId: String!, userId: String!): Project
   updateKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
   updateUser(name: String, userId: String!): User
 }
@@ -50,13 +50,6 @@ type Project {
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
 }
 
-input ProjectWhereUniqueInput {
-  id: String
-  slug: String
-  stripeCustomerId: String
-  stripeSubscriptionId: String
-}
-
 type Query {
   currentUser: User
   koi(id: String!): Koi
@@ -69,7 +62,6 @@ type User {
   id: String!
   kois(after: KoiWhereUniqueInput, before: KoiWhereUniqueInput, first: Int, last: Int): [Koi!]!
   name: String
-  projects(after: ProjectWhereUniqueInput, before: ProjectWhereUniqueInput, first: Int, last: Int): [Project!]!
 }
 
 input UserWhereUniqueInput {

@@ -5,7 +5,7 @@ import { AiOutlineHistory } from "@react-icons/all-files/ai/AiOutlineHistory";
 import { AiOutlineLineChart } from "@react-icons/all-files/ai/AiOutlineLineChart";
 import { AiOutlineDelete } from "@react-icons/all-files/ai/AiOutlineDelete";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
-import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
+import { useDeleteKoiMutation } from "../../../client/graphql/deleteKoi.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { slugify } from "../../../client/components/utils/styledComponents";
 import Evolution from "../../../client/components/KoiPage/Evolution";
@@ -15,6 +15,7 @@ const filterOptions = [{ title: "Evolution" }, { title: "History" }];
 
 const KoiDetailPage = () => {
   const [dropdown, setDropdown] = useState("Evolution");
+  const [, deleteKoi] = useDeleteKoiMutation();
   const router = useRouter();
   const { id } = router.query;
 
@@ -52,9 +53,10 @@ const KoiDetailPage = () => {
     },
     {
       title: "Delete",
-      src: `/koi/${koi.id}`,
+      src: `/koi`,
       icon: <AiOutlineDelete />,
       buttonSrc: `/koi/${koi.id}`,
+      handleClick: () => deleteKoi({ id: koi.id }),
     },
   ];
 
