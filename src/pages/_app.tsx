@@ -1,8 +1,8 @@
 import { Toaster } from "react-hot-toast";
 import type { AppProps } from "next/app";
 import { Provider } from "urql";
-import { ThemeProvider } from 'styled-components';
-import { theme } from '../client/components/utils/styledComponents';
+import { ThemeProvider } from "styled-components";
+import { theme } from "../client/components/utils/styledComponents";
 import { client } from "../client/graphql/client";
 import Layout from "../client/components/Layout";
 import "../styles/global.css";

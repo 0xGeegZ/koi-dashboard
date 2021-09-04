@@ -9,8 +9,12 @@ import {
   KoiSVG,
   Card,
   Title,
+  media,
 } from "../../client/components/utils/styledComponents";
 
+const StyledTitle = styled(Title)`
+  padding-top: 2rem;
+`;
 const StyledCard = styled(Card)`
   position: relative;
   overflow: hidden;
@@ -34,19 +38,33 @@ const Text = styled.div`
   padding-top: 2rem;
   font-size: 1.5rem;
 `;
+const LinksContainer = styled.div`
+  ${media.xxl} {
+    max-width: 20% !important;
+  }
+`;
 const IconContainer = styled.div`
-  font-size: 2.5rem;
+  font-size: 2rem;
+
+  ${media.md} {
+    font-size: 2.5rem;
+  }
 `;
 const StyledKoiIcon = styled.svg`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   stroke-width: 100px;
   stroke: ${(props) => props.theme.mainColor};
+
+  ${media.md} {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 `;
 
-const KoiIcon = (props) => <KoiSVG {...props} />;
+export const KoiIcon = (props) => <KoiSVG {...props} />;
 
-const links = [
+export const links = [
   {
     title: "My koi",
     path: "/koi",
@@ -88,11 +106,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <Title>Hello {data.currentUser.name}!</Title>
+      <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
       <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
         {links.map(({ title, path, icon }) => (
-          <div
-            className="cp-i-100 cp-i-sm-50 cp-i-md-33 cp-i-lg-25 cp-i-xl-20"
+          <LinksContainer
+            className="cp-i-100 cp-i-sm-50 cp-i-lg-33 cp-i-xl-25"
             key={title}
           >
             <Link href={path}>
@@ -109,7 +127,7 @@ export default function Dashboard() {
                 </Container>
               </StyledCard>
             </Link>
-          </div>
+          </LinksContainer>
         ))}
       </div>
     </>

@@ -1,4 +1,3 @@
-import Footer from "../Footer";
 import Navbar from "../Navbar";
 import { useGetCurrentUserQuery } from "../../graphql/getCurrentUser.generated";
 
@@ -8,10 +7,6 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   const [{ data }] = useGetCurrentUserQuery();
-  return (
-    <>
-    {data?.currentUser &&  <Navbar />}
-      {children}
-    </>
-  );
+  const isAuthenticated = !!data?.currentUser;
+  return isAuthenticated ? <Navbar>{children}</Navbar> : <div />;
 }
