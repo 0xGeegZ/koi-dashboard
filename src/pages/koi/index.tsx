@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { orderBy } from "lodash";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
+import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
+import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../client/components/utils/styledComponents";
@@ -19,24 +21,43 @@ export const getSortedKois = (kois, order) => {
   }
 };
 
+const withLink = (to, children) => <Link href={to}>{children}</Link>;
+
+const actions = [
+  {
+    icon: withLink("/koi/create", <AiOutlinePlus />),
+    title: "Create koi",
+    src: "/koi/create",
+  },
+  {
+    icon: withLink("/koi/create", <AiOutlineClockCircle />),
+    title: "Sort recent",
+    src: `/koi?order=Recent`,
+  },
+  {
+    icon: withLink("/koi/create", <AiOutlineApartment />),
+    title: "Sort by variety",
+    src: `/koi?order=Variety`,
+  },
+];
+
 const options = [
   {
     title: "Create koi",
     src: `/koi/create`,
     icon: <AiOutlinePlus />,
     buttonSrc: `/koi/create`,
+    active: true,
   },
   {
     title: "Sort recent",
-    src: `/koi/create`,
-    icon: <AiOutlinePlus />,
-    buttonSrc: `/koi?order=Recent`,
+    src: `/koi?order=Recent`,
+    icon: <AiOutlineClockCircle />,
   },
   {
     title: "Sort by variety",
-    src: `/koi/create`,
-    icon: <AiOutlinePlus />,
-    buttonSrc: `/koi?order=Variety`,
+    src: `/koi?order=Variety`,
+    icon: <AiOutlineApartment />,
   },
 ];
 
@@ -69,13 +90,14 @@ export default function AllUsersKoi() {
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
               <VerticalCard kois={getSortedKois(kois, dropdown)} />
             </div>
-            <ActionButton />
+            <ActionButton actions={actions} />
           </div>
           <div className="cp-hide cp-md-show-block">
             <TitleContainer
               title="All your koi"
               options={options}
               activeIndex={0}
+              paddingBottom={0}
             />
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
               <VerticalCard kois={getSortedKois(kois, dropdown)} />

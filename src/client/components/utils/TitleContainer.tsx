@@ -2,18 +2,35 @@ import styled from "styled-components";
 import ButtonGroup from "./Buttongroup";
 import { Title, media } from "./styledComponents";
 
-const Container = styled.div`
-  padding-bottom: 1rem;
+type TitleContainerProps = {
+  title: string;
+  options: any;
+  activeIndex: number;
+  paddingBottom?: number;
+};
+
+const Container = styled.div<{ paddingBottom: any }>`
+  padding-bottom: ${(props) =>
+    props.paddingBottom != undefined ? props.paddingBottom : "1"}rem;
   padding-right: 1rem;
 
   ${media.lg} {
-    padding-bottom: 1.5rem;
+    padding-bottom: ${(props) =>
+      props.paddingBottom != undefined ? props.paddingBottom : "1.5"}rem;
     padding-right: 2rem;
   }
 `;
 
-const TitleContainer = ({ title, options, activeIndex }) => (
-  <Container className="cp-c-row cp-c-align-spacebetween-center">
+const TitleContainer = ({
+  title,
+  options,
+  activeIndex,
+  paddingBottom,
+}: TitleContainerProps) => (
+  <Container
+    paddingBottom={paddingBottom}
+    className="cp-c-row cp-c-align-spacebetween-center"
+  >
     <Title>{title}</Title>
     <ButtonGroup options={options} activeIndex={activeIndex} />
   </Container>

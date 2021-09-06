@@ -29,9 +29,9 @@ export default function SplitButton({ options, activeIndex }) {
   const anchorRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(activeIndex || 0);
 
-  const handleClick = () => {
-    router.push(options[selectedIndex].buttonSrc);
-    setSelectedIndex(options[selectedIndex].setIndex);
+  const handleClick = (index) => {
+    router.push(options[index].buttonSrc);
+    setSelectedIndex(options[index].setIndex);
   };
 
   const handleMenuItemClick = (event, index, src) => {
@@ -55,9 +55,15 @@ export default function SplitButton({ options, activeIndex }) {
   return (
     <>
       <ButtonGroup variant="outlined" ref={anchorRef}>
-        <Button variant="outlined" onClick={handleClick}>
-          {options[selectedIndex].title}
-        </Button>
+        {options[0].active ? (
+          <Button variant="outlined" onClick={() => handleClick(0)}>
+            {options[0].title}
+          </Button>
+        ) : (
+          <Button variant="outlined" onClick={() => handleClick(selectedIndex)}>
+            {options[selectedIndex].title}
+          </Button>
+        )}
         <Button
           variant="outlined"
           aria-controls={open ? "split-button-menu" : undefined}

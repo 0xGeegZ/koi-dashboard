@@ -42,8 +42,8 @@ const IconContainer = styled.div`
 `;
 const StyledKoiIcon = styled.svg`
   margin-bottom: 0.4rem;
-  width: 1rem;
-  height: 1.1rem;
+  width: 0.9rem;
+  height: 0.9rem;
   stroke-width: 120px;
   stroke: ${(props) => props.theme.secondaryColor};
 `;

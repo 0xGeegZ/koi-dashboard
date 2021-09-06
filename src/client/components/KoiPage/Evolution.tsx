@@ -13,12 +13,14 @@ import {
 import "react-image-lightbox/style.css";
 
 export const CardContainer = styled.div`
+  margin-top: 1rem;
   padding: 0 1rem;
 
   ${media.md} {
     padding: 0 1rem;
   }
   ${media.lg} {
+    margin-top: 0;
     padding: 0 2rem;
   } ;
 `;

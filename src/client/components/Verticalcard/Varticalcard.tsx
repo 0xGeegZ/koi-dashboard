@@ -40,7 +40,14 @@ const VerticalCard = ({ kois }) =>
         <a>
           <StyledCard>
             <div>
-              <ImageContainer>Insert Image here</ImageContainer>
+              <ImageContainer>
+                <Image
+                  src="/default.png"
+                  layout="fill"
+                  objectFit="contain"
+                  priority
+                />
+              </ImageContainer>
               <CardText>
                 <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
                 <Text>{`${bloodline ? bloodline : ""} ${sex}`}</Text>
