@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
+import { format } from "date-fns";
 import Autocomplete from "@material-ui/core/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
@@ -42,6 +43,7 @@ export default function CreateKoi() {
     skinType: "",
     sex: "",
     youtube: "",
+    birthDate: "01/01/2021",
   });
 
   useEffect(() => {
@@ -49,6 +51,10 @@ export default function CreateKoi() {
       setKoi((k) => ({ ...k, userId: currentUser.id }));
     }
   }, [currentUser]);
+
+  const transformKoi = (newKoi) => {
+    return { ...newKoi, birthDate: format(newKoi.birthDate, "dd/MM/yyyy") };
+  };
 
   if (fetching) return <div />;
 
@@ -63,7 +69,7 @@ export default function CreateKoi() {
       </p>
     );
   }
-
+  console.log(koi);
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="Create koi" />
@@ -144,7 +150,10 @@ export default function CreateKoi() {
                 label="Birthdate"
                 value={koi.birthDate}
                 onChange={(newValue) =>
-                  setKoi((k) => ({ ...k, birthDate: newValue }))
+                  setKoi((k) => ({
+                    ...k,
+                    birthDate: newValue,
+                  }))
                 }
                 renderInput={(params) => <TextField fullWidth {...params} />}
               />
@@ -161,11 +170,15 @@ export default function CreateKoi() {
             size="large"
             onClick={() => {
               if (!koi) return;
-              toast.promise(createKoi(koi), {
-                loading: `Creating koi...`,
-                success: `Koi Created!`,
-                error: (err) => err,
-              });
+              toast
+                .promise(createKoi(transformKoi(koi)), {
+                  loading: `Creating koi...`,
+                  success: `Koi Created!`,
+                  error: (err) => err,
+                })
+                .then(() => {
+                  router.push(`/app`);
+                });
             }}
           >
             Add koi

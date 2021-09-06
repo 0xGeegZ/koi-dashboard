@@ -49,7 +49,7 @@ model Koi {
   modifiedAt DateTime @default(now())
 
   name      String?
-  birthDate DateTime?
+  birthDate String?
   youtube   String?
   variety   String
   breeder   String?

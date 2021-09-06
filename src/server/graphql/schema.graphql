@@ -5,7 +5,7 @@
 scalar DateTime
 
 type Koi {
-  birthDate: DateTime
+  birthDate: String
   bloodline: String
   breeder: String
   id: String!
