@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import styled from "styled-components";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -60,46 +61,43 @@ export default function PermanentDrawerLeft({ children }) {
         anchor="left"
       >
         <List>
-          <ListItemButton
-            selected={router.pathname === "/app"}
-            component="a"
-            href="/app"
-          >
-            <Text className="cp-c-row cp-c-align-start-center">
-              <IconContainer>
-                <AiOutlineHome />
-              </IconContainer>
-              <ListItemText primary="Home" />
-            </Text>
-          </ListItemButton>
-          {links.map(({ title, path, icon }) => (
-            <ListItemButton
-              component="a"
-              href={path}
-              key={title}
-              selected={router.pathname === path}
-            >
+          <Link href="/app">
+            <ListItemButton selected={router.pathname === "/app"}>
               <Text className="cp-c-row cp-c-align-start-center">
-                {icon ? (
-                  <IconContainer>{icon}</IconContainer>
-                ) : (
-                  <StyledKoiIcon>
-                    <KoiIcon />
-                  </StyledKoiIcon>
-                )}
-                <ListItemText primary={title} />
+                <IconContainer>
+                  <AiOutlineHome />
+                </IconContainer>
+                <ListItemText primary="Home" />
               </Text>
             </ListItemButton>
+          </Link>
+          {links.map(({ title, path, icon }) => (
+            <Link key={title} href={path}>
+              <ListItemButton selected={router.pathname === path}>
+                <Text className="cp-c-row cp-c-align-start-center">
+                  {icon ? (
+                    <IconContainer>{icon}</IconContainer>
+                  ) : (
+                    <StyledKoiIcon>
+                      <KoiIcon />
+                    </StyledKoiIcon>
+                  )}
+                  <ListItemText primary={title} />
+                </Text>
+              </ListItemButton>
+            </Link>
           ))}
           <Divider />
-          <ListItemButton component="a" href="/api/auth/logout">
-            <Text className="cp-c-row cp-c-align-start-center">
-              <IconContainer>
-                <AiOutlineLogout />
-              </IconContainer>
-              <ListItemText primary="Logout" />
-            </Text>
-          </ListItemButton>
+          <Link href="/api/auth/logout">
+            <ListItemButton>
+              <Text className="cp-c-row cp-c-align-start-center">
+                <IconContainer>
+                  <AiOutlineLogout />
+                </IconContainer>
+                <ListItemText primary="Logout" />
+              </Text>
+            </ListItemButton>
+          </Link>
         </List>
       </StyledDrawer>
       <StyledBox

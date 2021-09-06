@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import styled from "styled-components";
 import toast from "react-hot-toast";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateUserMutation } from "../../client/graphql/updateUser.generated";
