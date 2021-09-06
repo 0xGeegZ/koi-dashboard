@@ -63,7 +63,7 @@ export default function Dashboard() {
             fullWidth
             startIcon={<AiOutlineSave />}
             variant="contained"
-            disabled={!name}
+            disabled={!name || currentUser.name == name}
             onClick={() => {
               if (!name) return;
               toast.promise(

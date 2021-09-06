@@ -6,7 +6,10 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../client/components/utils/styledComponents";
 import { client } from "../client/graphql/client";
 import Layout from "../client/components/Layout";
+import { initRouteLoader } from "../client/components/utils/RouteLoader";
 import "../styles/global.css";
+
+initRouteLoader();
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (

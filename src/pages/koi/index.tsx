@@ -7,6 +7,7 @@ import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../client/components/utils/styledComponents";
 import VerticalCard from "../../client/components/Verticalcard/Varticalcard";
 import EmptyKoi from "../../client/components/Koi/EmptyKoi";
+import ActionButton from "../../client/components/utils/ActionButton";
 
 export const getSortedKois = (kois, order) => {
   if (order == "Most recent") {
@@ -44,6 +45,7 @@ export default function AllUsersKoi() {
           <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
             <VerticalCard kois={getSortedKois(kois, dropdown)} />
           </div>
+          <ActionButton />
         </>
       ) : (
         <EmptyKoi />

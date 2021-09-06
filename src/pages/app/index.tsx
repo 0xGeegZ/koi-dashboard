@@ -13,7 +13,11 @@ import {
 } from "../../client/components/utils/styledComponents";
 
 const StyledTitle = styled(Title)`
-  padding-top: 2rem;
+  padding-top: 1rem;
+
+  ${media.lg} {
+    padding-top: 2rem;
+  }
 `;
 const StyledCard = styled(Card)`
   position: relative;
