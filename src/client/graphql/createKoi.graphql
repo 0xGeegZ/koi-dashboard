@@ -1,4 +1,5 @@
 mutation CreateKoi(
+  $id: String!
   $variety: String!
   $birthDate: String
   $breeder: String
@@ -8,6 +9,7 @@ mutation CreateKoi(
   $youtube: String
 ) {
   createKoi(
+    id: $id
     variety: $variety
     birthDate: $birthDate
     breeder: $breeder
@@ -16,12 +18,6 @@ mutation CreateKoi(
     sex: $sex
     youtube: $youtube
   ) {
-    variety
-    birthDate
-    breeder
-    bloodline
-    skinType
-    sex
-    youtube
+    id
   }
 }

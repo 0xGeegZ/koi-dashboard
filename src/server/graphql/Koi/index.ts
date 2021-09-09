@@ -15,7 +15,7 @@ const Koi = objectType({
     t.model.skinType();
     t.model.sex();
     t.model.user();
-    // t.model.updates();
+    t.model.updates();
   },
 });
 
@@ -54,6 +54,7 @@ const mutations = extendType({
     t.nullable.field("createKoi", {
       type: "Koi",
       args: {
+        id: nonNull(stringArg()),
         variety: nonNull(stringArg()),
         breeder: stringArg(),
         bloodline: stringArg(),
@@ -67,6 +68,7 @@ const mutations = extendType({
 
         return await prisma.koi.create({
           data: {
+            id: args.id,
             variety: args.variety,
             breeder: args.breeder,
             bloodline: args.bloodline,

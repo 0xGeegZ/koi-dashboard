@@ -12,6 +12,7 @@ type Koi {
   modifiedAt: DateTime!
   sex: String
   skinType: String
+  updates(after: KoiHistoryWhereUniqueInput, before: KoiHistoryWhereUniqueInput, first: Int, last: Int): [KoiHistory!]!
   user: User!
   variety: String!
   youtube: String
@@ -23,12 +24,17 @@ type KoiHistory {
   length: Int!
 }
 
+input KoiHistoryWhereUniqueInput {
+  id: String
+}
+
 input KoiWhereUniqueInput {
   id: String
 }
 
 type Mutation {
-  createKoi(birthDate: String, bloodline: String, breeder: String, sex: String, skinType: String, variety: String!, youtube: String): Koi
+  createKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
+  createKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory
   createProject(name: String!, slug: String): Project
   createStripeCheckoutBillingPortalUrl(projectId: String!): String
   createStripeCheckoutSession(plan: PaidPlan!, projectId: String!): String

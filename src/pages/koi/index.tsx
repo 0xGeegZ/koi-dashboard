@@ -30,12 +30,12 @@ const actions = [
     src: "/koi/create",
   },
   {
-    icon: withLink("/koi/create", <AiOutlineClockCircle />),
+    icon: withLink("/koi?order=Recent", <AiOutlineClockCircle />),
     title: "Sort recent",
     src: `/koi?order=Recent`,
   },
   {
-    icon: withLink("/koi/create", <AiOutlineApartment />),
+    icon: withLink("/koi?order=Variety", <AiOutlineApartment />),
     title: "Sort by variety",
     src: `/koi?order=Variety`,
   },

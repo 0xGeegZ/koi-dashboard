@@ -65,7 +65,6 @@ const StyledReactPlayer = styled.iframe`
   top: 0;
   left: 0;
   border: 0;
-  z-index: 2;
   border-radius: 10px;
 `;
 const ImagesContainer = styled.div`
@@ -106,26 +105,28 @@ const Evolution = ({ koi }) => {
   const [visible, setVisible] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  // const getData = (koi) => {
-  //   let data = [];
-  //   koi.updates.map(
-  //     ({ date, length }) =>
-  //     (data = [
-  //       ...data,
-  //       {
-  //         x: `${getAgeDifferenceDate(koi.birthDate, date)} months`,
-  //         y: length,
-  //       },
-  //     ])
-  //   );
-  //   return data;
-  // };
+  const getData = (koi) => {
+    let data = [];
+    koi.updates.map(
+      ({ date, length }) =>
+        (data = [
+          // @ts-ignore: don't know fix
+          ...data,
+          {
+            // @ts-ignore: don't know fix
+            x: `${getAgeDifferenceDate(koi.birthDate, date)} months`,
+            // @ts-ignore: don't know fix
+            y: length,
+          },
+        ])
+    );
+    return data;
+  };
   const data = {
     datasets: [
       {
         label: "Size (cm)",
-        data: [],
-        // data: getData(koi),
+        data: getData(koi),
         borderColor: "#3A3878",
         backgroundColor: "#3A3878",
         tension: 0.4,

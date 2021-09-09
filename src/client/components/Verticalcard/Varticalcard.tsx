@@ -37,24 +37,22 @@ const VerticalCard = ({ kois }) =>
       key={id}
     >
       <Link href={`/koi/${id}`}>
-        <a>
-          <StyledCard>
-            <div>
-              <ImageContainer>
-                <Image
-                  src="/default.png"
-                  layout="fill"
-                  objectFit="contain"
-                  priority
-                />
-              </ImageContainer>
-              <CardText>
-                <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
-                <Text>{`${bloodline ? bloodline : ""} ${sex}`}</Text>
-              </CardText>
-            </div>
-          </StyledCard>
-        </a>
+        <StyledCard>
+          <div>
+            <ImageContainer>
+              <Image
+                src="/default.png"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </ImageContainer>
+            <CardText>
+              <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
+              <Text>{`${bloodline ? bloodline : ""} ${sex}`}</Text>
+            </CardText>
+          </div>
+        </StyledCard>
       </Link>
     </Container>
   ));

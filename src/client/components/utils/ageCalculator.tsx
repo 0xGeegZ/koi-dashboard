@@ -1,5 +1,4 @@
 import {
-  parse,
   format,
   differenceInCalendarMonths,
   differenceInMonths,
@@ -9,7 +8,7 @@ export const getCurrentAgeText = (
   birthDate: string,
   referenceDate = new Date()
 ) => {
-  const newBirthDate = parse(birthDate, "yyyy-MM-dd", referenceDate);
+  const newBirthDate = new Date(birthDate);
   const ageInMonths = differenceInCalendarMonths(referenceDate, newBirthDate);
   if (ageInMonths < 15) {
     return "Tosai";
@@ -27,23 +26,23 @@ export const getCurrentAgeText = (
 };
 
 export const getFormattedDate = (date: string) => {
-  const newDate = parse(date, "yyyy-MM-dd", new Date());
+  const newDate = new Date(date);
   return format(newDate, "dd/MM/yyyy");
 };
 export const getHistoryFormattedDate = (date: string) => {
-  const newDate = parse(date, "yyyy-MM-dd", new Date());
+  const newDate = new Date(date);
   return format(newDate, "do MMMM yyyy");
 };
 
 export const getAgeDifferenceDate = (birthDate: string, date: string) => {
-  const newBirthDate = parse(birthDate, "yyyy-MM-dd", new Date());
-  const newDate = parse(date, "yyyy-MM-dd", new Date());
+  const newBirthDate = new Date(birthDate);
+  const newDate = new Date(date);
   const age = differenceInMonths(newDate, newBirthDate);
   return age;
 };
 
 export const getCurrentAgeInMonths = (birthDate: string) => {
-  const newBirthDate = parse(birthDate, "yyyy-MM-dd", new Date());
+  const newBirthDate = new Date(birthDate);
   const ageInMonths = differenceInCalendarMonths(new Date(), newBirthDate);
   return ageInMonths;
 };

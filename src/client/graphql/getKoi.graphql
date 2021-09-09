@@ -10,5 +10,10 @@ query getKoi($id: String!) {
     bloodline
     skinType
     sex
+    updates {
+      length
+      date
+      image
+    }
   }
 }
