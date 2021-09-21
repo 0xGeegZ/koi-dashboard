@@ -8,6 +8,7 @@ const KoiHistory = objectType({
     t.model.length();
     t.model.date();
     t.model.image();
+    t.model.id();
   },
 });
 
@@ -58,6 +59,43 @@ const mutations = extendType({
                 id: args.id,
               },
             },
+          },
+        });
+      },
+    });
+
+    t.nullable.field("updateKoiHistory", {
+      type: "KoiHistory",
+      args: {
+        id: nonNull(stringArg()),
+        length: intArg(),
+        date: stringArg(),
+        image: stringArg(),
+      },
+      resolve: async (_, args, ctx) => {
+        if (!ctx.user?.id) return null;
+
+        const hasAccess = await prisma.koiHistory.findFirst({
+          where: {
+            koi: {
+              user: {
+                is: {
+                  id: ctx.user.id,
+                },
+              },
+            },
+            id: args.id,
+          },
+        });
+
+        if (!hasAccess) return null;
+
+        return await prisma.koiHistory.update({
+          where: { id: args.id },
+          data: {
+            length: args.length as number,
+            date: args.date as string,
+            image: args.image as string,
           },
         });
       },

@@ -45,7 +45,6 @@ export default function CreateKoi() {
   }, [data]);
 
   if (fetching || data == null || data.koi == null) return <div />;
-
   if (error) return <p>{error.message}</p>;
   console.log(koi);
   return (
@@ -64,11 +63,6 @@ export default function CreateKoi() {
       <Wrapper>
         <Title>Edit your koi</Title>
         <KoiForm koi={koi} setKoi={setKoi} />
-        <KoiHistoryPreview
-          koiId={data.koi.id}
-          // @ts-ignore: don't know fix
-          updates={koi.updates}
-        />
         <FormButtonContainer>
           <Button
             fullWidth
@@ -88,6 +82,11 @@ export default function CreateKoi() {
             Update koi
           </Button>
         </FormButtonContainer>
+        <KoiHistoryPreview
+          koiId={data.koi.id}
+          // @ts-ignore: don't know fix
+          updates={koi.updates}
+        />
       </Wrapper>
     </>
   );

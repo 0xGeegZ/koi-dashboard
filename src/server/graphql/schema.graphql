@@ -20,6 +20,7 @@ type Koi {
 
 type KoiHistory {
   date: DateTime!
+  id: String!
   image: String!
   length: Int!
 }
@@ -41,6 +42,7 @@ type Mutation {
   deleteKoi(id: String!): Koi
   inviteToProject(email: String!, projectId: String!): Boolean
   updateKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
+  updateKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory
   updateUser(name: String, userId: String!): User
 }
 

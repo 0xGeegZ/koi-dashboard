@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import styled from "styled-components";
 import { format } from "date-fns";
@@ -21,6 +22,9 @@ const Update = styled.div`
 `;
 const ImageContainer = styled.div`
   padding-right: 1rem;
+  position: relative;
+  padding-top: 60%;
+  width: 100%;
 `;
 
 export default function KoiHistoryPreview({ updates, koiId }: Props) {
@@ -43,7 +47,11 @@ export default function KoiHistoryPreview({ updates, koiId }: Props) {
                 onClick={() => setDrawer(true)}
                 className="cp-c-row cp-c-align-start-start"
               >
-                <ImageContainer>insert image</ImageContainer>
+                <ImageContainer className="cp-i-50">
+                  {image && (
+                    <Image src={image} layout="fill" objectFit="contain" />
+                  )}
+                </ImageContainer>
                 <div className="cp-c-column cp-c-align-start-start">
                   <div>{format(new Date(date), "dd-MM-yyyy")}</div>
                   <div>{length} cm</div>

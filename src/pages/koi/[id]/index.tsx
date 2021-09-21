@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { BiPencil } from "@react-icons/all-files/bi/BiPencil";
@@ -16,11 +15,9 @@ import Evolution from "../../../client/components/KoiPage/Evolution";
 import TitleContainer from "../../../client/components/utils/TitleContainer";
 import ActionButton from "../../../client/components/utils/ActionButton";
 
-const filterOptions = [{ title: "Evolution" }, { title: "History" }];
 const withLink = (to, children) => <Link href={to}>{children}</Link>;
 
 const KoiDetailPage = () => {
-  const [dropdown, setDropdown] = useState("Evolution");
   const [, deleteKoi] = useDeleteKoiMutation();
   const router = useRouter();
   const { id } = router.query;

@@ -30,6 +30,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@100;300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
+          <script
+            src="https://widget.cloudinary.com/v2.0/global/all.js"
+            type="text/javascript"
+          />
           {(this.props as any).styleTags}
         </Head>
         <body>

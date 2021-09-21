@@ -14,6 +14,7 @@ query getKoi($id: String!) {
       length
       date
       image
+      id
     }
   }
 }

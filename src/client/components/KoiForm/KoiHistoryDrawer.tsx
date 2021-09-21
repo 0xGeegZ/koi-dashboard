@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
@@ -43,6 +41,9 @@ const CloseContainer = styled.div`
   ${media.lg} {
     padding: 2rem;
     font-size: 2rem;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 const StyledFormButtonContainer = styled(FormButtonContainer)`
@@ -58,7 +59,6 @@ export default function KoiHistoryDrawer({
   update,
   setUpdate,
 }) {
-  const router = useRouter();
   const [, createKoiHistory] = useCreateKoiHistoryMutation();
 
   return (
