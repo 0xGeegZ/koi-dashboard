@@ -7,7 +7,6 @@ import { useCreateStripeCheckoutBillingPortalUrlMutation } from "../../../client
 import { useState } from "react";
 import { useInviteToProjectMutation } from "../../../client/graphql/inviteToProject.generated";
 import toast from "react-hot-toast";
-import { useRemoveUserFromProjectMutation } from "../../../client/graphql/removeUserFromProject.generated";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 
 function InvitationForm({ projectId }: { projectId: string }) {
@@ -62,14 +61,11 @@ function ProjectSettings() {
     createStripeCheckoutBillingPortalUrl,
   ] = useCreateStripeCheckoutBillingPortalUrlMutation();
 
-  const [, removeUserFromProject] = useRemoveUserFromProjectMutation();
-
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
   if (!data?.project || typeof slug !== "string") return <p>Not found.</p>;
   if (!currentUserData?.currentUser) return null;
 
-  const { currentUser } = currentUserData;
   const { project } = data;
   return (
     <>
