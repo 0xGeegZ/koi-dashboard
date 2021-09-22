@@ -10,12 +10,12 @@ import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import {
   slugify,
   Title,
+  withLink,
 } from "../../../client/components/utils/styledComponents";
 import Evolution from "../../../client/components/KoiPage/Evolution";
+import History from "../../../client/components/KoiPage/History";
 import TitleContainer from "../../../client/components/utils/TitleContainer";
 import ActionButton from "../../../client/components/utils/ActionButton";
-
-const withLink = (to, children) => <Link href={to}>{children}</Link>;
 
 const KoiDetailPage = () => {
   const [, deleteKoi] = useDeleteKoiMutation();
@@ -38,14 +38,14 @@ const KoiDetailPage = () => {
       title: "History",
       src: `/koi/${koi.id}?view=History`,
       icon: <AiOutlineHistory />,
-      buttonSrc: `/koi/${koi.id}?view=Evolution`,
+      buttonSrc: `/koi/${koi.id}?view=History`,
       setIndex: 1,
     },
     {
       title: "Evolution",
       src: `/koi/${koi.id}?view=Evolution`,
       icon: <AiOutlineLineChart />,
-      buttonSrc: `/koi/${koi.id}?view=History`,
+      buttonSrc: `/koi/${koi.id}?view=Evolution`,
       setIndex: 0,
     },
     {
@@ -99,19 +99,26 @@ const KoiDetailPage = () => {
       />
       <div className="cp-hide cp-md-show-block">
         <TitleContainer
+          paddingBottom={router.query.view == "History" ? "0" : undefined}
           title={`${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
             koi.variety
           }`}
           options={options}
           activeIndex={router.query.view == "Evolution" ? 1 : 0}
         />
-        <Evolution koi={koi} />
       </div>
       <div className="cp-md-hide">
         <Title>{`${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
           koi.variety
         }`}</Title>
+      </div>
+
+      {router.query.view == "History" ? (
+        <History koi={koi} />
+      ) : (
         <Evolution koi={koi} />
+      )}
+      <div className="cp-md-hide">
         <ActionButton actions={actions} />
       </div>
     </div>

@@ -7,7 +7,6 @@ import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
 import { UpdateKoiMutationVariables } from "../../../client/graphql/updateKoi.generated";
-import { GetKoiQueryVariables } from "../../../client/graphql/getKoi.generated";
 import {
   Title,
   Wrapper,
@@ -21,7 +20,6 @@ export default function CreateKoi() {
   const router = useRouter();
   const { id } = router.query;
   const [, updateKoi] = useUpdateKoiMutation();
-  const [drawer, setDrawer] = useState(false);
 
   const [{ data, fetching, error }] = useGetKoiQuery({
     variables: {
@@ -46,7 +44,6 @@ export default function CreateKoi() {
 
   if (fetching || data == null || data.koi == null) return <div />;
   if (error) return <p>{error.message}</p>;
-  console.log(koi);
   return (
     <>
       <Breadcrumbs

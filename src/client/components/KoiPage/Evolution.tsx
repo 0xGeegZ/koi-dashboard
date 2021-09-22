@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
@@ -17,10 +18,10 @@ export const CardContainer = styled.div`
   padding: 0 1rem;
 
   ${media.md} {
+    margin-top: 0;
     padding: 0 1rem;
   }
   ${media.lg} {
-    margin-top: 0;
     padding: 0 2rem;
   } ;
 `;
@@ -37,6 +38,7 @@ const StyledCard = styled(Card)`
 `;
 const Date = styled.div`
   padding-top: 0.5rem;
+  padding-bottom: 0.3rem;
   font-size: 0.8rem;
   text-align: center;
   font-weight: 300;
@@ -95,11 +97,11 @@ const options = {
     },
   },
 };
-// const getImages = (koi) => {
-//   let images = [];
-//   koi.updates.map(({ image }) => (images = [...images, urlFor(image)]));
-//   return images;
-// };
+const getImages = (koi) => {
+  let images = [];
+  koi.updates.map(({ image }) => (images = [...images, image]));
+  return images;
+};
 
 const Evolution = ({ koi }) => {
   const [visible, setVisible] = useState(false);
@@ -110,12 +112,9 @@ const Evolution = ({ koi }) => {
     koi.updates.map(
       ({ date, length }) =>
         (data = [
-          // @ts-ignore: don't know fix
           ...data,
           {
-            // @ts-ignore: don't know fix
             x: `${getAgeDifferenceDate(koi.birthDate, date)} months`,
-            // @ts-ignore: don't know fix
             y: length,
           },
         ])
@@ -133,7 +132,7 @@ const Evolution = ({ koi }) => {
       },
     ],
   };
-  // const images = getImages(koi);
+  const images = getImages(koi);
 
   return (
     <>
@@ -142,7 +141,7 @@ const Evolution = ({ koi }) => {
           <SubTitle>Picture evolution</SubTitle>
           <ImagesContainer>
             <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
-              {/* {koi.updates.map(({ length, date, image }, index) => (
+              {koi.updates.map(({ length, date, image }, index) => (
                 <CardStyle
                   className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
                   key={index}
@@ -150,16 +149,21 @@ const Evolution = ({ koi }) => {
                 >
                   <div onClick={() => setVisible(true)}>
                     <ImageContainer>
-                      Insert image here
+                      <Image
+                        src={image}
+                        layout="fill"
+                        objectFit="contain"
+                        priority
+                      />
                     </ImageContainer>
                     <Date>{getFormattedDate(date)}</Date>
                     <div className="cp-c-row cp-c-align-center-center">
                       <Size>{length}cm</Size>
-                      <Age>{getCurrentAgeText(koi.birthDate, date)}</Age>
+                      <Age>{getCurrentAgeText(date)}</Age>
                     </div>
                   </div>
                 </CardStyle>
-              ))} */}
+              ))}
             </div>
           </ImagesContainer>
         </Card>
@@ -185,8 +189,9 @@ const Evolution = ({ koi }) => {
         </div>
       </div>
 
-      {/* {visible && (
+      {visible && (
         <Lightbox
+          reactModalStyle={customStyles}
           mainSrc={images[photoIndex]}
           nextSrc={images[(photoIndex + 1) % images.length]}
           prevSrc={images[(photoIndex + images.length - 1) % images.length]}
@@ -198,9 +203,15 @@ const Evolution = ({ koi }) => {
             setPhotoIndex((photoIndex + 1) % images.length)
           }
         />
-      )} */}
+      )}
     </>
   );
 };
 
 export default Evolution;
+
+const customStyles = {
+  overlay: {
+    zIndex: "2000",
+  },
+};

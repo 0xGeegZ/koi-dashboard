@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { orderBy } from "lodash";
@@ -7,7 +7,10 @@ import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment
 import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
-import { Title } from "../../client/components/utils/styledComponents";
+import {
+  Title,
+  withLink,
+} from "../../client/components/utils/styledComponents";
 import VerticalCard from "../../client/components/Verticalcard/Varticalcard";
 import EmptyKoi from "../../client/components/Koi/EmptyKoi";
 import ActionButton from "../../client/components/utils/ActionButton";
@@ -20,8 +23,6 @@ export const getSortedKois = (kois, order) => {
     return orderBy(kois, ["variety"], ["desc"]);
   }
 };
-
-const withLink = (to, children) => <Link href={to}>{children}</Link>;
 
 const actions = [
   {
@@ -63,7 +64,7 @@ const options = [
 
 export default function AllUsersKoi() {
   const router = useRouter();
-  const [dropdown, setDropdown] = useState(undefined);
+  const [dropdown] = useState(undefined);
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
 
   if (fetching) return <div />;
@@ -97,7 +98,7 @@ export default function AllUsersKoi() {
               title="All your koi"
               options={options}
               activeIndex={0}
-              paddingBottom={0}
+              paddingBottom={"0"}
             />
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
               <VerticalCard kois={getSortedKois(kois, dropdown)} />

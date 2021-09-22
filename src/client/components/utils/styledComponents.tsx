@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import Link from "next/link";
 
 export const theme = {
   textColor: "#565656",
@@ -21,7 +22,7 @@ export const media = {
   lg: `@media screen and (min-width: ${1024 / 16}em)`,
   wrapper: `@media screen and (min-width: ${1120 / 16}em)`,
   xl: `@media screen and (min-width: ${1280 / 16}em)`,
-  xxl: `@media screen and (min-width: ${1500 / 16}em)`,
+  xxl: `@media screen and (min-width: ${1600 / 16}em)`,
 };
 
 export const Wrapper = styled("div")`
@@ -137,3 +138,13 @@ export const ImageContainer = styled.div`
     cursor: pointer;
   }
 `;
+
+const StyledLink = styled.a`
+  stroke: ${(props) => props.theme.textColor} !important;
+  margin-top: 0.3rem;
+`;
+export const withLink = (to, children) => (
+  <Link href={to}>
+    <StyledLink>{children}</StyledLink>
+  </Link>
+);

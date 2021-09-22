@@ -40,6 +40,7 @@ type Mutation {
   createStripeCheckoutBillingPortalUrl(projectId: String!): String
   createStripeCheckoutSession(plan: PaidPlan!, projectId: String!): String
   deleteKoi(id: String!): Koi
+  deleteKoiHistory(id: String!): KoiHistory
   inviteToProject(email: String!, projectId: String!): Boolean
   updateKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
   updateKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory

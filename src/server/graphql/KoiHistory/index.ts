@@ -100,6 +100,24 @@ const mutations = extendType({
         });
       },
     });
+
+    t.nullable.field("deleteKoiHistory", {
+      type: "KoiHistory",
+      args: {
+        id: nonNull(stringArg()),
+      },
+      resolve: async (_, { id }, ctx) => {
+        if (!ctx.user?.id) return null;
+
+        const koiHistory = await prisma.koiHistory.delete({
+          where: {
+            id: id,
+          },
+        });
+
+        return koiHistory;
+      },
+    });
   },
 });
 

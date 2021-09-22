@@ -5,15 +5,23 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
-import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
-import { useCreateKoiMutation } from "../../../client/graphql/createKoi.generated";
+import { BiPencil } from "@react-icons/all-files/bi/BiPencil";
 import { useCreateKoiHistoryMutation } from "../../graphql/createKoiHistory.generated";
+import { useUpdateKoiHistoryMutation } from "../../graphql/updateKoiHistory.generated";
 import {
   Title,
   FormButtonContainer,
   media,
 } from "../../../client/components/utils/styledComponents";
 import KoiHistoryForm from "../../../client/components/KoiForm/KoiHistoryForm";
+
+type Props = {
+  create?: boolean;
+  drawer: any;
+  setDrawer: any;
+  update: any;
+  setUpdate: any;
+};
 
 const StyledDrawer = styled(Drawer)`
   & .MuiDrawer-paper {
@@ -28,6 +36,7 @@ const StyledDrawer = styled(Drawer)`
 `;
 const StyledTitle = styled(Title)`
   padding: 1rem;
+  font-size: 1.5rem;
 
   ${media.lg} {
     padding: 1rem 2rem;
@@ -40,7 +49,6 @@ const CloseContainer = styled.div`
 
   ${media.lg} {
     padding: 2rem;
-    font-size: 2rem;
     :hover {
       cursor: pointer;
     }
@@ -58,9 +66,10 @@ export default function KoiHistoryDrawer({
   setDrawer,
   update,
   setUpdate,
-}) {
+  create,
+}: Props) {
   const [, createKoiHistory] = useCreateKoiHistoryMutation();
-
+  const [, updateKoiHistory] = useUpdateKoiHistoryMutation();
   return (
     <StyledDrawer anchor="right" open={drawer} onClose={() => setDrawer(false)}>
       <div className="cp-c-row cp-c-align-spacebetween-center">
@@ -74,23 +83,32 @@ export default function KoiHistoryDrawer({
       <StyledFormButtonContainer>
         <Button
           fullWidth
-          startIcon={<AiOutlinePlus />}
+          startIcon={create ? <AiOutlinePlus /> : <BiPencil />}
           variant="contained"
           size="large"
           onClick={() => {
-            if (!update) return;
-            toast
-              .promise(createKoiHistory(update), {
-                loading: `Creating Koi History...`,
-                success: `Koi History created!`,
-                error: (err) => err,
-              })
-              .then(() => {
-                setDrawer(false);
-              });
+            create
+              ? toast
+                  .promise(createKoiHistory(update), {
+                    loading: `Creating Koi History...`,
+                    success: `Koi History created!`,
+                    error: (err) => err,
+                  })
+                  .then(() => {
+                    setDrawer(false);
+                  })
+              : toast
+                  .promise(updateKoiHistory(update), {
+                    loading: `Updating Koi History...`,
+                    success: `Koi History updated!`,
+                    error: (err) => err,
+                  })
+                  .then(() => {
+                    setDrawer(false);
+                  });
           }}
         >
-          Create Update
+          {create ? "Create Update" : "Update"}
         </Button>
       </StyledFormButtonContainer>
     </StyledDrawer>

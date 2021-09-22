@@ -6,17 +6,17 @@ type TitleContainerProps = {
   title: string;
   options: any;
   activeIndex: number;
-  paddingBottom?: number;
+  paddingBottom?: string;
 };
 
 const Container = styled.div<{ paddingBottom: any }>`
   padding-bottom: ${(props) =>
-    props.paddingBottom != undefined ? props.paddingBottom : "1"}rem;
+    props.paddingBottom ? props.paddingBottom : "1"}rem;
   padding-right: 1rem;
 
   ${media.lg} {
     padding-bottom: ${(props) =>
-      props.paddingBottom != undefined ? props.paddingBottom : "1.5"}rem;
+      props.paddingBottom ? props.paddingBottom : "1.5"}rem;
     padding-right: 2rem;
   }
 `;

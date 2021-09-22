@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -10,15 +8,15 @@ import Upload from "../Upload/Upload";
 
 export default function KoiHistoryForm({ update, setUpdate }) {
   return (
-    <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
+    <div className="cp-c-column cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
       <Upload setUpdate={setUpdate} />
-
-      <div className="cp-i-100">
+      <div>
         <TextField
           type="number"
           fullWidth
           label="Length"
           id="length"
+          value={update.length}
           onChange={(e) =>
             setUpdate((k) => ({ ...k, length: Number(e.target.value) }))
           }
@@ -27,7 +25,7 @@ export default function KoiHistoryForm({ update, setUpdate }) {
           }}
         />
       </div>
-      <div className="cp-i-100">
+      <div>
         <LocalizationProvider dateAdapter={AdapterDateFns} locale={enLocale}>
           <DatePicker
             mask={"__/__/____"}

@@ -7,7 +7,7 @@ import { getCurrentAgeText } from "../utils/ageCalculator";
 
 const Container = styled.div`
   ${media.xxl} {
-    max-width: 10% !important;
+    max-width: 12.5% !important;
   }
 `;
 const StyledCard = styled(Card)`
@@ -41,7 +41,11 @@ const VerticalCard = ({ kois }) =>
           <div>
             <ImageContainer>
               <Image
-                src="/default.png"
+                src={
+                  updates[updates.length - 1].image
+                    ? updates[updates.length - 1].image
+                    : "/default.png"
+                }
                 layout="fill"
                 objectFit="contain"
                 priority

@@ -12,6 +12,12 @@ query GetCurrentUser {
       skinType
       sex
       youtube
+      updates {
+        image
+        length
+        date
+        id
+      }
     }
   }
 }
