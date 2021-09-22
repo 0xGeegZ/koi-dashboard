@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CloudinaryContext } from "cloudinary-react";
 import Button from "@material-ui/core/Button";
-import Dropzone from "react-dropzone";
 
 const StyledInput = styled.input`
   display: none;
