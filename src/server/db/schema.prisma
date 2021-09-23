@@ -39,7 +39,7 @@ model KoiHistory {
   length Int
   date   DateTime
   image  String
-  koi    Koi      @relation(fields: [koiId], references: [id])
+  koi    Koi      @relation(fields: [koiId], references: [id], onDelete: Cascade)
   koiId  String
 }
 
