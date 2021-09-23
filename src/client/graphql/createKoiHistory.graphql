@@ -8,5 +8,6 @@ mutation CreateKoiHistory(
     length
     image
     date
+    id
   }
 }

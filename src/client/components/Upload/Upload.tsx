@@ -7,7 +7,7 @@ const StyledInput = styled.input`
   display: none;
 `;
 
-const CloudinaryUploadWidget = ({ setUpdate }) => {
+const CloudinaryUploadWidget = ({ image, setUpdate }) => {
   useEffect(() => {
     // @ts-ignore: test
     const myWidget = window.cloudinary.createUploadWidget(
@@ -41,7 +41,7 @@ const CloudinaryUploadWidget = ({ setUpdate }) => {
             color="primary"
             component="span"
           >
-            Choose file
+            {image ? "Change file" : "Choose file"}
           </Button>
         </label>
       </CloudinaryContext>

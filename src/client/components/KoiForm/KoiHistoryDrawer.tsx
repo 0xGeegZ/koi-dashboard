@@ -21,6 +21,7 @@ type Props = {
   setDrawer: any;
   update: any;
   setUpdate: any;
+  setKoiHistory?: any;
 };
 
 const StyledDrawer = styled(Drawer)`
@@ -67,6 +68,7 @@ export default function KoiHistoryDrawer({
   update,
   setUpdate,
   create,
+  setKoiHistory,
 }: Props) {
   const [, createKoiHistory] = useCreateKoiHistoryMutation();
   const [, updateKoiHistory] = useUpdateKoiHistoryMutation();
@@ -94,7 +96,8 @@ export default function KoiHistoryDrawer({
                     success: `Koi History created!`,
                     error: (err) => err,
                   })
-                  .then(() => {
+                  .then((result) => {
+                    setKoiHistory((k) => [...k, result.data?.createKoiHistory]);
                     setDrawer(false);
                   })
               : toast

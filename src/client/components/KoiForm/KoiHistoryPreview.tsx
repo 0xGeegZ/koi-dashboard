@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { reject } from "lodash";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineDelete } from "@react-icons/all-files/ai/AiOutlineDelete";
 import styled from "styled-components";
@@ -10,7 +11,8 @@ import KoiHistoryDrawer from "./KoiHistoryDrawer";
 import { useDeleteKoiHistoryMutation } from "../../../client/graphql/deleteKoiHistory.generated";
 
 type Props = {
-  updates?: any;
+  updates: any;
+  setUpdates: any;
   koiId: string;
 };
 
@@ -40,7 +42,11 @@ const DeleteIcon = styled(AiOutlineDelete)`
   margin-right: 0.3rem;
 `;
 
-export default function KoiHistoryPreview({ updates, koiId }: Props) {
+export default function KoiHistoryPreview({
+  setUpdates,
+  updates,
+  koiId,
+}: Props) {
   const [, deleteKoiHistory] = useDeleteKoiHistoryMutation();
   const [updateDrawer, setUpdateDrawer] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -80,11 +86,15 @@ export default function KoiHistoryPreview({ updates, koiId }: Props) {
                   <Delete
                     className="cp-c-row cp-c-align-start-center"
                     onClick={() => {
-                      toast.promise(deleteKoiHistory({ id }), {
-                        loading: `Deleting koi update...`,
-                        success: `Update deleted!`,
-                        error: (err) => err,
-                      });
+                      toast
+                        .promise(deleteKoiHistory({ id }), {
+                          loading: `Deleting koi update...`,
+                          success: `Update deleted!`,
+                          error: (err) => err,
+                        })
+                        .then(() => {
+                          setUpdates(() => reject(updates, { id }));
+                        });
                     }}
                   >
                     <DeleteIcon /> Delete
@@ -109,6 +119,7 @@ export default function KoiHistoryPreview({ updates, koiId }: Props) {
         setDrawer={setUpdateDrawer}
         update={update}
         setUpdate={setUpdate}
+        setKoiHistory={setUpdates}
       />
       <KoiHistoryDrawer
         create={false}

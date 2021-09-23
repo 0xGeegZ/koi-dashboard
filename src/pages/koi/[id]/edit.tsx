@@ -1,8 +1,10 @@
+// @ts-nocheck
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import Button from "@material-ui/core/Button";
-import { isEqual } from "lodash";
+import { isEqual, orderBy } from "lodash";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
@@ -16,7 +18,7 @@ import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import KoiForm from "../../../client/components/KoiForm/KoiForm";
 import KoiHistoryPreview from "../../../client/components/KoiForm/KoiHistoryPreview";
 
-export default function CreateKoi() {
+const CreateKoi = () => {
   const router = useRouter();
   const { id } = router.query;
   const [, updateKoi] = useUpdateKoiMutation();
@@ -26,6 +28,7 @@ export default function CreateKoi() {
       id: String(id),
     },
   });
+  const [updates, setUpdates] = useState([]);
   const [koi, setKoi] = useState<UpdateKoiMutationVariables>({
     id: "",
     variety: "",
@@ -39,11 +42,15 @@ export default function CreateKoi() {
   useEffect(() => {
     if (data) {
       setKoi((k) => ({ ...k, ...data.koi }));
+      if (data.koi.updates.length > 0) {
+        setUpdates(() => [...data.koi.updates]);
+      }
     }
   }, [data]);
 
   if (fetching || data == null || data.koi == null) return <div />;
   if (error) return <p>{error.message}</p>;
+
   return (
     <>
       <Breadcrumbs
@@ -82,9 +89,12 @@ export default function CreateKoi() {
         <KoiHistoryPreview
           koiId={data.koi.id}
           // @ts-ignore: don't know fix
-          updates={koi.updates}
+          updates={orderBy(updates, ["date"], ["desc"])}
+          setUpdates={setUpdates}
         />
       </Wrapper>
     </>
   );
-}
+};
+
+export default CreateKoi;
