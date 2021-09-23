@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Koi" ALTER COLUMN "birthDate" SET DATA TYPE TEXT;
