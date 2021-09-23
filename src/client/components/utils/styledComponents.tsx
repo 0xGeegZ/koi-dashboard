@@ -9,7 +9,7 @@ export const theme = {
   mainColor: "#0C4184",
   secondaryColor: "#0b366f",
   materialColor: "#1976d2",
-  redColor: "#f26565",
+  redColor: "#ea5757",
   lightColor: "#e7f5fe",
   thinBorder: "1px solid #dcdcdc",
   borderRadius: "10px",

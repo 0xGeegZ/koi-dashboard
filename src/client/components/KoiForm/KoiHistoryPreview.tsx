@@ -17,25 +17,46 @@ type Props = {
 };
 
 const Update = styled.div`
-  :hover {
-    cursor: pointer;
-  }
   text-align: center;
   padding: 1rem 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+
+  :hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 20px rgba(20, 61, 123, 0.15);
+    transition: all 0.15s;
+  }
 `;
 const ImageContainer = styled.div`
   padding-right: 1rem;
   position: relative;
-  padding-top: 60%;
+  padding-top: 100%;
   width: 100%;
+
+  ${media.md} {
+    padding-top: 80%;
+  }
+`;
+const UpdateContainer = styled.div`
+  position: relative;
 `;
 const Delete = styled.div`
   color: ${(props) => props.theme.redColor};
+  opacity: 0.8;
+  padding: 1rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0;
+
+  ${media.lg} {
+    top: 0.5rem;
+    right: 1rem;
+  }
 
   :hover {
     cursor: pointer;
+    opacity: 1;
   }
 `;
 const DeleteIcon = styled(AiOutlineDelete)`
@@ -68,40 +89,38 @@ export default function KoiHistoryPreview({
       <div className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
         {updates &&
           updates.map(({ length, date, image, id }) => (
-            <div key={id} className="cp-i-50 cp-i-sm-33 cp-i-lg-25">
+            <UpdateContainer key={id} className="cp-i-50 cp-i-sm-33 cp-i-lg-25">
               <Update
                 onClick={() => {
                   setDrawer(true), setKoiHistory({ id, length, date, image });
                 }}
-                className="cp-c-row cp-c-align-start-start"
+                className="cp-c-column cp-c-align-start-center"
               >
                 <ImageContainer className="cp-i-50">
                   {image && (
                     <Image src={image} layout="fill" objectFit="contain" />
                   )}
                 </ImageContainer>
-                <div className="cp-c-column cp-c-align-start-start">
-                  <div>{format(new Date(date), "dd-MM-yyyy")}</div>
-                  <div>{length} cm</div>
-                  <Delete
-                    className="cp-c-row cp-c-align-start-center"
-                    onClick={() => {
-                      toast
-                        .promise(deleteKoiHistory({ id }), {
-                          loading: `Deleting koi update...`,
-                          success: `Update deleted!`,
-                          error: (err) => err,
-                        })
-                        .then(() => {
-                          setUpdates(() => reject(updates, { id }));
-                        });
-                    }}
-                  >
-                    <DeleteIcon /> Delete
-                  </Delete>
-                </div>
+                <div>{format(new Date(date), "dd-MM-yyyy")}</div>
+                <div>{length} cm</div>
               </Update>
-            </div>
+              <Delete
+                className="cp-c-row cp-c-align-start-center"
+                onClick={() => {
+                  toast
+                    .promise(deleteKoiHistory({ id }), {
+                      loading: `Deleting koi update...`,
+                      success: `Update deleted!`,
+                      error: (err) => err,
+                    })
+                    .then(() => {
+                      setUpdates(() => reject(updates, { id }));
+                    });
+                }}
+              >
+                <DeleteIcon /> Delete
+              </Delete>
+            </UpdateContainer>
           ))}
         <div className="cp-i-50 cp-i-sm-33 cp-i-lg-25">
           <Update
@@ -127,6 +146,7 @@ export default function KoiHistoryPreview({
         setDrawer={setDrawer}
         update={koiHistory}
         setUpdate={setKoiHistory}
+        setKoiHistory={setUpdates}
       />
     </>
   );

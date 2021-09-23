@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
+import { reject } from "lodash";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 import { BiPencil } from "@react-icons/all-files/bi/BiPencil";
@@ -107,6 +108,10 @@ export default function KoiHistoryDrawer({
                     error: (err) => err,
                   })
                   .then(() => {
+                    setKoiHistory((k) => [
+                      ...reject(k, { id: update.id }),
+                      update,
+                    ]);
                     setDrawer(false);
                   });
           }}
