@@ -100,7 +100,9 @@ const options = {
 };
 const getImages = (koi) => {
   let images = [];
-  koi.updates.map(({ image }) => (images = [...images, image]));
+  orderBy(koi.updates, ["date"]).map(
+    ({ image }) => (images = [...images, image])
+  );
   return images;
 };
 

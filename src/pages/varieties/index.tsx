@@ -1,23 +1,48 @@
-import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { orderBy } from "lodash";
+import styled from "styled-components";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
-import { Title } from "../../client/components/utils/styledComponents";
-import VerticalCard from "../../client/components/Verticalcard/Varticalcard";
+import {
+  Title,
+  Card,
+  slugify,
+  media,
+} from "../../client/components/utils/styledComponents";
 
-export const getSortedKois = (kois, order) => {
-  if (order == "Most recent") {
-    return orderBy(kois, ({ createdAt }) => +createdAt);
-  } else {
-    return orderBy(kois, ["variety"], ["desc"]);
+const Text = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.mainColor};
+`;
+const Container = styled.div`
+  ${media.xxl} {
+    max-width: 20% !important;
   }
+`;
+
+const StyledCard = styled(Card)`
+  position: relative;
+  overflow: hidden;
+  padding-top: 65%;
+  :hover {
+    box-shadow: ${(props) => props.theme.boxShadowHover};
+  }
+`;
+
+const getVarieties = (kois) => {
+  let varieties = [];
+  // @ts-ignore: test
+  kois.map(({ variety }) => (varieties = [...varieties, variety]));
+  return varieties.filter((v, i, a) => a.indexOf(v) === i);
 };
 
 export default function Varieties() {
   const router = useRouter();
-  const [dropdown, setDropdown] = useState(undefined);
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
 
   if (fetching) return <div />;
@@ -35,12 +60,26 @@ export default function Varieties() {
   }
 
   const kois = data.currentUser.kois;
+  const varieties = getVarieties(kois);
   return (
     <>
-      <Breadcrumbs links={[]} currentBreadcrumbText="All your koi" />
-      <Title>All your koi</Title>
-      <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-        <VerticalCard kois={getSortedKois(kois, dropdown)} />
+      <Breadcrumbs links={[]} currentBreadcrumbText="Varieties" />
+      <Title>All varieties</Title>
+      <div className="cp-c-padding-2 cp-c-lg-padding-3  cp-c-row cp-c-wrap">
+        {varieties.map((variety) => (
+          <Container
+            className="cp-i-100 cp-i-sm-50 cp-i-md-33 cp-i-xl-25"
+            key={variety}
+          >
+            <Link href={`/varieties/${slugify(variety)}`}>
+              <a>
+                <StyledCard className="cp-c-column cp-c-align-center-center">
+                  <Text>{variety}</Text>
+                </StyledCard>
+              </a>
+            </Link>
+          </Container>
+        ))}
       </div>
     </>
   );

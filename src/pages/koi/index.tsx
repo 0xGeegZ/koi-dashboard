@@ -87,7 +87,7 @@ export default function AllUsersKoi() {
       {kois.length > 0 ? (
         <>
           <div className="cp-md-hide">
-            <Title>All your koi</Title>
+            <Title>All your {kois.length} koi</Title>
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
               <VerticalCard kois={getSortedKois(kois, dropdown)} />
             </div>
@@ -95,7 +95,7 @@ export default function AllUsersKoi() {
           </div>
           <div className="cp-hide cp-md-show-block">
             <TitleContainer
-              title="All your koi"
+              title={`All your ${kois.length} koi`}
               options={options}
               activeIndex={0}
               paddingBottom={"0"}
