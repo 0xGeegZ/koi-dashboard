@@ -109,12 +109,13 @@ export const priceStyling = (value, precision) =>
   });
 
 const History = ({ koi }) => {
-  const [koiDate, setKoiData] = useState([]);
+  const [koiData, setKoiData] = useState([]);
   const newKoi = getNewKoi(koi);
 
   useEffect(() => {
     setKoiData(getKoiData(newKoi));
   }, []);
+
   return (
     <Container className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
       <div className="cp-i-100 cp-i-md-60">
@@ -144,17 +145,17 @@ const History = ({ koi }) => {
                       <b>{length}cm</b>
                     </div>
                   ) : (
-                    koiDate.length != 0 && (
+                    koiData.length != 0 && (
                       <div>
                         <div>
                           Grew{" "}
                           <b>
-                            {koiDate[index].length - koiDate[index + 1].length}
+                            {koiData[index].length - koiData[index + 1].length}
                             cm
                           </b>{" "}
                           in a span of{" "}
                           <b>
-                            {koiDate[index].age - koiDate[index + 1].age} months
+                            {koiData[index].age - koiData[index + 1].age} months
                           </b>
                           .
                         </div>
@@ -162,9 +163,9 @@ const History = ({ koi }) => {
                           This is an average of{" "}
                           <b>
                             {(
-                              koiDate[index].length - koiDate[index + 1].length
-                            )(
-                              koiDate[index].age - koiDate[index + 1].age
+                              (koiData[index].length -
+                                koiData[index + 1].length) /
+                              (koiData[index].age - koiData[index + 1].age)
                             ).toFixed(2)}
                             cm/month
                           </b>

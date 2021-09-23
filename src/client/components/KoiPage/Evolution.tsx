@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { useState } from "react";
 import styled from "styled-components";
+import { orderBy } from "lodash";
 import Image from "next/image";
 import { Line } from "react-chartjs-2";
 import Lightbox from "react-image-lightbox";
@@ -109,7 +110,7 @@ const Evolution = ({ koi }) => {
 
   const getData = (koi) => {
     let data = [];
-    koi.updates.map(
+    orderBy(koi.updates, ["date"]).map(
       ({ date, length }) =>
         (data = [
           ...data,
@@ -141,29 +142,31 @@ const Evolution = ({ koi }) => {
           <SubTitle>Picture evolution</SubTitle>
           <ImagesContainer>
             <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
-              {koi.updates.map(({ length, date, image }, index) => (
-                <CardStyle
-                  className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
-                  key={index}
-                  onClick={() => setPhotoIndex(index)}
-                >
-                  <div onClick={() => setVisible(true)}>
-                    <ImageContainer>
-                      <Image
-                        src={image}
-                        layout="fill"
-                        objectFit="contain"
-                        priority
-                      />
-                    </ImageContainer>
-                    <Date>{getFormattedDate(date)}</Date>
-                    <div className="cp-c-row cp-c-align-center-center">
-                      <Size>{length}cm</Size>
-                      <Age>{getCurrentAgeText(date)}</Age>
+              {orderBy(koi.updates, ["date"]).map(
+                ({ length, date, image }, index) => (
+                  <CardStyle
+                    className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
+                    key={index}
+                    onClick={() => setPhotoIndex(index)}
+                  >
+                    <div onClick={() => setVisible(true)}>
+                      <ImageContainer>
+                        <Image
+                          src={image}
+                          layout="fill"
+                          objectFit="contain"
+                          priority
+                        />
+                      </ImageContainer>
+                      <Date>{getFormattedDate(date)}</Date>
+                      <div className="cp-c-row cp-c-align-center-center">
+                        <Size>{length}cm</Size>
+                        <Age>{getCurrentAgeText(date)}</Age>
+                      </div>
                     </div>
-                  </div>
-                </CardStyle>
-              ))}
+                  </CardStyle>
+                )
+              )}
             </div>
           </ImagesContainer>
         </Card>
