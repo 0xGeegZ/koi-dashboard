@@ -27,7 +27,7 @@ export const getSortedKois = (kois, order) => {
 const actions = [
   {
     icon: withLink("/koi/create", <AiOutlinePlus />),
-    title: "Create koi",
+    title: "Add koi",
     src: "/koi/create",
   },
   {
@@ -44,7 +44,7 @@ const actions = [
 
 const options = [
   {
-    title: "Create koi",
+    title: "Add koi",
     src: `/koi/create`,
     icon: <AiOutlinePlus />,
     buttonSrc: `/koi/create`,

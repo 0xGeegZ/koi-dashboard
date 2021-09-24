@@ -79,7 +79,7 @@ export const links = [
     icon: <AiOutlineApartment />,
   },
   {
-    title: "Create koi",
+    title: "Add koi",
     path: "/koi/create",
     icon: <AiOutlinePlus />,
   },

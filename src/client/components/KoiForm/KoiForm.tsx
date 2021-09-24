@@ -4,20 +4,22 @@ import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import enLocale from "date-fns/locale/en-GB";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 import DatePicker from "@material-ui/lab/DatePicker";
-import { getFormattedDate } from "../utils/ageCalculator";
-
-const varieties = ["Showa", "Sanke", "Kohaku"];
-const breeders = ["Dainichi", "SFF", "Momotaro"];
-const bloodlines = ["SuperMonster", "Stardust", "NewMiharaX"];
-const skinTypes = ["Scaled", "Ginrin", "Doitsu"];
-const sex = ["Male", "Female"];
+import {
+  breeders,
+  varieties,
+  bloodlines,
+  skinTypes,
+  sex,
+} from "../utils/KoiFromData";
 
 export default function KoiForm({ koi, setKoi }) {
+  console.log(koi);
   return (
     <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
       <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          disablePortal
+          freeSolo
+          autoSelect
           options={varieties}
           value={koi.variety}
           onChange={(e, value) =>
@@ -28,7 +30,8 @@ export default function KoiForm({ koi, setKoi }) {
       </div>
       <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          disablePortal
+          freeSolo
+          autoSelect
           value={koi.breeder}
           options={breeders}
           onChange={(e, value) => setKoi((k) => ({ ...k, breeder: value }))}
@@ -37,7 +40,8 @@ export default function KoiForm({ koi, setKoi }) {
       </div>
       <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          disablePortal
+          freeSolo
+          autoSelect
           value={koi.bloodline}
           options={bloodlines}
           onChange={(e, value) => setKoi((k) => ({ ...k, bloodline: value }))}
@@ -46,7 +50,8 @@ export default function KoiForm({ koi, setKoi }) {
       </div>
       <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          disablePortal
+          freeSolo
+          autoSelect
           value={koi.skinType}
           options={skinTypes}
           onChange={(e, value) => setKoi((k) => ({ ...k, skinType: value }))}
@@ -55,7 +60,8 @@ export default function KoiForm({ koi, setKoi }) {
       </div>
       <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          disablePortal
+          freeSolo
+          autoSelect
           value={koi.sex}
           options={sex}
           onChange={(e, value) => setKoi((k) => ({ ...k, sex: value }))}

@@ -22,7 +22,7 @@ export const links = [
     path: "/koi",
   },
   {
-    title: "Create koi",
+    title: "Add koi",
     path: "/koi/create",
     icon: <AiOutlinePlus />,
   },
