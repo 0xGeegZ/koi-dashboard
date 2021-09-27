@@ -41,7 +41,40 @@ export default function CreateKoi() {
     }
   }, [currentUser]);
 
-  if (fetching) return <div />;
+  if (fetching)
+    return (
+      <>
+        <Breadcrumbs links={[]} currentBreadcrumbText="Add koi" />
+        <Wrapper>
+          <Title>Your koi</Title>
+          <KoiForm koi={koi} setKoi={setKoi} />
+          <FormButtonContainer>
+            <Button
+              fullWidth
+              startIcon={<AiOutlinePlus />}
+              disabled={!koi.variety}
+              variant="contained"
+              size="large"
+              onClick={() => {
+                if (!koi) return;
+                toast
+                  .promise(createKoi(koi), {
+                    loading: `Creating koi...`,
+                    success: `Koi Created!`,
+                    error: (err) => err,
+                  })
+                  .then((result) => {
+                    const slug = result.data?.createKoi?.id;
+                    if (slug) router.push(`/koi/${slug}/edit`);
+                  });
+              }}
+            >
+              Add koi
+            </Button>
+          </FormButtonContainer>
+        </Wrapper>
+      </>
+    );
 
   if (error) return <p>{error.message}</p>;
 

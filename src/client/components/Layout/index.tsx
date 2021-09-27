@@ -14,6 +14,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   const [{ data }] = useGetCurrentUserQuery();
   const isAuthenticated = !!data?.currentUser;
+
   return isAuthenticated ? (
     <>
       <div className="cp-hide cp-md-show-block">

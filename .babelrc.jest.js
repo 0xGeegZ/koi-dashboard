@@ -1,9 +1,7 @@
 // Necessary to make Jest work with TypeScript
 module.exports = {
   presets: [
-    [
-      "next/babel"
-    ],
+    ["next/babel"],
     [
       "@babel/preset-env",
       {
@@ -14,14 +12,13 @@ module.exports = {
     ],
     "@babel/preset-typescript",
   ],
-  "plugins": [
+  plugins: [
     [
       "styled-components",
       {
-        "ssr": true,
-        "displayName": true,
-        "preprocess": false
-      }
-    ]
-  ]
+        ssr: true,
+        displayName: true,
+      },
+    ],
+  ],
 };

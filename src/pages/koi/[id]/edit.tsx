@@ -18,7 +18,7 @@ import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import KoiForm from "../../../client/components/KoiForm/KoiForm";
 import KoiHistoryPreview from "../../../client/components/KoiForm/KoiHistoryPreview";
 
-const CreateKoi = () => {
+const EditKoi = () => {
   const router = useRouter();
   const { id } = router.query;
   const [, updateKoi] = useUpdateKoiMutation();
@@ -48,7 +48,28 @@ const CreateKoi = () => {
     }
   }, [data]);
 
-  if (fetching || data == null || data.koi == null) return <div />;
+  if (fetching || data == null || data.koi == null)
+    return (
+      <>
+        <Breadcrumbs links={[]} currentBreadcrumbText=" " />
+        <Wrapper>
+          <Title>Edit your koi</Title>
+          <KoiForm koi={koi} setKoi={setKoi} />
+          <FormButtonContainer>
+            <Button
+              fullWidth
+              startIcon={<AiOutlineSave />}
+              disabled={true}
+              variant="contained"
+              size="large"
+            >
+              Update koi
+            </Button>
+          </FormButtonContainer>
+          <Title>Updates</Title>
+        </Wrapper>
+      </>
+    );
   if (error) return <p>{error.message}</p>;
 
   return (
@@ -97,4 +118,4 @@ const CreateKoi = () => {
   );
 };
 
-export default CreateKoi;
+export default EditKoi;

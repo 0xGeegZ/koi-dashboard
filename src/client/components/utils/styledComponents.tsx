@@ -86,7 +86,6 @@ export const Card = styled.div`
   padding: 1rem;
   background: #ffffff;
   box-shadow: 5px 5px 40px rgba(20, 61, 123, 0.1);
-
   border-radius: 20px;
 `;
 

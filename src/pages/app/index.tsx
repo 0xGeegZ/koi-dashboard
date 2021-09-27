@@ -94,7 +94,35 @@ export default function Dashboard() {
   const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
 
-  if (fetching) return <div />;
+  if (fetching)
+    return (
+      <>
+        <StyledTitle>Hello</StyledTitle>
+        <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
+          {links.map(({ title, path, icon }) => (
+            <LinksContainer
+              className="cp-i-100 cp-i-sm-50 cp-i-lg-33 cp-i-xl-25"
+              key={title}
+            >
+              <Link href={path}>
+                <StyledCard className="cp-c-column cp-c-align-center-center">
+                  <Container>
+                    {icon ? (
+                      <IconContainer>{icon}</IconContainer>
+                    ) : (
+                      <StyledKoiIcon>
+                        <KoiIcon />
+                      </StyledKoiIcon>
+                    )}
+                    <Text>{title}</Text>
+                  </Container>
+                </StyledCard>
+              </Link>
+            </LinksContainer>
+          ))}
+        </div>
+      </>
+    );
 
   if (error) return <p>{error.message}</p>;
 

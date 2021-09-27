@@ -13,7 +13,6 @@ import { AiOutlineLogout } from "@react-icons/all-files/ai/AiOutlineLogout";
 import { links, KoiIcon } from "../../../pages/app";
 
 const StyledBox = styled(Box)`
-  min-height: 100vh;
   background-color: unset !important;
   padding: 0 !important;
 `;

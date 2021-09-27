@@ -6,7 +6,7 @@ import { orderBy } from "lodash";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
-import VerticalCard from "../../../client/components/Verticalcard/Varticalcard";
+import VerticalCard from "../../../client/components/Verticalcard/Verticalcard";
 
 const LowerCase = styled.span`
   text-transform: lowercase;
@@ -23,7 +23,22 @@ export const getSortedKois = (kois, order) => {
 export default function VarietyPage() {
   const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
-  if (fetching) return <div />;
+  const variety: any = router.query.id ? router.query.id : " ";
+  const string = variety[0].toUpperCase() + variety.substring(1);
+
+  if (fetching && !data)
+    return (
+      <>
+        <Breadcrumbs
+          links={[{ to: `/varieties`, text: "Varieties" }]}
+          currentBreadcrumbText={`Your ${string}s`}
+        />
+        <Title>{`Your ${variety}s`}</Title>
+        <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
+          <VerticalCard />
+        </div>
+      </>
+    );
 
   if (error) return <p>{error.message}</p>;
 
@@ -41,15 +56,9 @@ export default function VarietyPage() {
     <>
       <Breadcrumbs
         links={[{ to: `/varieties`, text: "Varieties" }]}
-        currentBreadcrumbText={`All your ${kois[0].variety}`}
+        currentBreadcrumbText={`Your ${kois[0].variety}`}
       />
-      <Title>
-        {`You have ${kois.length} `}
-        <LowerCase>
-          {kois[0].variety}
-          {kois.length > 1 ? "s" : ""}
-        </LowerCase>
-      </Title>
+      <Title>{`Your ${kois[0].variety}`}</Title>
       <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
         <VerticalCard kois={kois} />
       </div>

@@ -45,7 +45,13 @@ export default function Varieties() {
   const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
 
-  if (fetching) return <div />;
+  if (fetching)
+    return (
+      <>
+        <Breadcrumbs links={[]} currentBreadcrumbText="Varieties" />
+        <Title>All varieties</Title>
+      </>
+    );
 
   if (error) return <p>{error.message}</p>;
 

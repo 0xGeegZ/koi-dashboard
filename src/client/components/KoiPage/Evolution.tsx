@@ -34,7 +34,7 @@ export const ImageContainer = styled.div`
     cursor: pointer;
   }
 `;
-const StyledCard = styled(Card)`
+export const StyledCard = styled(Card)`
   padding: 0;
 `;
 const Date = styled.div`

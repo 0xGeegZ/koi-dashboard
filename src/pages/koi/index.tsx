@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { orderBy } from "lodash";
+import Skeleton from "@material-ui/core/Skeleton";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";
@@ -11,7 +12,7 @@ import {
   Title,
   withLink,
 } from "../../client/components/utils/styledComponents";
-import VerticalCard from "../../client/components/Verticalcard/Varticalcard";
+import VerticalCard from "../../client/components/Verticalcard/Verticalcard";
 import EmptyKoi from "../../client/components/Koi/EmptyKoi";
 import ActionButton from "../../client/components/utils/ActionButton";
 import TitleContainer from "../../client/components/utils/TitleContainer";
@@ -67,7 +68,16 @@ export default function AllUsersKoi() {
   const [dropdown] = useState(undefined);
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
 
-  if (fetching) return <div />;
+  if (fetching)
+    return (
+      <>
+        <Breadcrumbs links={[]} currentBreadcrumbText="All your koi" />
+        <Title>All your koi</Title>
+        <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
+          <VerticalCard />
+        </div>
+      </>
+    );
 
   if (error) return <p>{error.message}</p>;
 
@@ -87,7 +97,7 @@ export default function AllUsersKoi() {
       {kois.length > 0 ? (
         <>
           <div className="cp-md-hide">
-            <Title>All your {kois.length} koi</Title>
+            <Title>All your koi</Title>
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
               <VerticalCard kois={getSortedKois(kois, dropdown)} />
             </div>
@@ -95,7 +105,7 @@ export default function AllUsersKoi() {
           </div>
           <div className="cp-hide cp-md-show-block">
             <TitleContainer
-              title={`All your ${kois.length} koi`}
+              title="All your koi"
               options={options}
               activeIndex={0}
               paddingBottom={"0"}

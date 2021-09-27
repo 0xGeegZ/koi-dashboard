@@ -13,6 +13,7 @@ import {
 } from "../../../client/components/utils/styledComponents";
 import Evolution from "../../../client/components/KoiPage/Evolution";
 import History from "../../../client/components/KoiPage/History";
+import Loading from "../../../client/components/KoiPage/Loading";
 import TitleContainer from "../../../client/components/utils/TitleContainer";
 import ActionButton from "../../../client/components/utils/ActionButton";
 
@@ -27,7 +28,7 @@ const KoiDetailPage = () => {
     },
   });
 
-  if (fetching || data == null || data.koi == null) return <div />;
+  if (fetching || data == null || data.koi == null) return <Loading />;
 
   if (error) return <p>{error.message}</p>;
 
