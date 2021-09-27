@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import { isEqual, orderBy } from "lodash";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";

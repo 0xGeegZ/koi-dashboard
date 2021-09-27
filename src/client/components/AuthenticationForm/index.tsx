@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import styled from "styled-components";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const ButtonContainer = styled.div`
-padding: 1rem 0;
+  padding: 1rem 0;
 `;
 
 /**
@@ -41,9 +41,18 @@ export default function AuthenticationForm() {
           });
       }}
     >
-      <TextField size="small" value={email} fullWidth label="Email" variant="outlined" onChange={(evt) => setEmail(evt.target.value)} />
+      <TextField
+        size="small"
+        value={email}
+        fullWidth
+        label="Email"
+        variant="outlined"
+        onChange={(evt) => setEmail(evt.target.value)}
+      />
       <ButtonContainer>
-       <Button fullWidth type="submit" variant="contained">Let's go!</Button>
+        <Button fullWidth type="submit" variant="contained">
+          Let's go!
+        </Button>
       </ButtonContainer>
     </form>
   );

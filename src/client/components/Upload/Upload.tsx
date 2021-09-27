@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CloudinaryContext } from "cloudinary-react";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 const StyledInput = styled.input`
   display: none;

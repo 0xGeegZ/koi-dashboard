@@ -1,9 +1,9 @@
-import Autocomplete from "@material-ui/core/Autocomplete";
-import TextField from "@material-ui/core/TextField";
-import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import enLocale from "date-fns/locale/en-GB";
-import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
-import DatePicker from "@material-ui/lab/DatePicker";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
 import {
   breeders,
   varieties,

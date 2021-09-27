@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import styled from "styled-components";
-import { Skeleton } from "@material-ui/core";
+import { Skeleton } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { Card, SubTitle, media, Title } from "../utils/styledComponents";

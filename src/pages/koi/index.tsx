@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { orderBy } from "lodash";
-import Skeleton from "@material-ui/core/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";

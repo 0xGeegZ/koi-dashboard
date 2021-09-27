@@ -1,11 +1,11 @@
 import Image from "next/image";
 import styled from "styled-components";
-import TextField from "@material-ui/core/TextField";
-import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import InputAdornment from "@mui/material/InputAdornment";
 import enLocale from "date-fns/locale/en-GB";
-import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
-import DatePicker from "@material-ui/lab/DatePicker";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
 import Upload from "../Upload/Upload";
 import { ImageContainer } from "../utils/styledComponents";
 

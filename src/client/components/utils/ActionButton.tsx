@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import SpeedDial from "@material-ui/core/SpeedDial";
-import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
-import SpeedDialAction from "@material-ui/core/SpeedDialAction";
-import Backdrop from "@material-ui/core/Backdrop";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import Backdrop from "@mui/material/Backdrop";
 
 const DeleteText = styled.span`
   color: ${(props) => props.theme.redColor};

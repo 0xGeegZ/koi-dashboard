@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import Skeleton from "@material-ui/core/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import { Card, media, ImageContainer } from "../utils/styledComponents";
 import { getCurrentAgeText } from "../utils/ageCalculator";
 

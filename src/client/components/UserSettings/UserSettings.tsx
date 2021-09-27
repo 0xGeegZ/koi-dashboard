@@ -1,5 +1,5 @@
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import toast from "react-hot-toast";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateUserMutation } from "../../graphql/updateUser.generated";

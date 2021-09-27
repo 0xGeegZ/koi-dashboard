@@ -1,9 +1,9 @@
 import { SyntheticEvent, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import Paper from "@material-ui/core/Paper";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import Paper from "@mui/material/Paper";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { AiOutlineUser } from "@react-icons/all-files/ai/AiOutlineUser";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";

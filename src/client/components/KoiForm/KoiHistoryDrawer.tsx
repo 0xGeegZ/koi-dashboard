@@ -1,8 +1,8 @@
 import toast from "react-hot-toast";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
-import Drawer from "@material-ui/core/Drawer";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
 import { reject } from "lodash";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
