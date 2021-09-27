@@ -70,7 +70,7 @@ function ProjectSettings() {
   return (
     <>
       <h1>{project.name} Settings</h1>
-      <h2>Users</h2>
+      <h2>User</h2>
       <InvitationForm projectId={project.id} />
       {!project.paidPlan ? (
         <UpgradeButton projectId={project.id} />
