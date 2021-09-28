@@ -35,7 +35,9 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
   try {
     event = stripe.webhooks.constructEvent(body, sig, WEBHOOK_ENDPOINT_SECRET);
   } catch (err) {
+    // @ts-ignore: don't know fix
     error(err);
+    // @ts-ignore: don't know fix
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }
