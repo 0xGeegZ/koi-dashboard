@@ -55,6 +55,7 @@ const VerticalCard = ({ kois }: Props) =>
                 <ImageContainer>
                   <Image
                     src={
+                      updates[updates.length - 1] &&
                       updates[updates.length - 1].image
                         ? updates[updates.length - 1].image
                         : "/default.png"
