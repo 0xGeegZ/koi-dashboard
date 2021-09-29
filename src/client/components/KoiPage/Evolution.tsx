@@ -8,7 +8,7 @@ import Lightbox from "react-image-lightbox";
 import { Card, SubTitle, media } from "../../components/utils/styledComponents";
 import {
   getAgeDifferenceDate,
-  getCurrentAgeText,
+  getAgeDifferenceText,
   getFormattedDate,
 } from "../../components/utils/ageCalculator";
 
@@ -163,7 +163,7 @@ const Evolution = ({ koi }) => {
                       <Date>{getFormattedDate(date)}</Date>
                       <div className="cp-c-row cp-c-align-center-center">
                         <Size>{length}cm</Size>
-                        <Age>{getCurrentAgeText(date)}</Age>
+                        <Age>{getAgeDifferenceText(koi.birthDate, date)}</Age>
                       </div>
                     </div>
                   </CardStyle>

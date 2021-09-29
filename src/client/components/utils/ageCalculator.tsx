@@ -25,6 +25,25 @@ export const getCurrentAgeText = (
   }
 };
 
+export const getAgeDifferenceText = (birthDate: string, date: string) => {
+  const newBirthDate = new Date(birthDate);
+  const newDate = new Date(date);
+  const ageInMonths = differenceInMonths(newDate, newBirthDate);
+  if (ageInMonths < 15) {
+    return "Tosai";
+  } else if (ageInMonths < 27) {
+    return "Nisai";
+  } else if (ageInMonths < 39) {
+    return "Sansai";
+  } else if (ageInMonths < 51) {
+    return "Yonsai";
+  } else if (ageInMonths < 63) {
+    return "Gosai";
+  } else if (63 <= ageInMonths) {
+    return "Rokusai +";
+  }
+};
+
 export const getFormattedDate = (date: string) => {
   const newDate = new Date(date);
   return format(newDate, "dd/MM/yyyy");

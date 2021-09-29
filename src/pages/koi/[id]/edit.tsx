@@ -51,7 +51,10 @@ const EditKoi = () => {
   if (fetching || data == null || data.koi == null)
     return (
       <>
-        <Breadcrumbs links={[]} currentBreadcrumbText=" " />
+        <Breadcrumbs
+          links={[{ to: `/koi`, text: "All your koi" }]}
+          currentBreadcrumbText=" "
+        />
         <Wrapper>
           <Title>Edit your koi</Title>
           <KoiForm koi={koi} setKoi={setKoi} />
@@ -76,6 +79,7 @@ const EditKoi = () => {
     <>
       <Breadcrumbs
         links={[
+          { to: `/koi`, text: "All your koi" },
           {
             to: `/koi/${koi.id}`,
             text: `${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
