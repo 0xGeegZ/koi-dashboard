@@ -24,7 +24,7 @@ const Update = styled.div`
 
   :hover {
     cursor: pointer;
-    box-shadow: 5px 5px 20px rgba(20, 61, 123, 0.15);
+    opacity: 0.8;
     transition: all 0.15s;
   }
 `;
@@ -44,17 +44,20 @@ const UpdateContainer = styled.div`
 const Delete = styled.div`
   color: ${(props) => props.theme.redColor};
   opacity: 0.8;
-  padding: 1rem;
+  padding: 0.5rem;
   position: absolute;
-  right: 0.5rem;
-  top: 0;
+  right: 1rem;
+  top: 0.5rem;
+  border-radius: 2px 4px 2px 2px;
 
   ${media.lg} {
-    top: 0.5rem;
+    top: 1rem;
     right: 1rem;
   }
 
   :hover {
+    background: ${(props) => props.theme.redColor};
+    color: #fff;
     cursor: pointer;
     opacity: 1;
   }

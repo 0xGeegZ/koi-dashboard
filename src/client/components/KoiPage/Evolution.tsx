@@ -80,7 +80,7 @@ const CardStyle = styled.div`
   min-width: 150px;
 
   ${media.xxl} {
-    max-width: 12% !important;
+    max-width: 10% !important;
   }
 `;
 
