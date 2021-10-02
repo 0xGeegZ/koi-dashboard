@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import Link from "next/link";
 
@@ -147,3 +147,21 @@ export const withLink = (to, children) => (
     <StyledLink>{children}</StyledLink>
   </Link>
 );
+
+export const useWindowSize = () => {
+  const [width, setWindowSize] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      // @ts-ignore: test
+      setWindowSize(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return width;
+};

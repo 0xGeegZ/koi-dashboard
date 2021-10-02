@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { CloudinaryContext } from "cloudinary-react";
 import Button from "@mui/material/Button";
-
-const StyledInput = styled.input`
-  display: none;
-`;
 
 const CloudinaryUploadWidget = ({ image, setUpdate }) => {
   useEffect(() => {
@@ -45,8 +40,6 @@ const CloudinaryUploadWidget = ({ image, setUpdate }) => {
           </Button>
         </label>
       </CloudinaryContext>
-
-      {/* {showUploadWidget()} */}
     </>
   );
 };
