@@ -62,12 +62,26 @@ model Koi {
   userId    String
 }
 
+model PondHistory {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @default(now())
+
+  ph     Int
+  kh     Int
+  temp   Int
+  pond   Pond   @relation(fields: [pondId], references: [id])
+  pondId String
+}
+
 model Pond {
   id         String   @id @default(cuid())
   createdAt  DateTime @default(now())
   modifiedAt DateTime @default(now())
 
-  name   String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId String
+  name    String
+  size    Int
+  updates PondHistory[]
+  user    User          @relation(fields: [userId], references: [id])
+  userId  String
 }

@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { format } from "date-fns";
 import { media, Title } from "../utils/styledComponents";
 import KoiHistoryDrawer from "./KoiHistoryDrawer";
-import { useDeleteKoiHistoryMutation } from "../../../client/graphql/deleteKoiHistory.generated";
+import { useDeleteKoiHistoryMutation } from "../../graphql/deleteKoiHistory.generated";
 
 type Props = {
   updates: any;

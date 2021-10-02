@@ -59,7 +59,7 @@ const VideoSize = styled.div`
 const data = {
   datasets: [
     {
-      label: "Size (cm)",
+      label: "Size Evolution (cm)",
       data: [],
       borderColor: "#3A3878",
       backgroundColor: "#3A3878",
@@ -69,6 +69,7 @@ const data = {
 };
 
 const options = {
+  aspectRatio: 1.82,
   scales: {
     x: {
       grid: {
@@ -119,14 +120,11 @@ const Loading = () => {
       <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
           <StyledCard>
-            <StyledSkeleton width="100%" height="100%">
-              <VideoSize />
-            </StyledSkeleton>
+            <VideoSize />
           </StyledCard>
         </div>
         <div className="cp-i-100 cp-i-md-50">
           <Card>
-            <SubTitle>Size evolution</SubTitle>
             <Line data={data} options={options} />
           </Card>
         </div>

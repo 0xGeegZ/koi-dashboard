@@ -3,6 +3,7 @@ import { makeSchema } from "nexus";
 import path from "path";
 import User from "./User";
 import Koi from "./Koi";
+import Pond from "./Pond";
 import Project, { PaidPlan } from "./Project";
 import KoiHistory from "./KoiHistory";
 
@@ -12,7 +13,7 @@ const shouldGenerateArtifacts =
   process.env.NODE_ENV === "development" || !!process.env.GENERATE;
 
 export const schema = makeSchema({
-  types: [User, Project, PaidPlan, Koi, KoiHistory],
+  types: [User, Project, PaidPlan, Pond, Koi, KoiHistory],
   plugins: [
     nexusPrisma({
       shouldGenerateArtifacts,

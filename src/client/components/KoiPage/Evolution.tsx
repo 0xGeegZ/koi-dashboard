@@ -85,6 +85,7 @@ const CardStyle = styled.div`
 `;
 
 const options = {
+  aspectRatio: 1.82,
   scales: {
     x: {
       grid: {
@@ -127,7 +128,7 @@ const Evolution = ({ koi }) => {
   const data = {
     datasets: [
       {
-        label: "Size (cm)",
+        label: "Size Evolution (cm)",
         data: getData(koi),
         borderColor: "#3A3878",
         backgroundColor: "#3A3878",
@@ -174,7 +175,7 @@ const Evolution = ({ koi }) => {
         </Card>
       </CardContainer>
       <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
-        <div className="cp-i-100 cp-i-md-50">
+        <div className="cp-i-100 cp-i-lg-50">
           <StyledCard>
             <IframeContainer>
               <StyledReactPlayer
@@ -186,9 +187,9 @@ const Evolution = ({ koi }) => {
             </IframeContainer>
           </StyledCard>
         </div>
-        <div className="cp-i-100 cp-i-md-50">
+        <div className="cp-i-100 cp-i-lg-50">
           <Card>
-            <SubTitle>Size evolution</SubTitle>
+            {/* <SubTitle>Size evolution</SubTitle> */}
             <Line data={data} options={options} />
           </Card>
         </div>

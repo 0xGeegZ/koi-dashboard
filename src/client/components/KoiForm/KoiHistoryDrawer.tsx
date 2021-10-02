@@ -9,12 +9,8 @@ import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 import { BiPencil } from "@react-icons/all-files/bi/BiPencil";
 import { useCreateKoiHistoryMutation } from "../../graphql/createKoiHistory.generated";
 import { useUpdateKoiHistoryMutation } from "../../graphql/updateKoiHistory.generated";
-import {
-  Title,
-  FormButtonContainer,
-  media,
-} from "../../../client/components/utils/styledComponents";
-import KoiHistoryForm from "../../../client/components/KoiForm/KoiHistoryForm";
+import { Title, FormButtonContainer, media } from "../utils/styledComponents";
+import KoiHistoryForm from "./KoiHistoryForm";
 
 type Props = {
   create?: boolean;

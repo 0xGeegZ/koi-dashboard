@@ -51,6 +51,13 @@ enum PaidPlan {
   pro
 }
 
+type Pond {
+  id: String!
+  modifiedAt: DateTime!
+  name: String!
+  size: Int!
+}
+
 type Project {
   id: String!
   name: String!
@@ -63,6 +70,7 @@ type Query {
   currentUser: User
   koi(id: String!): Koi
   koiHistory(id: String!): KoiHistory
+  pond(id: String!): Pond
   project(id: String, slug: String): Project
 }
 
