@@ -74,7 +74,7 @@ const VerticalCard = ({ kois }: Props) =>
           </Link>
         </Container>
       ))
-    : new Array(2).fill("a").map((index) => (
+    : new Array(2).fill("a").map((a, index) => (
         <Container
           key={index}
           className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"

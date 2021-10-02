@@ -97,7 +97,7 @@ const Loading = () => {
         <StyledCardTop>
           <SubTitle>Picture evolution</SubTitle>
           <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
-            {new Array(2).fill("a").map((index) => (
+            {new Array(2).fill("a").map((a, index) => (
               <Container
                 key={index}
                 className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"

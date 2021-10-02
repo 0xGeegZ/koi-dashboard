@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { orderBy } from "lodash";
+import { orderBy, filter } from "lodash";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
@@ -51,14 +51,14 @@ export default function VarietyPage() {
       </p>
     );
   }
-  const kois = data.currentUser.kois;
+  const kois = filter(data.currentUser.kois, { variety: string });
   return (
     <>
       <Breadcrumbs
         links={[{ to: `/varieties`, text: "Varieties" }]}
-        currentBreadcrumbText={`Your ${kois[0].variety}`}
+        currentBreadcrumbText={`Your ${kois[0].variety}s`}
       />
-      <Title>{`Your ${kois[0].variety}`}</Title>
+      <Title>{`Your ${kois[0].variety}s`}</Title>
       <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
         <VerticalCard kois={kois} />
       </div>
