@@ -39,8 +39,13 @@ const Container = styled.div`
   color: ${(props) => props.theme.secondaryColor};
 `;
 const Text = styled.div`
-  padding-top: 2rem;
-  font-size: 1.5rem;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+
+  ${media.md} {
+    padding-top: 2rem;
+    font-size: 1.5rem;
+  }
 `;
 const LinksContainer = styled.div`
   ${media.xxl} {
