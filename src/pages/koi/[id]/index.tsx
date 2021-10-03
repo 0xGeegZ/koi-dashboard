@@ -35,20 +35,6 @@ const KoiDetailPage = () => {
   const koi = data.koi;
   const options = [
     {
-      title: "History",
-      src: `/koi/${koi.id}?view=History`,
-      icon: <AiOutlineHistory />,
-      buttonSrc: `/koi/${koi.id}?view=History`,
-      setIndex: 1,
-    },
-    {
-      title: "Evolution",
-      src: `/koi/${koi.id}?view=Evolution`,
-      icon: <AiOutlineLineChart />,
-      buttonSrc: `/koi/${koi.id}?view=Evolution`,
-      setIndex: 0,
-    },
-    {
       title: "Edit",
       src: `/koi/${koi.id}/edit`,
       icon: <BiPencil />,
@@ -63,16 +49,6 @@ const KoiDetailPage = () => {
     },
   ];
   const actions = [
-    {
-      title: "History",
-      src: `/koi/${koi.id}?view=History`,
-      icon: withLink(`/koi/${koi.id}?view=History`, <AiOutlineHistory />),
-    },
-    {
-      title: "Evolution",
-      src: `/koi/${koi.id}?view=Evolution`,
-      icon: withLink(`/koi/${koi.id}?view=Evolution`, <AiOutlineLineChart />),
-    },
     {
       title: "Edit",
       src: `/koi/${koi.id}/edit`,
@@ -90,8 +66,9 @@ const KoiDetailPage = () => {
     <div>
       <Breadcrumbs
         links={[
-          { to: `/koi`, text: "All your koi" },
-          { to: `/${slugify(koi.variety)}`, text: koi.variety },
+          { to: `/koi`, text: "All koi" },
+          { to: `/varieties`, text: "Varieties" },
+          { to: `/varieties/${slugify(koi.variety)}`, text: koi.variety },
         ]}
         currentBreadcrumbText={`${koi.breeder} ${
           koi.bloodline ? koi.bloodline : ""
@@ -104,7 +81,6 @@ const KoiDetailPage = () => {
             koi.variety
           }`}
           options={options}
-          activeIndex={router.query.view == "Evolution" ? 1 : 0}
         />
       </div>
       <div className="cp-md-hide">
@@ -112,12 +88,8 @@ const KoiDetailPage = () => {
           koi.variety
         }`}</Title>
       </div>
-
-      {router.query.view == "History" ? (
-        <History koi={koi} />
-      ) : (
-        <Evolution koi={koi} />
-      )}
+      <Evolution koi={koi} />
+      {koi.updates.length > 1 && <History koi={koi} />}
       <div className="cp-md-hide">
         <ActionButton actions={actions} />
       </div>

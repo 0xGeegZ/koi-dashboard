@@ -5,7 +5,6 @@ import { Title, media } from "./styledComponents";
 type TitleContainerProps = {
   title: string;
   options: any;
-  activeIndex: number;
   paddingBottom?: string;
 };
 
@@ -24,7 +23,6 @@ const Container = styled.div<{ paddingBottom: any }>`
 const TitleContainer = ({
   title,
   options,
-  activeIndex,
   paddingBottom,
 }: TitleContainerProps) => (
   <Container
@@ -32,7 +30,7 @@ const TitleContainer = ({
     className="cp-c-row cp-c-align-spacebetween-center"
   >
     <Title>{title}</Title>
-    <ButtonGroup options={options} activeIndex={activeIndex} />
+    <ButtonGroup options={options} />
   </Container>
 );
 

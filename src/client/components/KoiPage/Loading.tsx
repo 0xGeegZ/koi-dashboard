@@ -88,7 +88,10 @@ const Loading = () => {
   return (
     <>
       <Breadcrumbs
-        links={[{ to: `/koi`, text: "All your koi" }]}
+        links={[
+          { to: `/koi`, text: "All koi" },
+          { to: `/varieties`, text: "Varieties" },
+        ]}
         currentBreadcrumbText=""
       />
       <Title>

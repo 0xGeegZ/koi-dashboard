@@ -8,10 +8,15 @@ import {
   getAgeDifferenceDate,
   getFormattedDate,
 } from "../../components/utils/ageCalculator";
-import { Card, SubTitle } from "../../components/utils/styledComponents";
+import { Card, SubTitle, media } from "../../components/utils/styledComponents";
 
 const Container = styled.div`
-  padding-top: 0.5rem !important;
+  padding-top: 0 !important;
+`;
+const RightContainer = styled.div`
+  ${media.lg} {
+    padding-top: 0 !important;
+  }
 `;
 const ImageContainer = styled.div`
   position: relative;
@@ -118,7 +123,7 @@ const History = ({ koi }) => {
 
   return (
     <Container className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
-      <div className="cp-i-100 cp-i-md-60">
+      <Container className="cp-i-100 cp-i-md-60">
         <Card>
           <SubTitle>Overview</SubTitle>
           {orderBy(newKoi.updates, ["date"], ["desc"]).map(
@@ -178,8 +183,8 @@ const History = ({ koi }) => {
             )
           )}
         </Card>
-      </div>
-      <div className="cp-i-100 cp-i-md-40">
+      </Container>
+      <RightContainer className="cp-i-100 cp-i-md-40">
         <Card>
           <SubTitle>Summary</SubTitle>
           <TimeLineContainer>
@@ -200,7 +205,7 @@ const History = ({ koi }) => {
             </Timeline>
           </TimeLineContainer>
         </Card>
-      </div>
+      </RightContainer>
     </Container>
   );
 };

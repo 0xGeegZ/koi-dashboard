@@ -2,7 +2,7 @@ const withPrismaPlugin = require("next-prisma-plugin");
 
 module.exports = withPrismaPlugin({
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "img.youtube.com"],
   },
   // Necessary for next-on-netlify to work correctly
   target: process.env.NETLIFY ? "experimental-serverless-trace" : undefined,

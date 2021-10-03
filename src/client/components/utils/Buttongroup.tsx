@@ -23,19 +23,12 @@ const TextDelete = styled.div`
   color: ${(props) => props.theme.redColor};
 `;
 
-export default function SplitButton({ options, activeIndex }) {
+export default function SplitButton({ options }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(activeIndex || 0);
 
-  const handleClick = (index) => {
-    router.push(options[index].buttonSrc);
-    setSelectedIndex(options[index].setIndex);
-  };
-
-  const handleMenuItemClick = (event, index, src) => {
-    setSelectedIndex(index);
+  const handleMenuItemClick = (event, src) => {
     setOpen(false);
     router.push(src);
   };
@@ -55,15 +48,12 @@ export default function SplitButton({ options, activeIndex }) {
   return (
     <>
       <ButtonGroup variant="outlined" ref={anchorRef}>
-        {options[0].active ? (
-          <Button variant="outlined" onClick={() => handleClick(0)}>
-            {options[0].title}
-          </Button>
-        ) : (
-          <Button variant="outlined" onClick={() => handleClick(selectedIndex)}>
-            {options[selectedIndex].title}
-          </Button>
-        )}
+        <Button
+          variant="outlined"
+          onClick={(event) => handleMenuItemClick(event, options[0].src)}
+        >
+          {options[0].title}
+        </Button>
         <Button
           variant="outlined"
           aria-controls={open ? "split-button-menu" : undefined}
@@ -92,12 +82,10 @@ export default function SplitButton({ options, activeIndex }) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu">
-                  {options.map(({ icon, title, src, handleClick }, index) => (
+                  {options.map(({ icon, title, src, handleClick }) => (
                     <MenuItem
                       key={title}
-                      onClick={(event) =>
-                        handleMenuItemClick(event, index, src)
-                      }
+                      onClick={(event) => handleMenuItemClick(event, src)}
                     >
                       {title != "Delete" ? (
                         <Text className="cp-c-row cp-c-align-start-center">

@@ -48,7 +48,10 @@ export default function Varieties() {
   if (fetching)
     return (
       <>
-        <Breadcrumbs links={[]} currentBreadcrumbText="Varieties" />
+        <Breadcrumbs
+          links={[{ to: `/koi`, text: "All koi" }]}
+          currentBreadcrumbText="Varieties"
+        />
         <Title>All varieties</Title>
       </>
     );
@@ -69,7 +72,10 @@ export default function Varieties() {
   const varieties = getVarieties(kois);
   return (
     <>
-      <Breadcrumbs links={[]} currentBreadcrumbText="Varieties" />
+      <Breadcrumbs
+        links={[{ to: `/koi`, text: "All koi" }]}
+        currentBreadcrumbText="Varieties"
+      />
       <Title>All varieties</Title>
       <div className="cp-c-padding-2 cp-c-lg-padding-3  cp-c-row cp-c-wrap">
         {varieties.map((variety) => (

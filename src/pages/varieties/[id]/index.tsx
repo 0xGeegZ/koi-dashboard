@@ -30,7 +30,10 @@ export default function VarietyPage() {
     return (
       <>
         <Breadcrumbs
-          links={[{ to: `/varieties`, text: "Varieties" }]}
+          links={[
+            { to: `/koi`, text: "All koi" },
+            { to: `/varieties`, text: "Varieties" },
+          ]}
           currentBreadcrumbText={`Your ${string}s`}
         />
         <Title>{`Your ${variety}s`}</Title>
@@ -55,7 +58,10 @@ export default function VarietyPage() {
   return (
     <>
       <Breadcrumbs
-        links={[{ to: `/varieties`, text: "Varieties" }]}
+        links={[
+          { to: `/koi`, text: "All koi" },
+          { to: `/varieties`, text: "Varieties" },
+        ]}
         currentBreadcrumbText={`Your ${kois[0].variety}s`}
       />
       <Title>{`Your ${kois[0].variety}s`}</Title>
