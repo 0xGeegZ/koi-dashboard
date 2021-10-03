@@ -16,8 +16,12 @@ const Text = styled.div`
   transform: translateY(-50%);
   width: 100%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: ${(props) => props.theme.mainColor};
+
+  ${media.md} {
+    font-size: 1.5rem;
+  }
 `;
 const Container = styled.div`
   ${media.xxl} {
@@ -79,10 +83,7 @@ export default function Varieties() {
       <Title>All varieties</Title>
       <div className="cp-c-padding-2 cp-c-lg-padding-3  cp-c-row cp-c-wrap">
         {varieties.map((variety) => (
-          <Container
-            className="cp-i-100 cp-i-sm-50 cp-i-md-33 cp-i-xl-25"
-            key={variety}
-          >
+          <Container className="cp-i-50  cp-i-md-33 cp-i-xl-25" key={variety}>
             <Link href={`/varieties/${slugify(variety)}`}>
               <a>
                 <StyledCard className="cp-c-column cp-c-align-center-center">
