@@ -30,6 +30,6 @@ export default function Layout({ children }: Props) {
       )}
     </>
   ) : (
-    <div />
+    <div>{children}</div>
   );
 }
