@@ -15,9 +15,8 @@ import {
 export default function KoiForm({ koi, setKoi }) {
   return (
     <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          freeSolo
           autoSelect
           options={varieties}
           value={koi.variety}
@@ -27,7 +26,7 @@ export default function KoiForm({ koi, setKoi }) {
           renderInput={(params) => <TextField {...params} label="Variety" />}
         />
       </div>
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
           freeSolo
           autoSelect
@@ -37,7 +36,7 @@ export default function KoiForm({ koi, setKoi }) {
           renderInput={(params) => <TextField {...params} label="Breeder" />}
         />
       </div>
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
           freeSolo
           autoSelect
@@ -47,9 +46,8 @@ export default function KoiForm({ koi, setKoi }) {
           renderInput={(params) => <TextField {...params} label="Bloodline" />}
         />
       </div>
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          freeSolo
           autoSelect
           value={koi.skinType}
           options={skinTypes}
@@ -57,9 +55,8 @@ export default function KoiForm({ koi, setKoi }) {
           renderInput={(params) => <TextField {...params} label="Skin type" />}
         />
       </div>
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <Autocomplete
-          freeSolo
           autoSelect
           value={koi.sex}
           options={sex}
@@ -67,7 +64,7 @@ export default function KoiForm({ koi, setKoi }) {
           renderInput={(params) => <TextField {...params} label="Sex" />}
         />
       </div>
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <TextField
           fullWidth
           value={koi.youtube}
@@ -78,7 +75,7 @@ export default function KoiForm({ koi, setKoi }) {
           }
         />
       </div>
-      <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+      <div className="cp-i-50 cp-i-sm-33">
         <LocalizationProvider dateAdapter={AdapterDateFns} locale={enLocale}>
           <DatePicker
             mask={"__/__/____"}

@@ -13,6 +13,11 @@ const DeleteIcon = styled.span`
   color: ${(props) => props.theme.redColor};
   margin-top: 0.2rem;
 `;
+const Container = styled.span`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+`;
 
 const Tooltip = styled.span`
   white-space: nowrap;
@@ -23,7 +28,7 @@ export default function BasicSpeedDial({ actions }) {
   const handleClose = () => setOpen(false);
 
   return (
-    <>
+    <Container>
       <Backdrop open={open} />
       <SpeedDial
         ariaLabel="SpeedDial tooltip example"
@@ -67,6 +72,6 @@ export default function BasicSpeedDial({ actions }) {
           )
         )}
       </SpeedDial>
-    </>
+    </Container>
   );
 }
