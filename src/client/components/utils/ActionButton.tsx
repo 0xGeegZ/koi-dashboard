@@ -38,12 +38,16 @@ export default function BasicSpeedDial({ actions }) {
             <SpeedDialAction
               key={title}
               icon={
-                <DeleteIcon onClick={() => handleClick()}>{icon}</DeleteIcon>
+                <Link href={src}>
+                  <DeleteIcon onClick={() => handleClick()}>{icon}</DeleteIcon>
+                </Link>
               }
               tooltipTitle={
-                <div onClick={() => handleClick()}>
-                  <DeleteText>{title}</DeleteText>
-                </div>
+                <Link href={src}>
+                  <div onClick={() => handleClick()}>
+                    <DeleteText>{title}</DeleteText>
+                  </div>
+                </Link>
               }
               tooltipOpen
               onClick={handleClose}
