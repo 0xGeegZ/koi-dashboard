@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 import { BiPencil } from "@react-icons/all-files/bi/BiPencil";
-import { AiOutlineHistory } from "@react-icons/all-files/ai/AiOutlineHistory";
-import { AiOutlineLineChart } from "@react-icons/all-files/ai/AiOutlineLineChart";
 import { AiOutlineDelete } from "@react-icons/all-files/ai/AiOutlineDelete";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
 import { useDeleteKoiMutation } from "../../../client/graphql/deleteKoi.generated";

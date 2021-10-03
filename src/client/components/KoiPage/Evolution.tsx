@@ -69,6 +69,10 @@ const Overlay = styled.div`
   border-radius: 20px 20px 0 0;
   text-align: center;
   border-radius: 20px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 const OverlayImages = styled.div`
   position: absolute;
