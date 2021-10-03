@@ -52,11 +52,11 @@ const EditKoi = () => {
     return (
       <>
         <Breadcrumbs
-          links={[{ to: `/koi`, text: "All your koi" }]}
+          links={[{ to: `/koi`, text: "All koi" }]}
           currentBreadcrumbText=" "
         />
         <Wrapper>
-          <Title>Edit your koi</Title>
+          <Title>Edit koi</Title>
           <KoiForm koi={koi} setKoi={setKoi} />
           <FormButtonContainer>
             <Button
@@ -79,7 +79,7 @@ const EditKoi = () => {
     <>
       <Breadcrumbs
         links={[
-          { to: `/koi`, text: "All your koi" },
+          { to: `/koi`, text: "All koi" },
           {
             to: `/koi/${koi.id}`,
             text: `${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
@@ -90,7 +90,7 @@ const EditKoi = () => {
         currentBreadcrumbText="Edit"
       />
       <Wrapper>
-        <Title>Edit your koi</Title>
+        <Title>Edit koi</Title>
         <KoiForm koi={koi} setKoi={setKoi} />
         <FormButtonContainer>
           <Button
