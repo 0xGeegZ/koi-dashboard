@@ -21,7 +21,7 @@ export default function UserSettings({ name, setName, currentUser }: Props) {
       <Wrapper>
         <Title>User settings</Title>
         <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-          <div className="cp-i-50 cp-i-sm-33">
+          <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
             <TextField
               fullWidth
               value={name}

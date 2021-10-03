@@ -46,7 +46,7 @@ export default function CreateKoi() {
       <>
         <Breadcrumbs links={[]} currentBreadcrumbText="Add koi" />
         <Wrapper>
-          <Title>Your koi</Title>
+          <Title>Add koi</Title>
           <KoiForm koi={koi} setKoi={setKoi} />
           <FormButtonContainer>
             <Button
@@ -91,7 +91,7 @@ export default function CreateKoi() {
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="Add koi" />
       <Wrapper>
-        <Title>Your koi</Title>
+        <Title>Add koi</Title>
         <KoiForm koi={koi} setKoi={setKoi} />
         <FormButtonContainer>
           <Button

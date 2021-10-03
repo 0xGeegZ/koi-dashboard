@@ -87,7 +87,7 @@ const EditKoi = () => {
             }`,
           },
         ]}
-        currentBreadcrumbText="Edit koi"
+        currentBreadcrumbText="Edit"
       />
       <Wrapper>
         <Title>Edit your koi</Title>

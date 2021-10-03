@@ -142,7 +142,7 @@ const Evolution = ({ koi }) => {
     <>
       <CardContainer>
         <Card>
-          <SubTitle>Picture evolution</SubTitle>
+          <SubTitle>Koi evolution</SubTitle>
           <ImagesContainer>
             <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
               {orderBy(koi.updates, ["date"]).map(

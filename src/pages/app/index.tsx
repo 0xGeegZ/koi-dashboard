@@ -101,7 +101,7 @@ export default function Dashboard() {
         <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
           {links.map(({ title, path, icon }) => (
             <LinksContainer
-              className="cp-i-100 cp-i-sm-50 cp-i-lg-33 cp-i-xl-25"
+              className="cp-i-50 cp-i-lg-33 cp-i-xl-25"
               key={title}
             >
               <Link href={path}>
@@ -141,10 +141,7 @@ export default function Dashboard() {
       <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
       <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
         {links.map(({ title, path, icon }) => (
-          <LinksContainer
-            className="cp-i-100 cp-i-sm-50 cp-i-lg-33 cp-i-xl-25"
-            key={title}
-          >
+          <LinksContainer className="cp-i-50 cp-i-lg-33 cp-i-xl-25" key={title}>
             <Link href={path}>
               <StyledCard className="cp-c-column cp-c-align-center-center">
                 <Container>
