@@ -12,33 +12,8 @@ type Props = {
 
 const Container = styled.div`
   ${media.xxl} {
-    max-width: 12.5% !important;
+    max-width: 10% !important;
   }
-`;
-const Overlay = styled.div`
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  bottom: -0.25rem;
-  left: -0.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  border-radius: 20px 20px 0 0;
-  text-align: center;
-`;
-const OverlayText = styled.div`
-  z-index: 1;
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  font-size: 1.3rem;
-  color: #fff;
-  width: 100%;
-  text-align: center;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 `;
 const StyledCard = styled(Card)`
   padding: 0.5rem;
