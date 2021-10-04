@@ -57,43 +57,17 @@ const ImagesContainer = styled.div`
 
 const Overlay = styled.div`
   position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  bottom: -0.25rem;
-  left: -0.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  border-radius: 20px 20px 0 0;
+  padding: 1rem;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
   text-align: center;
-  border-radius: 20px;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
-const OverlayImages = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-  border-radius: 20px 20px 0 0;
-  text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
 `;
 const OverlayText = styled.div`
   z-index: 1;
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
   font-size: 1.3rem;
   color: #fff;
   width: 100%;
@@ -107,25 +81,30 @@ const EmptyEvolution = styled.div`
     cursor: pointer;
   }
 `;
+const EmptyIframeContainer = styled(IframeContainer)`
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 const mockUpdates = [
   {
     length: 55,
     date: "2019-11-30T23:00:00.000Z",
     image:
-      "http://res.cloudinary.com/djapnmv8y/image/upload/v1632843635/koi/qmurpuy66f6tgdpgo8pa.png",
+      "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png",
   },
   {
     length: 59,
     date: "2020-01-31T23:00:00.000Z",
     image:
-      "http://res.cloudinary.com/djapnmv8y/image/upload/v1632843653/koi/onqnapae4lingkqxszaf.png",
+      "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336916/koi/showa2blur_tabdxq.png",
   },
   {
     length: 65,
     date: "2020-09-30T22:00:00.000Z",
     image:
-      "http://res.cloudinary.com/djapnmv8y/image/upload/v1632843678/koi/t8ilczinc9siw0ghxyef.png",
+      "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336992/koi/showa3blur_czifhh.png",
   },
 ];
 const options = {
@@ -211,8 +190,9 @@ const Evolution = ({ koi }) => {
                         setVisible={setVisible}
                       />
                     ))}
-                    <OverlayImages />
-                    <OverlayText>Add updates</OverlayText>
+                    <Overlay>
+                      <OverlayText>Add updates</OverlayText>
+                    </Overlay>
                   </EmptyEvolution>
                 </Link>
               )}
@@ -234,17 +214,18 @@ const Evolution = ({ koi }) => {
               </IframeContainer>
             ) : (
               <Link href={`/koi/${koi.id}/edit`}>
-                <IframeContainer>
+                <EmptyIframeContainer>
                   <Image
-                    src={`https://img.youtube.com/vi/-jLE0X1iB04/0.jpg`}
+                    src="https://img.youtube.com/vi/-jLE0X1iB04/0.jpg"
                     layout="fill"
                     objectFit="cover"
                     alt="thekoicompany logo"
                     priority
                   />
-                  <Overlay />
-                  <OverlayText>Add video</OverlayText>
-                </IframeContainer>
+                  <Overlay>
+                    <OverlayText>Add video</OverlayText>
+                  </Overlay>
+                </EmptyIframeContainer>
               </Link>
             )}
           </StyledCard>

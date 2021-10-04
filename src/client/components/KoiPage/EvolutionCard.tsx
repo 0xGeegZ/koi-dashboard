@@ -61,7 +61,11 @@ const EvolutionCard = ({
       <div onClick={() => setVisible(true)}>
         <ImageContainer>
           <Image
-            src={update.image}
+            src={
+              update.image
+                ? update.image
+                : "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png"
+            }
             layout="fill"
             objectFit="contain"
             priority

@@ -65,6 +65,20 @@ const Delete = styled.div`
 const DeleteIcon = styled(AiOutlineDelete)`
   margin-right: 0.3rem;
 `;
+const SubTitle = styled.div`
+  padding: 1rem;
+  padding-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  color: ${(props) => props.theme.mainColor};
+
+  ${media.lg} {
+    padding: 0 2rem;
+    padding-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+`;
 
 export default function KoiHistoryPreview({
   setUpdates,
@@ -89,6 +103,10 @@ export default function KoiHistoryPreview({
   return (
     <>
       <Title>Updates</Title>
+      <SubTitle>
+        Add here all the updates you have of this koi. With just the length (in
+        cm), date and a picture we will take of the rest!
+      </SubTitle>
       <div className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
         {updates &&
           updates.map(({ length, date, image, id }) => (

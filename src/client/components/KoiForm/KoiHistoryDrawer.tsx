@@ -97,7 +97,6 @@ export default function KoiHistoryDrawer({
                     setKoiHistory((k) => [...k, result.data?.createKoiHistory]);
                     setDrawer(false);
                     setKoiHistory({
-                      id: "",
                       length: 0,
                       date: "",
                       image: "",

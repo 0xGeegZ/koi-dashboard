@@ -134,7 +134,11 @@ const History = ({ koi }) => {
               >
                 <ImageContainer className="cp-i-15">
                   <Image
-                    src={image}
+                    src={
+                      image
+                        ? image
+                        : "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png"
+                    }
                     layout="fill"
                     objectFit="contain"
                     alt="age"
