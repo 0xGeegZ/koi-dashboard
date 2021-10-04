@@ -57,7 +57,6 @@ model Koi {
   bloodline String?
   skinType  String?
   sex       String?
-  public    Boolean?
   updates   KoiHistory[]
   user      User         @relation(fields: [userId], references: [id])
   userId    String
