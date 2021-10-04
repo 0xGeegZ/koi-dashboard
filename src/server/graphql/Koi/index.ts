@@ -34,12 +34,12 @@ const queries = extendType({
 
         return prisma.koi.findFirst({
           where: {
-            user: {
-              is: {
-                // only fetch your own koi
-                id: ctx.user.id,
-              },
-            },
+            // user: {
+            //   is: {
+            //     // Everyone can fetch the koi that is logged in needs to be added only public koi
+            //     id: ctx.user.id,
+            //   },
+            // },
             id,
           },
         });

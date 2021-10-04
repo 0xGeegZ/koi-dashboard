@@ -8,6 +8,7 @@ import { getCurrentAgeText } from "../utils/ageCalculator";
 
 type Props = {
   kois?: any;
+  friendId?: any;
 };
 
 const Container = styled.div`
@@ -43,14 +44,14 @@ const StyledSkeleton = styled(Skeleton)`
   border-radius: 20px;
 `;
 
-const VerticalCard = ({ kois }: Props) => {
+const VerticalCard = ({ kois, friendId }: Props) => {
   return kois
     ? kois.map(({ id, sex, updates, bloodline, birthDate, breeder }) => (
         <Container
           className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
           key={id}
         >
-          <Link href={`/koi/${id}`}>
+          <Link href={!friendId ? `/koi/${id}` : `/friends/${friendId}/${id}`}>
             <StyledCard>
               <ImageContainer>
                 <Image

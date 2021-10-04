@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { orderBy } from "lodash";
-import Skeleton from "@mui/material/Skeleton";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";
@@ -105,7 +104,7 @@ export default function AllUsersKoi() {
           </div>
           <div className="cp-hide cp-md-show-block">
             <TitleContainer
-              title="All  koi"
+              title="All koi"
               options={options}
               paddingBottom="0"
             />

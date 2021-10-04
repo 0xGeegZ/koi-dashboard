@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
+import { AiOutlineUsergroupAdd } from "@react-icons/all-files/ai/AiOutlineUsergroupAdd";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
 import {
   KoiSVG,
@@ -87,6 +88,11 @@ export const links = [
     title: "Add koi",
     path: "/koi/create",
     icon: <AiOutlinePlus />,
+  },
+  {
+    title: "Friends",
+    path: "/friends",
+    icon: <AiOutlineUsergroupAdd />,
   },
   {
     title: "Settings",

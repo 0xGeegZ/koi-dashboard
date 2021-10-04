@@ -34,6 +34,7 @@ input KoiWhereUniqueInput {
 }
 
 type Mutation {
+  createFriend(id: String!): User
   createKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
   createKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory
   createProject(name: String!, slug: String): Project
@@ -76,6 +77,7 @@ type Query {
 
 type User {
   email: String!
+  friends(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
   id: String!
   kois(after: KoiWhereUniqueInput, before: KoiWhereUniqueInput, first: Int, last: Int): [Koi!]!
   name: String

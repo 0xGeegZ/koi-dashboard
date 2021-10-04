@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { orderBy, filter } from "lodash";
@@ -7,10 +6,6 @@ import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.g
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
 import VerticalCard from "../../../client/components/Verticalcard/Verticalcard";
-
-const LowerCase = styled.span`
-  text-transform: lowercase;
-`;
 
 export const getSortedKois = (kois, order) => {
   if (order == "Recent") {
