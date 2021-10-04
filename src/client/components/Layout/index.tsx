@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CircularProgress from "@mui/material/CircularProgress";
 import DesktopNavigation from "../Navbar/DesktopNavigation";
 import MobileNavigation from "../Navbar/MobileNavigation";
 import { useGetCurrentUserQuery } from "../../graphql/getCurrentUser.generated";
@@ -18,19 +19,7 @@ export default function Layout({ children }: Props) {
   const width = useWindowSize();
   const isMobile = width < 568;
 
-  if (fetching)
-    return (
-      <>
-        {isMobile ? (
-          <>
-            <Container></Container>
-            <MobileNavigation />
-          </>
-        ) : (
-          <DesktopNavigation></DesktopNavigation>
-        )}
-      </>
-    );
+  if (fetching) return <CircularProgress />;
 
   return isAuthenticated ? (
     <>
