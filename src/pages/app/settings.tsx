@@ -19,7 +19,13 @@ export default function Dashboard() {
 
   if (fetching)
     return (
-      <UserSettings name="" email="" setEmail={setEmail} setName={setName} />
+      <UserSettings
+        id=""
+        name=""
+        email=""
+        setEmail={setEmail}
+        setName={setName}
+      />
     );
 
   if (error) return <p>{error.message}</p>;
