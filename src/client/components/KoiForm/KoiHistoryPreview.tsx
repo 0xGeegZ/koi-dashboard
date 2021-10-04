@@ -33,6 +33,7 @@ const ImageContainer = styled.div`
   position: relative;
   padding-top: 100%;
   width: 100%;
+  margin-bottom: 0.5rem;
 
   ${media.md} {
     padding-top: 80%;

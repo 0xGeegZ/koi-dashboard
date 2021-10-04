@@ -171,6 +171,7 @@ const Evolution = ({ koi }) => {
               {koi.updates.length > 0 ? (
                 orderBy(koi.updates, ["date"]).map((update, index) => (
                   <EvolutionCard
+                    key={index}
                     birthdate={koi.birthdate}
                     update={update}
                     index={index}
@@ -183,6 +184,7 @@ const Evolution = ({ koi }) => {
                   <EmptyEvolution>
                     {mockUpdates.map((update, index) => (
                       <EvolutionCard
+                        key={index}
                         birthdate="2018-06-30T22:00:00.000Z"
                         update={update}
                         index={index}

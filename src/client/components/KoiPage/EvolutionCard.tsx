@@ -55,7 +55,6 @@ const EvolutionCard = ({
   return (
     <CardStyle
       className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
-      key={index}
       onClick={() => setPhotoIndex(index)}
     >
       <div onClick={() => setVisible(true)}>

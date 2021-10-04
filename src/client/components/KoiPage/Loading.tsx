@@ -94,11 +94,11 @@ const Loading = () => {
         ]}
         currentBreadcrumbText=""
       />
-      <Title>
+      {/* <Title>
         <StyledSkeleton width="300px" />
 
         <StyledCardTop>
-          <SubTitle>Picture evolution</SubTitle>
+          <SubTitle>Koi evolution</SubTitle>
           <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
             {new Array(2).fill("a").map((a, index) => (
               <Container
@@ -131,7 +131,7 @@ const Loading = () => {
             <Line data={data} options={options} />
           </Card>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

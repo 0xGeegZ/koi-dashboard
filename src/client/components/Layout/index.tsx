@@ -13,10 +13,24 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
-  const [{ data }] = useGetCurrentUserQuery();
+  const [{ data, fetching }] = useGetCurrentUserQuery();
   const isAuthenticated = !!data?.currentUser;
   const width = useWindowSize();
   const isMobile = width < 568;
+
+  if (fetching)
+    return (
+      <>
+        {isMobile ? (
+          <>
+            <Container></Container>
+            <MobileNavigation />
+          </>
+        ) : (
+          <DesktopNavigation></DesktopNavigation>
+        )}
+      </>
+    );
 
   return isAuthenticated ? (
     <>
