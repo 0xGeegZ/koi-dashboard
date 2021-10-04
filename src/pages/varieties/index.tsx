@@ -27,6 +27,10 @@ const Container = styled.div`
   ${media.xxl} {
     max-width: 20% !important;
   }
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledCard = styled(Card)`
@@ -85,11 +89,9 @@ export default function Varieties() {
         {varieties.map((variety) => (
           <Container className="cp-i-50  cp-i-md-33 cp-i-xl-25" key={variety}>
             <Link href={`/varieties/${slugify(variety)}`}>
-              <a>
-                <StyledCard className="cp-c-column cp-c-align-center-center">
-                  <Text>{variety}</Text>
-                </StyledCard>
-              </a>
+              <StyledCard className="cp-c-column cp-c-align-center-center">
+                <Text>{variety}</Text>
+              </StyledCard>
             </Link>
           </Container>
         ))}

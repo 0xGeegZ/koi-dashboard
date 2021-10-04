@@ -218,7 +218,7 @@ const Evolution = ({ koi }) => {
               <Link href={`/koi/${koi.id}/edit`}>
                 <EmptyIframeContainer>
                   <Image
-                    src="https://img.youtube.com/vi/-jLE0X1iB04/0.jpg"
+                    src="https://img.youtube.com/vi/3NSQQDIgJ7s/0.jpg"
                     layout="fill"
                     objectFit="cover"
                     alt="thekoicompany logo"
