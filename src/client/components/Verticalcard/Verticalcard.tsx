@@ -12,9 +12,10 @@ type Props = {
 
 const Container = styled.div`
   ${media.xxl} {
-    max-width: 10% !important;
+    max-width: 12.5% !important;
   }
 `;
+
 const StyledCard = styled(Card)`
   padding: 0.5rem;
   padding-bottom: 1rem;
