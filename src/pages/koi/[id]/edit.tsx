@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import styled from "styled-components";
 import toast from "react-hot-toast";
 import Button from "@mui/material/Button";
+import Fab from "@mui/material/Fab";
 import { isEqual, orderBy } from "lodash";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
+import { IoMdReturnLeft } from "@react-icons/all-files/io/IoMdReturnLeft";
 import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
 import { UpdateKoiMutationVariables } from "../../../client/graphql/updateKoi.generated";
@@ -17,6 +21,12 @@ import {
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import KoiForm from "../../../client/components/KoiForm/KoiForm";
 import KoiHistoryPreview from "../../../client/components/KoiForm/KoiHistoryPreview";
+
+const Container = styled.span`
+  position: fixed;
+  bottom: 4.9rem;
+  right: 1.1rem;
+`;
 
 const EditKoi = () => {
   const router = useRouter();
@@ -117,6 +127,13 @@ const EditKoi = () => {
           updates={orderBy(updates, ["date"], ["desc"])}
           setUpdates={setUpdates}
         />
+        <Container className="cp-md-hide">
+          <Fab size="large" color="primary" aria-label="back">
+            <Link href={`/koi/${koi.id}`}>
+              <IoMdReturnLeft />
+            </Link>
+          </Fab>
+        </Container>
       </Wrapper>
     </>
   );
