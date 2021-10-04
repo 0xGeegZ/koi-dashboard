@@ -82,21 +82,12 @@ const VerticalCard = ({ kois }: Props) => {
                     updates[updates.length - 1] &&
                     updates[updates.length - 1].image
                       ? updates[updates.length - 1].image
-                      : "http://res.cloudinary.com/djapnmv8y/image/upload/v1632843678/koi/t8ilczinc9siw0ghxyef.png"
+                      : "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png"
                   }
                   layout="fill"
                   objectFit="contain"
                   priority
                 />
-                {updates[updates.length - 1] &&
-                updates[updates.length - 1].image ? (
-                  <span />
-                ) : (
-                  <>
-                    <Overlay />
-                    <OverlayText>No image</OverlayText>
-                  </>
-                )}
               </ImageContainer>
               <CardText>
                 <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
