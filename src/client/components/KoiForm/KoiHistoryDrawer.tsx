@@ -96,11 +96,6 @@ export default function KoiHistoryDrawer({
                   .then((result) => {
                     setKoiHistory((k) => [...k, result.data?.createKoiHistory]);
                     setDrawer(false);
-                    setKoiHistory({
-                      length: 0,
-                      date: "",
-                      image: "",
-                    });
                   })
               : toast
                   .promise(updateKoiHistory(update), {
