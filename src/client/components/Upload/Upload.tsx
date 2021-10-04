@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { CloudinaryContext } from "cloudinary-react";
 import Button from "@mui/material/Button";
 
@@ -36,7 +36,7 @@ const CloudinaryUploadWidget = ({ image, setUpdate }) => {
             color="primary"
             component="span"
           >
-            {image ? "Change file" : "Choose file"}
+            {image ? "Change image" : "Upload image"}
           </Button>
         </label>
       </CloudinaryContext>
