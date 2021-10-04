@@ -36,6 +36,7 @@ export default function Dashboard() {
 
   return (
     <UserSettings
+      id={currentUser.id}
       name={name}
       email={email}
       setEmail={setEmail}

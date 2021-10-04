@@ -1,10 +1,16 @@
 import Button from "@mui/material/Button";
+import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import toast from "react-hot-toast";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { useUpdateUserMutation } from "../../graphql/updateUser.generated";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import { Title, Wrapper, FormButtonContainer } from "../utils/styledComponents";
+import {
+  Title,
+  Wrapper,
+  FormButtonContainer,
+  media,
+} from "../utils/styledComponents";
 
 type Props = {
   name?: string;
@@ -12,9 +18,23 @@ type Props = {
   setName: any;
   setEmail: any;
   currentUser?: any;
+  id: string;
 };
 
+const Text = styled.div`
+  padding: 1rem;
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  color: ${(props) => props.theme.textColor};
+
+  ${media.md} {
+    padding: 0 2rem;
+    padding-top: 1rem;
+  }
+`;
+
 export default function UserSettings({
+  id,
   email,
   setEmail,
   name,
@@ -28,6 +48,9 @@ export default function UserSettings({
       <Breadcrumbs links={[]} currentBreadcrumbText="Settings" />
       <Wrapper>
         <Title>User settings</Title>
+        <Text>
+          Your ID so your friends can add you is: <b>{id}</b>
+        </Text>
         <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
           <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
             <TextField
