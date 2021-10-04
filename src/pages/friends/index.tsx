@@ -90,45 +90,39 @@ const Friends = () => {
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="All friends" />
-      {friends.length > 0 ? (
-        <>
-          <div className="cp-md-hide">
-            <Title>All friends</Title>
-            <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-              {friends.map(({ name, id }) => (
-                <Container className="cp-i-50  cp-i-md-33 cp-i-xl-25" key={id}>
-                  <Link href={`/friends/${id}`}>
-                    <StyledCard className="cp-c-column cp-c-align-center-center">
-                      <Text>{name ? name : id}</Text>
-                    </StyledCard>
-                  </Link>
-                </Container>
-              ))}
-            </div>
-            <ActionButton actions={actions} />
-          </div>
-          <div className="cp-hide cp-md-show-block">
-            <TitleContainer
-              title="All friends"
-              options={options}
-              paddingBottom="0"
-            />
-            <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-              {friends.map(({ name, id }) => (
-                <Container className="cp-i-50  cp-i-md-33 cp-i-xl-25" key={id}>
-                  <Link href={`/friends/${id}`}>
-                    <StyledCard className="cp-c-column cp-c-align-center-center">
-                      <Text>{name ? name : id}</Text>
-                    </StyledCard>
-                  </Link>
-                </Container>
-              ))}
-            </div>
-          </div>
-        </>
-      ) : (
-        <div>no friends </div>
-      )}
+      <div className="cp-md-hide">
+        <Title>All friends</Title>
+        <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
+          {friends.map(({ name, id }) => (
+            <Container className="cp-i-50  cp-i-md-33 cp-i-xl-25" key={id}>
+              <Link href={`/friends/${id}`}>
+                <StyledCard className="cp-c-column cp-c-align-center-center">
+                  <Text>{name ? name : id}</Text>
+                </StyledCard>
+              </Link>
+            </Container>
+          ))}
+        </div>
+        <ActionButton actions={actions} />
+      </div>
+      <div className="cp-hide cp-md-show-block">
+        <TitleContainer
+          title="All friends"
+          options={options}
+          paddingBottom="0"
+        />
+        <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
+          {friends.map(({ name, id }) => (
+            <Container className="cp-i-50  cp-i-md-33 cp-i-xl-25" key={id}>
+              <Link href={`/friends/${id}`}>
+                <StyledCard className="cp-c-column cp-c-align-center-center">
+                  <Text>{name ? name : id}</Text>
+                </StyledCard>
+              </Link>
+            </Container>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
