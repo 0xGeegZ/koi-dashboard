@@ -8,11 +8,19 @@ import { Title, Wrapper, FormButtonContainer } from "../utils/styledComponents";
 
 type Props = {
   name?: string;
+  email: string;
   setName: any;
+  setEmail: any;
   currentUser?: any;
 };
 
-export default function UserSettings({ name, setName, currentUser }: Props) {
+export default function UserSettings({
+  email,
+  setEmail,
+  name,
+  setName,
+  currentUser,
+}: Props) {
   const [, updateUser] = useUpdateUserMutation();
 
   return (
@@ -30,6 +38,15 @@ export default function UserSettings({ name, setName, currentUser }: Props) {
               onChange={(evt) => setName(evt.target.value)}
             />
           </div>
+          <div className="cp-i-100 cp-i-sm-50 cp-i-md-33">
+            <TextField
+              fullWidth
+              value={email}
+              label="Email"
+              variant="outlined"
+              onChange={(evt) => setEmail(evt.target.value)}
+            />
+          </div>
         </div>
         <FormButtonContainer>
           <Button
@@ -44,6 +61,7 @@ export default function UserSettings({ name, setName, currentUser }: Props) {
                 updateUser({
                   name,
                   userId: currentUser.id,
+                  email,
                 }),
                 {
                   loading: `Updating settings...`,

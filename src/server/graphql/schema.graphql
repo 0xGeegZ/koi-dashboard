@@ -44,7 +44,7 @@ type Mutation {
   inviteToProject(email: String!, projectId: String!): Boolean
   updateKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
   updateKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory
-  updateUser(name: String, userId: String!): User
+  updateUser(email: String!, name: String, userId: String!): User
 }
 
 enum PaidPlan {

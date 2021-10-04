@@ -8,14 +8,19 @@ export default function Dashboard() {
   const [{ data, fetching, error }] = useGetCurrentUserQuery();
   const router = useRouter();
   const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const currentUser = data?.currentUser;
 
   // Once we load the current user, default the name input to their name
   useEffect(() => {
     if (currentUser?.name) setName(currentUser.name);
+    if (currentUser?.email) setEmail(currentUser.email);
   }, [currentUser]);
 
-  if (fetching) return <UserSettings name="" setName={setName} />;
+  if (fetching)
+    return (
+      <UserSettings name="" email="" setEmail={setEmail} setName={setName} />
+    );
 
   if (error) return <p>{error.message}</p>;
 
@@ -30,6 +35,12 @@ export default function Dashboard() {
   }
 
   return (
-    <UserSettings name={name} setName={setName} currentUser={currentUser} />
+    <UserSettings
+      name={name}
+      email={email}
+      setEmail={setEmail}
+      setName={setName}
+      currentUser={currentUser}
+    />
   );
 }
