@@ -129,6 +129,12 @@ const getImages = (koi) => {
   return images;
 };
 
+const getYoutubeId = (url) => {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+};
+
 const Evolution = ({ koi }) => {
   const [visible, setVisible] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -209,7 +215,13 @@ const Evolution = ({ koi }) => {
                 <StyledReactPlayer
                   width="100%"
                   height="100%"
-                  src={koi.youtube}
+                  src={
+                    koi.youtube.includes("embed")
+                      ? koi.youtube
+                      : `//www.youtube.com/embed/${getYoutubeId(
+                          koi.youtube
+                        )}?autoplay=1`
+                  }
                   frameBorder="0"
                 />
               </IframeContainer>
