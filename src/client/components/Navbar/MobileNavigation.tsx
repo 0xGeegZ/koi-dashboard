@@ -36,12 +36,17 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)`
 `;
 
 const IconContainer = styled.div`
+  font-size: 1.1rem;
   margin-bottom: 0rem;
+`;
+const Text = styled.span`
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
 `;
 const StyledKoiIcon = styled.svg`
   margin-bottom: 0.4rem;
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 1.1rem;
+  height: 1.1rem;
   stroke-width: 120px;
   stroke: ${(props) => props.theme.secondaryColor};
 `;
@@ -65,7 +70,7 @@ export default function LabelBottomNavigation() {
           <Link key={path} href={path}>
             <StyledBottomNavigationAction
               showLabel
-              label={title}
+              label={<Text>{title}</Text>}
               value={title}
               icon={
                 icon ? (
