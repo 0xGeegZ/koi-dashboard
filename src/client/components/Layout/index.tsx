@@ -18,7 +18,7 @@ export default function Layout({ children }: Props) {
   const width = useWindowSize();
   const isMobile = width < 568;
 
-  if (fetching)
+  if (fetching && width > 0)
     return isMobile ? (
       <>
         <Container>{children}</Container>
