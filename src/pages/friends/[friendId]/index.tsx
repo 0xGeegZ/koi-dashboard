@@ -48,7 +48,6 @@ export default function AllUsersKoi() {
   const kois = friendKois[0].kois;
   // @ts-ignore: test
   const name = friendKois[0].name ? friendKois[0].name : friendId;
-  console.log(kois);
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText={`All koi of ${name}`} />

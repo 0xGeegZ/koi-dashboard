@@ -76,19 +76,20 @@ export const KoiIcon = (props) => <KoiSVG {...props} />;
 
 export const links = [
   {
-    title: "All koi",
+    title: "My koi",
     path: "/koi",
-  },
-  {
-    title: "Varieties",
-    path: "/varieties",
-    icon: <AiOutlineApartment />,
   },
   {
     title: "Add koi",
     path: "/koi/create",
     icon: <AiOutlinePlus />,
   },
+  {
+    title: "Varieties",
+    path: "/varieties",
+    icon: <AiOutlineApartment />,
+  },
+
   {
     title: "Friends",
     path: "/friends",
