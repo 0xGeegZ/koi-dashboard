@@ -6,15 +6,13 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { AiOutlineUser } from "@react-icons/all-files/ai/AiOutlineUser";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
-import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineHome } from "@react-icons/all-files/ai/AiOutlineHome";
-import { AiOutlineLogout } from "@react-icons/all-files/ai/AiOutlineLogout";
 import { KoiSVG } from "../utils/styledComponents";
 
 export const links = [
   {
     title: "Home",
-    path: "/app",
+    path: "/",
     icon: <AiOutlineHome />,
   },
   {

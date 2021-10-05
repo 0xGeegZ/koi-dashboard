@@ -10,7 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemButton from "@mui/material/ListItemButton";
 import { AiOutlineHome } from "@react-icons/all-files/ai/AiOutlineHome";
 import { AiOutlineLogout } from "@react-icons/all-files/ai/AiOutlineLogout";
-import { links, KoiIcon } from "../../../pages/app";
+import { links, KoiIcon } from "../../../pages";
 
 const StyledBox = styled(Box)`
   background-color: unset !important;
@@ -60,8 +60,8 @@ export default function PermanentDrawerLeft({ children }) {
         anchor="left"
       >
         <List>
-          <Link href="/app">
-            <ListItemButton selected={router.pathname === "/app"}>
+          <Link href="/">
+            <ListItemButton selected={router.pathname === "/"}>
               <Text className="cp-c-row cp-c-align-start-center">
                 <IconContainer>
                   <AiOutlineHome />

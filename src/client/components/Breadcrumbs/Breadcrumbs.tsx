@@ -44,8 +44,8 @@ const StyledIcon = styled(AiOutlineHome)`
 const Breadcrumbs = ({ links, currentBreadcrumbText }) => {
   return (
     <Container className="cp-c-row cp-c-align-start-center">
-      <Link href="/app" passHref>
-        <StyledLink aria-label="home" href="/app">
+      <Link href="/" passHref>
+        <StyledLink aria-label="home" href="/">
           <StyledIcon />
         </StyledLink>
       </Link>
