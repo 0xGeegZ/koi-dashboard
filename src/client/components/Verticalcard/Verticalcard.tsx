@@ -45,46 +45,49 @@ const StyledSkeleton = styled(Skeleton)`
 `;
 
 const VerticalCard = ({ kois, friendId }: Props) => {
-  return kois
-    ? kois.map(({ id, sex, updates, bloodline, birthDate, breeder }) => (
-        <Container
-          className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
-          key={id}
-        >
-          <Link href={!friendId ? `/koi/${id}` : `/friends/${friendId}/${id}`}>
-            <StyledCard>
-              <ImageContainer>
-                <Image
-                  src={
-                    updates[updates.length - 1] &&
-                    updates[updates.length - 1].image
-                      ? updates[updates.length - 1].image
-                      : "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png"
-                  }
-                  layout="fill"
-                  objectFit="contain"
-                  priority
-                />
-              </ImageContainer>
-              <CardText>
-                <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
-                <Text>{`${bloodline ? bloodline : ""} ${sex}`}</Text>
-              </CardText>
-            </StyledCard>
-          </Link>
-        </Container>
-      ))
-    : new Array(2).fill("a").map((a, index) => (
-        <Container
-          key={index}
-          className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
-        >
-          <StyledSkeleton width="100%">
-            <ImageContainer />
-            <SkeletonText />
-          </StyledSkeleton>
-        </Container>
-      ));
+  return kois ? (
+    kois.map(({ id, sex, updates, bloodline, birthDate, breeder }) => (
+      <Container
+        className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
+        key={id}
+      >
+        <Link href={!friendId ? `/koi/${id}` : `/friends/${friendId}/${id}`}>
+          <StyledCard>
+            <ImageContainer>
+              <Image
+                src={
+                  updates[updates.length - 1] &&
+                  updates[updates.length - 1].image
+                    ? updates[updates.length - 1].image
+                    : "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png"
+                }
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </ImageContainer>
+            <CardText>
+              <Text>{`${getCurrentAgeText(birthDate)} ${breeder}`}</Text>
+              <Text>{`${bloodline ? bloodline : ""} ${sex}`}</Text>
+            </CardText>
+          </StyledCard>
+        </Link>
+      </Container>
+    ))
+  ) : (
+    <div />
+  );
+  // : new Array(2).fill("a").map((a, index) => (
+  //     <Container
+  //       key={index}
+  //       className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
+  //     >
+  //       <StyledSkeleton width="100%">
+  //         <ImageContainer />
+  //         <SkeletonText />
+  //       </StyledSkeleton>
+  //     </Container>
+  //   ));
 };
 
 export default VerticalCard;
