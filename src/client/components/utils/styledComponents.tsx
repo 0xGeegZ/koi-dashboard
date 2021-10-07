@@ -165,3 +165,10 @@ export const useWindowSize = () => {
   }, []);
   return width;
 };
+
+export const getVarieties = (kois) => {
+  let varieties = [];
+  // @ts-ignore: test
+  kois.map(({ variety }) => (varieties = [...varieties, variety]));
+  return varieties.filter((v, i, a) => a.indexOf(v) === i);
+};

@@ -44,6 +44,23 @@ export const varieties = [
   "Soragoi",
   "Yamabuki Ogon",
 ];
+export const varietiesColor = [
+  { title: "Asagi", color: "#C5CAE9" },
+  { title: "Benigoi", color: "#B71C1C" },
+  { title: "Chagoi", color: "#3E2723" },
+  { title: "Goromo", color: "#D1C4E9" },
+  { title: "Goshiki", color: "#B2DFDB" },
+  { title: "Karashigoi", color: "#FFB74D" },
+  { title: "Kohaku", color: "#F57F17" },
+  { title: "Mukashi Ogon", color: "#B2EBF2" },
+  { title: "Ochiba", color: "#E0E0E0" },
+  { title: "Sanke", color: "#FFE082" },
+  { title: "Shiro-utsuri", color: "#BBDEFB" },
+  { title: "Showa", color: "#0C4184" },
+  { title: "Shusui", color: "#B3E5FC" },
+  { title: "Soragoi", color: "#E0E0E0" },
+  { title: "Yamabuki Ogon", color: "#F3E5F5" },
+];
 
 export const bloodlines = [
   "BigBang",

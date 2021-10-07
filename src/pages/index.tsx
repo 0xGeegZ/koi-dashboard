@@ -12,6 +12,7 @@ import {
   Title,
   media,
 } from "../client/components/utils/styledComponents";
+import PolarAreaContainer from "../client/components/Home/PolarAreaContainer";
 
 const StyledTitle = styled(Title)`
   padding-top: 1rem;
@@ -110,29 +111,7 @@ export default function Dashboard() {
     return (
       <>
         <StyledTitle>Hello</StyledTitle>
-        <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-          {links.map(({ title, path, icon }) => (
-            <LinksContainer
-              className="cp-i-50 cp-i-lg-33 cp-i-xl-25"
-              key={title}
-            >
-              <Link href={path}>
-                <StyledCard className="cp-c-column cp-c-align-center-center">
-                  <Container>
-                    {icon ? (
-                      <IconContainer>{icon}</IconContainer>
-                    ) : (
-                      <StyledKoiIcon>
-                        <KoiIcon />
-                      </StyledKoiIcon>
-                    )}
-                    <Text>{title}</Text>
-                  </Container>
-                </StyledCard>
-              </Link>
-            </LinksContainer>
-          ))}
-        </div>
+        <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3"></div>
       </>
     );
 
@@ -148,28 +127,12 @@ export default function Dashboard() {
     );
   }
 
+  const kois = data.currentUser.kois;
   return (
     <>
       <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
       <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-        {links.map(({ title, path, icon }) => (
-          <LinksContainer className="cp-i-50 cp-i-lg-33 cp-i-xl-25" key={title}>
-            <Link href={path}>
-              <StyledCard className="cp-c-column cp-c-align-center-center">
-                <Container>
-                  {icon ? (
-                    <IconContainer>{icon}</IconContainer>
-                  ) : (
-                    <StyledKoiIcon>
-                      <KoiIcon />
-                    </StyledKoiIcon>
-                  )}
-                  <Text>{title}</Text>
-                </Container>
-              </StyledCard>
-            </Link>
-          </LinksContainer>
-        ))}
+        <PolarAreaContainer kois={kois} />
       </div>
     </>
   );

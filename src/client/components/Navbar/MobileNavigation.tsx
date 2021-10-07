@@ -147,7 +147,7 @@ export default function LabelBottomNavigation() {
               />
             </Link>
           ) : (
-            <MenuContainer onClick={() => setDrawer(true)}>
+            <MenuContainer key={title} onClick={() => setDrawer(true)}>
               <StyledBottomNavigationAction
                 showLabel
                 label={<Text>{title}</Text>}
