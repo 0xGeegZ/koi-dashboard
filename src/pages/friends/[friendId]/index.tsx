@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { orderBy } from "lodash";
-import { filter } from "lodash";
+import orderBy from "lodash/orderBy";
+import filter from "lodash/filter";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
-import VerticalCard from "../../../client/components/Verticalcard/Verticalcard";
+
+const VerticalCard = dynamic(
+  import("../../../client/components/Verticalcard/Verticalcard")
+);
 
 export const getSortedKois = (kois, order) => {
   if (order == "Recent") {

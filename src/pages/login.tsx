@@ -1,5 +1,5 @@
-import AuthenticationForm from "../client/components/AuthenticationForm";
 import * as React from "react";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,6 +8,10 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { AiOutlineUser } from "@react-icons/all-files/ai/AiOutlineUser";
+
+const AuthenticationForm = dynamic(
+  import("../client/components/AuthenticationForm")
+);
 
 const StyledBox = styled(Box)`
   max-width: 350px;

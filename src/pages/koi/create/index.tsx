@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import Button from "@mui/material/Button";
@@ -16,7 +17,8 @@ import {
   FormButtonContainer,
 } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
-import KoiForm from "../../../client/components/KoiForm/KoiForm";
+
+const KoiForm = dynamic(import("../../../client/components/KoiForm/KoiForm"));
 
 export default function CreateKoi() {
   const router = useRouter();

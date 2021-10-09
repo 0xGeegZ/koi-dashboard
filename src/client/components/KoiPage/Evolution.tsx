@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from "react";
 import styled from "styled-components";
-import { orderBy } from "lodash";
+import orderBy from "lodash/orderBy";
 import Image from "next/image";
 import Link from "next/link";
 import { Line } from "react-chartjs-2";

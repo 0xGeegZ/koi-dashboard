@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { orderBy } from "lodash";
+import dynamic from "next/dynamic";
+import orderBy from "lodash/orderBy";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";
@@ -11,10 +12,17 @@ import {
   Title,
   withLink,
 } from "../../client/components/utils/styledComponents";
-import VerticalCard from "../../client/components/Verticalcard/Verticalcard";
-import EmptyKoi from "../../client/components/Koi/EmptyKoi";
-import ActionButton from "../../client/components/utils/ActionButton";
-import TitleContainer from "../../client/components/utils/TitleContainer";
+
+const TitleContainer = dynamic(
+  import("../../client/components/utils/TitleContainer")
+);
+const ActionButton = dynamic(
+  import("../../client/components/utils/ActionButton")
+);
+const VerticalCard = dynamic(
+  import("../../client/components/Verticalcard/Verticalcard")
+);
+const EmptyKoi = dynamic(import("../../client/components/Koi/EmptyKoi"));
 
 export const getSortedKois = (kois, order) => {
   if (order == "Recent") {

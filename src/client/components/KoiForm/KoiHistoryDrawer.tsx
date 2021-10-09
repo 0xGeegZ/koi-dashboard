@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import { reject } from "lodash";
+import reject from "lodash/reject";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 import { BiPencil } from "@react-icons/all-files/bi/BiPencil";

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { orderBy } from "lodash";
+import orderBy from "lodash/orderBy";
 import {
   getHistoryFormattedDate,
   getAgeDifferenceDate,

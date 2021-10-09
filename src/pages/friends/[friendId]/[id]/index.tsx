@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useGetKoiQuery } from "../../../../client/graphql/getKoi.generated";
 import Breadcrumbs from "../../../../client/components/Breadcrumbs/Breadcrumbs";
 import {
@@ -6,8 +7,13 @@ import {
   Title,
 } from "../../../../client/components/utils/styledComponents";
 import Evolution from "../../../../client/components/KoiPage/Evolution";
-import History from "../../../../client/components/KoiPage/History";
-import Loading from "../../../../client/components/KoiPage/Loading";
+
+const Loading = dynamic(
+  import("../../../../client/components/KoiPage/Loading")
+);
+const History = dynamic(
+  import("../../../../client/components/KoiPage/History")
+);
 
 const KoiDetailPage = () => {
   const router = useRouter();

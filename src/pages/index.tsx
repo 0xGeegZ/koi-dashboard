@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
 import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
@@ -8,11 +9,13 @@ import { AiOutlineUsergroupAdd } from "@react-icons/all-files/ai/AiOutlineUsergr
 import { useGetCurrentUserQuery } from "../client/graphql/getCurrentUser.generated";
 import {
   KoiSVG,
-  Card,
   Title,
   media,
 } from "../client/components/utils/styledComponents";
-import PolarAreaContainer from "../client/components/Home/PolarAreaContainer";
+
+const PolarAreaContainer = dynamic(
+  import("../client/components/Home/PolarAreaContainer")
+);
 
 const StyledTitle = styled(Title)`
   padding-top: 1rem;

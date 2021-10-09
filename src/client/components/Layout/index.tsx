@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import DesktopNavigation from "../Navbar/DesktopNavigation";
-import MobileNavigation from "../Navbar/MobileNavigation";
+import dynamic from "next/dynamic";
 import { useGetCurrentUserQuery } from "../../graphql/getCurrentUser.generated";
 import { useWindowSize } from "../utils/styledComponents";
+
+const DesktopNavigation = dynamic(import("../Navbar/DesktopNavigation"));
+const MobileNavigation = dynamic(import("../Navbar/MobileNavigation"));
 
 const Container = styled.div`
   padding-bottom: 4rem;

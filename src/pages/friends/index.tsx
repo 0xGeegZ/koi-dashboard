@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
@@ -10,8 +11,13 @@ import {
   Card,
   media,
 } from "../../client/components/utils/styledComponents";
-import ActionButton from "../../client/components/utils/ActionButton";
-import TitleContainer from "../../client/components/utils/TitleContainer";
+
+const TitleContainer = dynamic(
+  import("../../client/components/utils/TitleContainer")
+);
+const ActionButton = dynamic(
+  import("../../client/components/utils/ActionButton")
+);
 
 const Text = styled.div`
   position: absolute;

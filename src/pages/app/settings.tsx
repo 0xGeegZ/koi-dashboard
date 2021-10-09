@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
-import UserSettings from "../../client/components/UserSettings/UserSettings";
+
+const UserSettings = dynamic(
+  import("../../client/components/UserSettings/UserSettings")
+);
 
 export default function Dashboard() {
   const [{ data, fetching, error }] = useGetCurrentUserQuery();

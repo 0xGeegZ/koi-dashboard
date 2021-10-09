@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import styled from "styled-components";
 import toast from "react-hot-toast";
 import Button from "@mui/material/Button";
 import Fab from "@mui/material/Fab";
-import { isEqual, orderBy } from "lodash";
+import orderBy from "lodash/orderBy";
+import isEqual from "lodash/isEqual";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
 import { IoMdReturnLeft } from "@react-icons/all-files/io/IoMdReturnLeft";
 import { useUpdateKoiMutation } from "../../../client/graphql/updateKoi.generated";
@@ -19,8 +21,11 @@ import {
   FormButtonContainer,
 } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
-import KoiForm from "../../../client/components/KoiForm/KoiForm";
-import KoiHistoryPreview from "../../../client/components/KoiForm/KoiHistoryPreview";
+
+const KoiHistoryPreview = dynamic(
+  import("../../../client/components/KoiForm/KoiHistoryPreview")
+);
+const KoiForm = dynamic(import("../../../client/components/KoiForm/KoiForm"));
 
 const Container = styled.span`
   position: fixed;

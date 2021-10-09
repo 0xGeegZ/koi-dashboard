@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { BiPencil } from "@react-icons/all-files/bi/BiPencil";
 import { AiOutlineDelete } from "@react-icons/all-files/ai/AiOutlineDelete";
 import { useGetKoiQuery } from "../../../client/graphql/getKoi.generated";
@@ -10,10 +11,15 @@ import {
   withLink,
 } from "../../../client/components/utils/styledComponents";
 import Evolution from "../../../client/components/KoiPage/Evolution";
-import History from "../../../client/components/KoiPage/History";
-import Loading from "../../../client/components/KoiPage/Loading";
-import TitleContainer from "../../../client/components/utils/TitleContainer";
-import ActionButton from "../../../client/components/utils/ActionButton";
+
+const ActionButton = dynamic(
+  import("../../../client/components/utils/ActionButton")
+);
+const Loading = dynamic(import("../../../client/components/KoiPage/Loading"));
+const History = dynamic(import("../../../client/components/KoiPage/History"));
+const TitleContainer = dynamic(
+  import("../../../client/components/utils/TitleContainer")
+);
 
 const KoiDetailPage = () => {
   const [, deleteKoi] = useDeleteKoiMutation();
@@ -74,7 +80,6 @@ const KoiDetailPage = () => {
       />
       <div className="cp-hide cp-md-show-block">
         <TitleContainer
-          paddingBottom={router.query.view == "History" ? "0" : undefined}
           title={`${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
             koi.variety
           }`}

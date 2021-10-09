@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { reject } from "lodash";
+import reject from "lodash/reject";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineDelete } from "@react-icons/all-files/ai/AiOutlineDelete";
 import styled from "styled-components";

@@ -1,11 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { orderBy, filter } from "lodash";
+import orderBy from "lodash/orderBy";
+import filter from "lodash/filter";
 import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
-import VerticalCard from "../../../client/components/Verticalcard/Verticalcard";
+
+const VerticalCard = dynamic(
+  import("../../../client/components/Verticalcard/Verticalcard")
+);
 
 export const getSortedKois = (kois, order) => {
   if (order == "Recent") {
@@ -32,9 +37,6 @@ export default function VarietyPage() {
           currentBreadcrumbText={`Your ${string}s`}
         />
         <Title>{`Your ${variety}s`}</Title>
-        <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-          <VerticalCard />
-        </div>
       </>
     );
 

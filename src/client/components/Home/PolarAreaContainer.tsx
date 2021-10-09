@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { PolarArea } from "react-chartjs-2";
-import { filter } from "lodash";
+import filter from "lodash/filter";
 import styled from "styled-components";
 import { Card, SubTitle } from "../utils/styledComponents";
 import { varietiesColor } from "../utils/KoiFromData";
