@@ -21,57 +21,6 @@ const StyledTitle = styled(Title)`
     padding-top: 2rem;
   }
 `;
-const StyledCard = styled(Card)`
-  position: relative;
-  overflow: hidden;
-  padding-top: 65%;
-
-  :hover {
-    cursor: pointer;
-    box-shadow: ${(props) => props.theme.boxShadowHover};
-  }
-`;
-const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
-  font-size: 1.5rem;
-  color: ${(props) => props.theme.secondaryColor};
-`;
-const Text = styled.div`
-  padding-top: 1rem;
-  font-size: 1.2rem;
-
-  ${media.md} {
-    padding-top: 2rem;
-    font-size: 1.5rem;
-  }
-`;
-const LinksContainer = styled.div`
-  ${media.xxl} {
-    max-width: 20% !important;
-  }
-`;
-const IconContainer = styled.div`
-  font-size: 2rem;
-
-  ${media.md} {
-    font-size: 2.5rem;
-  }
-`;
-const StyledKoiIcon = styled.svg`
-  width: 2rem;
-  height: 2rem;
-  stroke-width: 100px;
-  stroke: ${(props) => props.theme.secondaryColor};
-
-  ${media.md} {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-`;
 
 export const KoiIcon = (props) => <KoiSVG {...props} />;
 

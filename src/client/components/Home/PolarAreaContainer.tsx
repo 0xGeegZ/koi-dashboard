@@ -35,7 +35,7 @@ const hexToRgbA = (hex) => {
     }
     c = "0x" + c.join("");
     return (
-      "rgba(" + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(",") + ",0.5)"
+      "rgba(" + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(",") + ",0.45)"
     );
   }
 };
@@ -72,6 +72,8 @@ const getCountByVariety = (kois) => {
 };
 
 const PolarAreaContainer = ({ kois }) => {
+  const sortedList = getCountByVariety(kois);
+  console.log(sortedList);
   const varietiesList = Object.keys(getCountByVariety(kois));
   const varietiesCount = Object.values(getCountByVariety(kois));
   const colorList = getColors(varietiesList);
