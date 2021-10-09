@@ -83,7 +83,7 @@ const PolarAreaContainer = ({ kois }) => {
       {
         data: varietiesCount,
         backgroundColor: colorList,
-        borderWidth: 2,
+        borderWidth: 0,
       },
     ],
   };
