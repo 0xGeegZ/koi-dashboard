@@ -18,13 +18,17 @@
     "prisma:migrate": "yarn prisma migrate dev --preview-feature",
     "prisma:studio": "prisma studio",
     "typecheck": "concurrently --raw yarn:typecheck:*",
-    "typecheck:app": "tsc --noEmit"
+    "typecheck:app": "tsc --noEmit",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/lab": "^5.0.0-alpha.48",
     "@mui/material": "^5.0.1",
+    "@next/bundle-analyzer": "^11.1.2",
     "@prisma/client": "~2.23.0",
     "@react-icons/all-files": "^4.1.0",
     "@urql/exchange-graphcache": "^4.0.0",
@@ -32,7 +36,7 @@
     "chart.js": "^3.5.1",
     "cloudinary-react": "^1.7.0",
     "cookie-session": "^1.4.0",
-    "css-loader": "6.2.0",
+    "css-loader": "6.4.0",
     "cuid": "^2.1.8",
     "date-fns": "^2.23.0",
     "dotenv": "^8.2.0",
