@@ -1,22 +1,28 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import styled from "styled-components";
 import { useGetKoiQuery } from "../../../../client/graphql/getKoi.generated";
 import Breadcrumbs from "../../../../client/components/Breadcrumbs/Breadcrumbs";
 import {
-  slugify,
   Title,
+  media,
 } from "../../../../client/components/utils/styledComponents";
 import Evolution from "../../../../client/components/KoiPage/Evolution";
 
-const Loading = dynamic(
-  import("../../../../client/components/KoiPage/Loading")
-);
 const History = dynamic(
   import("../../../../client/components/KoiPage/History")
 );
 const BackButton = dynamic(
   import("../../../../client/components/utils/BackButton")
 );
+
+const StyledTitle = styled(Title)`
+  padding-bottom: 1rem;
+
+  ${media.lg} {
+    padding-bottom: 1.5rem;
+  }
+`;
 
 const KoiDetailPage = () => {
   const router = useRouter();
@@ -28,7 +34,7 @@ const KoiDetailPage = () => {
     },
   });
 
-  if (fetching || data == null || data.koi == null) return <Loading />;
+  if (fetching || data == null || data.koi == null) return <div />;
 
   if (error) return <p>{error.message}</p>;
 
@@ -38,27 +44,21 @@ const KoiDetailPage = () => {
     <div>
       <Breadcrumbs
         links={[
-          { to: `/koi`, text: "All koi" },
-          { to: `/varieties`, text: "Varieties" },
-          { to: `/varieties/${slugify(koi.variety)}`, text: koi.variety },
+          { to: `/friends`, text: "All friends" },
+          {
+            to: `/friends/${router.query.friendId}`,
+            text: router.query.friendId,
+          },
         ]}
         currentBreadcrumbText={`${koi.breeder} ${
           koi.bloodline ? koi.bloodline : ""
         } ${koi.variety}`}
       />
-      <div className="cp-hide cp-md-show-block">
-        <Title>
-          {koi.breeder} {koi.bloodline ? koi.bloodline : ""} {koi.variety}
-        </Title>
-      </div>
-      <div className="cp-md-hide">
-        <Title>{`${koi.breeder} ${koi.bloodline ? koi.bloodline : ""} ${
-          koi.variety
-        }`}</Title>
-      </div>
+      <StyledTitle>
+        {koi.breeder} {koi.bloodline ? koi.bloodline : ""} {koi.variety}
+      </StyledTitle>
       <Evolution koi={koi} />
       {koi.updates.length > 1 && <History koi={koi} />}
-
       <BackButton src="back" />
     </div>
   );
