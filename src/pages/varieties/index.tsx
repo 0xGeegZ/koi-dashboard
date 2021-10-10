@@ -60,7 +60,7 @@ export default function Varieties() {
 
   if (error) return <p>{error.message}</p>;
 
-  const kois = data.currentUser.kois;
+  const kois = data && data.currentUser && data.currentUser.kois;
   const varieties = getVarieties(kois);
   return (
     <>

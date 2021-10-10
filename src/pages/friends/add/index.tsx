@@ -5,9 +5,10 @@ import {
   Title,
   Wrapper,
 } from "../../../client/components/utils/styledComponents";
+import FriendsForm from "../../../client/components/Friends/FriendsForm";
 
-const FriendsForm = dynamic(
-  import("../../../client/components/Friends/FriendsForm")
+const BackButton = dynamic(
+  import("../../../client/components/utils/BackButton")
 );
 
 const AddFriend = () => {
@@ -36,6 +37,7 @@ const AddFriend = () => {
       <Wrapper>
         <Title>Add Friend</Title>
         <FriendsForm currentUserId={currentUserId} />
+        <BackButton src="/friends" />
       </Wrapper>
     </>
   );

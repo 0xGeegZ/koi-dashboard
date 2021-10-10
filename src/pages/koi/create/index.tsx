@@ -17,8 +17,11 @@ import {
   FormButtonContainer,
 } from "../../../client/components/utils/styledComponents";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
+import KoiForm from "../../../client/components/KoiForm/KoiForm";
 
-const KoiForm = dynamic(import("../../../client/components/KoiForm/KoiForm"));
+const BackButton = dynamic(
+  import("../../../client/components/utils/BackButton")
+);
 
 export default function CreateKoi() {
   const router = useRouter();
@@ -119,6 +122,7 @@ export default function CreateKoi() {
             Add koi
           </Button>
         </FormButtonContainer>
+        <BackButton src="/" />
       </Wrapper>
     </>
   );

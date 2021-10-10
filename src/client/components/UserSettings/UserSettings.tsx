@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import styled from "styled-components";
+import dynamic from "next/dynamic";
 import TextField from "@mui/material/TextField";
 import toast from "react-hot-toast";
 import { AiOutlineSave } from "@react-icons/all-files/ai/AiOutlineSave";
@@ -11,6 +12,8 @@ import {
   FormButtonContainer,
   media,
 } from "../utils/styledComponents";
+
+const BackButton = dynamic(import("../utils/BackButton"));
 
 type Props = {
   name?: string;
@@ -97,6 +100,7 @@ export default function UserSettings({
             Save
           </Button>
         </FormButtonContainer>
+        <BackButton src="/" />
       </Wrapper>
     </>
   );
