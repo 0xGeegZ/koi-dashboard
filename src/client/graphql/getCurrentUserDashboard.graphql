@@ -11,6 +11,7 @@ query GetCurrentUserDashboard {
       skinType
       sex
       youtube
+      purchasePrice
       updates {
         image
         length

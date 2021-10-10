@@ -11,6 +11,7 @@ import {
   KoiSVG,
   Title,
   media,
+  priceStyling,
 } from "../client/components/utils/styledComponents";
 
 const PolarAreaContainer = dynamic(
@@ -55,6 +56,16 @@ export const links = [
   },
 ];
 
+const getTotalKoiValue = (kois) => {
+  let totalValue = 0;
+  kois.map(({ purchasePrice }) => {
+    if (purchasePrice) {
+      totalValue = totalValue + purchasePrice;
+    }
+  });
+  return totalValue;
+};
+
 export default function Dashboard() {
   const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserDashboardQuery();
@@ -85,6 +96,10 @@ export default function Dashboard() {
       <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
       <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
         <PolarAreaContainer kois={kois} />
+        <div>
+          Your total value of koi is{" "}
+          <b>{priceStyling(getTotalKoiValue(kois), 0)}</b>
+        </div>
       </div>
     </>
   );

@@ -7,6 +7,7 @@ mutation UpdateKoi(
   $skinType: String
   $sex: String
   $youtube: String
+  $purchasePrice: Int
 ) {
   updateKoi(
     id: $id
@@ -17,6 +18,7 @@ mutation UpdateKoi(
     skinType: $skinType
     sex: $sex
     youtube: $youtube
+    purchasePrice: $purchasePrice
   ) {
     id
     variety
@@ -26,6 +28,7 @@ mutation UpdateKoi(
     skinType
     sex
     youtube
+    purchasePrice
     user {
       id
       name

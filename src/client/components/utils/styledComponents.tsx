@@ -172,3 +172,11 @@ export const getVarieties = (kois) => {
   kois.map(({ variety }) => (varieties = [...varieties, variety]));
   return varieties.filter((v, i, a) => a.indexOf(v) === i);
 };
+
+export const priceStyling = (value, precision) =>
+  value.toLocaleString("NL", {
+    style: "currency",
+    currency: "eur",
+    minimumFractionDigits: precision,
+    maximumFractionDigits: precision,
+  });

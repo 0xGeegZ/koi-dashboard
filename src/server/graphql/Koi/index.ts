@@ -1,5 +1,5 @@
 // src/server/graphql/Koi/index.ts
-import { objectType, extendType, nonNull, stringArg } from "nexus";
+import { objectType, extendType, nonNull, stringArg, intArg } from "nexus";
 import prisma from "../../db/prisma";
 
 const Koi = objectType({
@@ -16,6 +16,7 @@ const Koi = objectType({
     t.model.sex();
     t.model.user();
     t.model.updates();
+    t.model.purchasePrice();
   },
 });
 
@@ -62,6 +63,7 @@ const mutations = extendType({
         sex: stringArg(),
         birthDate: stringArg(),
         youtube: stringArg(),
+        purchasePrice: intArg(),
       },
       resolve: async (_, args, ctx) => {
         if (!ctx.user?.id) return null;
@@ -76,6 +78,7 @@ const mutations = extendType({
             sex: args.sex,
             birthDate: args.birthDate,
             youtube: args.youtube,
+            purchasePrice: args.purchasePrice,
             user: {
               connect: {
                 id: ctx.user.id,
@@ -97,6 +100,7 @@ const mutations = extendType({
         sex: stringArg(),
         birthDate: stringArg(),
         youtube: stringArg(),
+        purchasePrice: intArg(),
       },
       resolve: async (_, args, ctx) => {
         if (!ctx.user?.id) return null;
@@ -124,6 +128,7 @@ const mutations = extendType({
             sex: args.sex,
             birthDate: args.birthDate,
             youtube: args.youtube,
+            purchasePrice: args.purchasePrice,
           },
         });
       },

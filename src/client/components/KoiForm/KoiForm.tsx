@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import enLocale from "date-fns/locale/en-GB";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import InputAdornment from "@mui/material/InputAdornment";
 import DatePicker from "@mui/lab/DatePicker";
 import {
   breeders,
@@ -73,6 +74,21 @@ export default function KoiForm({ koi, setKoi }) {
           onChange={(evt) =>
             setKoi((k) => ({ ...k, youtube: evt.target.value }))
           }
+        />
+      </div>
+      <div className="cp-i-50 cp-i-sm-33">
+        <TextField
+          type="number"
+          fullWidth
+          label="Purchase price"
+          id="purchasePrice"
+          value={koi.purchasePrice}
+          onChange={(e) =>
+            setKoi((k) => ({ ...k, purchasePrice: Number(e.target.value) }))
+          }
+          InputProps={{
+            startAdornment: <InputAdornment position="start">€</InputAdornment>,
+          }}
         />
       </div>
       <div className="cp-i-50 cp-i-sm-33">

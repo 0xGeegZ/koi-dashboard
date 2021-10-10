@@ -40,11 +40,11 @@ model KoiHistory {
   createdAt  DateTime @default(now())
   modifiedAt DateTime @default(now())
 
-  length Int
-  date   DateTime
-  image  String
-  koi    Koi      @relation(fields: [koiId], references: [id])
-  koiId  String
+  length    Int
+  date      DateTime
+  image     String
+  koi       Koi      @relation(fields: [koiId], references: [id])
+  koiId     String
 }
 
 model Koi {
@@ -52,17 +52,18 @@ model Koi {
   createdAt  DateTime @default(now())
   modifiedAt DateTime @default(now())
 
-  name      String?
-  birthDate String?
-  youtube   String?
-  variety   String
-  breeder   String?
-  bloodline String?
-  skinType  String?
-  sex       String?
-  updates   KoiHistory[]
-  user      User         @relation(fields: [userId], references: [id])
-  userId    String
+  name          String?
+  birthDate     String?
+  youtube       String?
+  variety       String
+  breeder       String?
+  bloodline     String?
+  skinType      String?
+  sex           String?
+  purchasePrice Int?
+  updates       KoiHistory[]
+  user         User         @relation(fields: [userId], references: [id])
+  userId       String
 }
 
 model PondHistory {

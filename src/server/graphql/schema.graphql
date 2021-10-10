@@ -10,6 +10,7 @@ type Koi {
   breeder: String
   id: String!
   modifiedAt: DateTime!
+  purchasePrice: Int
   sex: String
   skinType: String
   updates(after: KoiHistoryWhereUniqueInput, before: KoiHistoryWhereUniqueInput, first: Int, last: Int): [KoiHistory!]!
@@ -35,7 +36,7 @@ input KoiWhereUniqueInput {
 
 type Mutation {
   createFriend(id: String!): User
-  createKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
+  createKoi(birthDate: String, bloodline: String, breeder: String, id: String!, purchasePrice: Int, sex: String, skinType: String, variety: String!, youtube: String): Koi
   createKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory
   createProject(name: String!, slug: String): Project
   createStripeCheckoutBillingPortalUrl(projectId: String!): String
@@ -43,7 +44,7 @@ type Mutation {
   deleteKoi(id: String!): Koi
   deleteKoiHistory(id: String!): KoiHistory
   inviteToProject(email: String!, projectId: String!): Boolean
-  updateKoi(birthDate: String, bloodline: String, breeder: String, id: String!, sex: String, skinType: String, variety: String!, youtube: String): Koi
+  updateKoi(birthDate: String, bloodline: String, breeder: String, id: String!, purchasePrice: Int, sex: String, skinType: String, variety: String!, youtube: String): Koi
   updateKoiHistory(date: String, id: String!, image: String, length: Int): KoiHistory
   updateUser(email: String!, name: String, userId: String!): User
 }

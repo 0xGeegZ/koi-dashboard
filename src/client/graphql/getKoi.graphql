@@ -10,6 +10,7 @@ query getKoi($id: String!) {
     bloodline
     skinType
     sex
+    purchasePrice
     updates {
       length
       date
