@@ -73,6 +73,7 @@ type Query {
   koiHistory(id: String!): KoiHistory
   pond(id: String!): Pond
   project(id: String, slug: String): Project
+  user(id: String!): User
 }
 
 type User {

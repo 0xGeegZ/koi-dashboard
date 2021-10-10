@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import orderBy from "lodash/orderBy";
 import filter from "lodash/filter";
-import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
+import { useGetCurrentUserKoisQuery } from "../../../client/graphql/getCurrentUserKois.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
 
@@ -22,7 +22,7 @@ export const getSortedKois = (kois, order) => {
 
 export default function VarietyPage() {
   const router = useRouter();
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
+  const [{ data, fetching, error }] = useGetCurrentUserKoisQuery();
   const variety: any = router.query.id ? router.query.id : " ";
   const string = variety[0].toUpperCase() + variety.substring(1);
 

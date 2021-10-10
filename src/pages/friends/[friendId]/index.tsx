@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import orderBy from "lodash/orderBy";
-import filter from "lodash/filter";
-import { useGetCurrentUserQuery } from "../../../client/graphql/getCurrentUser.generated";
+import { useGetFriendKoiQuery } from "../../../client/graphql/getFriendKois.generated";
 import Breadcrumbs from "../../../client/components/Breadcrumbs/Breadcrumbs";
 import { Title } from "../../../client/components/utils/styledComponents";
 
@@ -23,7 +21,12 @@ export const getSortedKois = (kois, order) => {
 export default function AllUsersKoi() {
   const router = useRouter();
   const [dropdown] = useState(undefined);
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
+  const { friendId } = router.query;
+  const [{ data, fetching, error }] = useGetFriendKoiQuery({
+    variables: {
+      id: String(friendId),
+    },
+  });
   if (fetching)
     return (
       <>
@@ -37,21 +40,8 @@ export default function AllUsersKoi() {
 
   if (error) return <p>{error.message}</p>;
 
-  if (!data?.currentUser) {
-    if (process.browser) router.push("/login");
-    return (
-      <p>
-        Redirecting to <Link href="/login">/login</Link>
-        ...
-      </p>
-    );
-  }
-  const friendId = router.query.friendId;
-  const friendKois = filter(data.currentUser.friends, { id: friendId });
-  // @ts-ignore: test
-  const kois = friendKois[0].kois;
-  // @ts-ignore: test
-  const name = friendKois[0].name ? friendKois[0].name : friendId;
+  const kois = data && data.user ? data.user.kois : [];
+  const name = data && data.user && data.user.name ? data.user.name : friendId;
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText={`All koi of ${name}`} />

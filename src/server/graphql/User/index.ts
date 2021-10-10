@@ -27,6 +27,22 @@ const queries = extendType({
         });
       },
     });
+
+    t.field("user", {
+      type: "User",
+      args: {
+        id: nonNull(stringArg()),
+      },
+      resolve: (_, { id }, ctx) => {
+        if (!ctx.user?.id) return null;
+
+        return prisma.user.findUnique({
+          where: {
+            id,
+          },
+        });
+      },
+    });
   },
 });
 

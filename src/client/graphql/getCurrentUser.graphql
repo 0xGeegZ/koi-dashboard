@@ -3,41 +3,5 @@ query GetCurrentUser {
     id
     name
     email
-    friends {
-      name
-      id
-      kois {
-        variety
-        id
-        birthDate
-        breeder
-        bloodline
-        skinType
-        sex
-        youtube
-        updates {
-          image
-          length
-          date
-          id
-        }
-      }
-    }
-    kois {
-      variety
-      id
-      birthDate
-      breeder
-      bloodline
-      skinType
-      sex
-      youtube
-      updates {
-        image
-        length
-        date
-        id
-      }
-    }
   }
 }

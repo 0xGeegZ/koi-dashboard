@@ -8,10 +8,8 @@ const PUBLIC_STRIPE_API_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY;
  * When clicked, redirects the user to their a Stripe Checkout session for the to upgrade to the paid plan
  */
 export default function UpgradeButton({ projectId }: { projectId: string }) {
-  const [
-    ,
-    createStripeCheckoutSession,
-  ] = useCreateStripeCheckoutSessionMutation();
+  const [, createStripeCheckoutSession] =
+    useCreateStripeCheckoutSessionMutation();
 
   const redirectToCheckout = () => {
     if (!PUBLIC_STRIPE_API_KEY)

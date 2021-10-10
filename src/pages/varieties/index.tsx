@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
+import { useGetCurrentUserKoisQuery } from "../../client/graphql/getCurrentUserKois.generated";
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
 import {
   Title,
@@ -45,7 +45,7 @@ const StyledCard = styled(Card)`
 
 export default function Varieties() {
   const router = useRouter();
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
+  const [{ data, fetching, error }] = useGetCurrentUserKoisQuery();
 
   if (fetching)
     return (

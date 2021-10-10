@@ -56,10 +56,8 @@ function ProjectSettings() {
       slug: String(slug),
     },
   });
-  const [
-    ,
-    createStripeCheckoutBillingPortalUrl,
-  ] = useCreateStripeCheckoutBillingPortalUrlMutation();
+  const [, createStripeCheckoutBillingPortalUrl] =
+    useCreateStripeCheckoutBillingPortalUrlMutation();
 
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;

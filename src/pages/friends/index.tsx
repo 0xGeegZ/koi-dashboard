@@ -3,7 +3,7 @@ import styled from "styled-components";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
-import { useGetCurrentUserQuery } from "../../client/graphql/getCurrentUser.generated";
+import { useGetCurrentUserFriendsQuery } from "../../client/graphql/getCurrentUserFriends.generated";
 import Breadcrumbs from "../../client/components/Breadcrumbs/Breadcrumbs";
 import {
   Title,
@@ -70,7 +70,7 @@ const options = [
 
 const Friends = () => {
   const router = useRouter();
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
+  const [{ data, fetching, error }] = useGetCurrentUserFriendsQuery();
 
   if (fetching)
     return (

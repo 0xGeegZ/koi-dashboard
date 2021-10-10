@@ -6,7 +6,7 @@ import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineUsergroupAdd } from "@react-icons/all-files/ai/AiOutlineUsergroupAdd";
-import { useGetCurrentUserQuery } from "../client/graphql/getCurrentUser.generated";
+import { useGetCurrentUserDashboardQuery } from "../client/graphql/getCurrentUserDashboard.generated";
 import {
   KoiSVG,
   Title,
@@ -57,7 +57,7 @@ export const links = [
 
 export default function Dashboard() {
   const router = useRouter();
-  const [{ data, fetching, error }] = useGetCurrentUserQuery();
+  const [{ data, fetching, error }] = useGetCurrentUserDashboardQuery();
 
   if (fetching)
     return (
