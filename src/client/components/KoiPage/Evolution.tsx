@@ -21,6 +21,7 @@ export const CardContainer = styled.div`
     padding: 0 1rem;
   }
   ${media.lg} {
+    margin-top: 0.5rem;
     padding: 0 2rem;
   } ;
 `;

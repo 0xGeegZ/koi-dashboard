@@ -17,8 +17,6 @@ const BackButton = dynamic(
 );
 
 const StyledTitle = styled(Title)`
-  padding-bottom: 1rem;
-
   ${media.lg} {
     padding-bottom: 1.5rem;
   }
