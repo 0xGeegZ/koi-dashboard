@@ -10,8 +10,8 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineMenu } from "@react-icons/all-files/ai/AiOutlineMenu";
-import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineHome } from "@react-icons/all-files/ai/AiOutlineHome";
 import { KoiSVG, Title, media } from "../utils/styledComponents";
 import { links } from "../../../pages";
@@ -35,9 +35,9 @@ const FooterLinks = [
     path: "/koi",
   },
   {
-    title: "Add koi",
-    path: "/koi/create",
-    icon: <AiOutlinePlus />,
+    title: "Varieties",
+    path: "/varieties",
+    icon: <AiOutlineApartment />,
   },
   {
     title: "Menu",
