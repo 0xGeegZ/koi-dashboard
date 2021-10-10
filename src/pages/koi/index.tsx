@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
@@ -9,10 +9,8 @@ import {
   Title,
   withLink,
 } from "../../client/components/utils/styledComponents";
+import TitleContainer from "../../client/components/utils/TitleContainer";
 
-const TitleContainer = dynamic(
-  import("../../client/components/utils/TitleContainer")
-);
 const ActionButton = dynamic(
   import("../../client/components/utils/ActionButton")
 );

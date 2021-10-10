@@ -11,10 +11,8 @@ import {
   Card,
   media,
 } from "../../client/components/utils/styledComponents";
+import TitleContainer from "../../client/components/utils/TitleContainer";
 
-const TitleContainer = dynamic(
-  import("../../client/components/utils/TitleContainer")
-);
 const ActionButton = dynamic(
   import("../../client/components/utils/ActionButton")
 );
