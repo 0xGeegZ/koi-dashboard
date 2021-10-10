@@ -16,6 +16,10 @@ const Color = styled.div`
   margin-right: 1rem;
   border-radius: 4px;
 `;
+const Bold = styled.span`
+  font-weight: 600;
+  padding: 0 0.3rem;
+`;
 
 const options = {
   responsive: true,
@@ -72,10 +76,11 @@ const getCountByVariety = (kois) => {
 };
 
 const PolarAreaContainer = ({ kois }) => {
-  const sortedList = getCountByVariety(kois);
-  console.log(sortedList);
-  const varietiesList = Object.keys(getCountByVariety(kois));
-  const varietiesCount = Object.values(getCountByVariety(kois));
+  const sortedList = Object.fromEntries(
+    Object.entries(getCountByVariety(kois)).sort(([, b], [, a]) => a - b)
+  );
+  const varietiesList = Object.keys(sortedList);
+  const varietiesCount = Object.values(sortedList);
   const colorList = getColors(varietiesList);
   const data = {
     labels: varietiesList,
@@ -90,7 +95,8 @@ const PolarAreaContainer = ({ kois }) => {
   return (
     <Card>
       <StyledSubTitle>
-        You have a total of <b>{kois.length} koi</b> for a total of{" "}
+        You have a total of <b>{kois.length} koi</b>, with an average of size of{" "}
+        <b>{getTotalLength(kois) / kois.length}cm</b> and a total of{" "}
         <b>{getTotalLength(kois)}cm</b>
       </StyledSubTitle>
       <div className="cp-c-row cp-c-align-start-start cp-c-wrap">
@@ -99,9 +105,18 @@ const PolarAreaContainer = ({ kois }) => {
         </div>
         <div className="cp-c-padding-2 cp-c-lg-padding-3">
           {varietiesList.map((variety, index) => (
-            <div className="cp-c-row cp-c-align-start-center" key={variety}>
-              <Color background={colorList[index]} /> {varietiesCount[index]}{" "}
-              {variety}
+            <div className="cp-c-row cp-c-align-start-center " key={variety}>
+              <Color background={colorList[index]} />
+              <div>
+                {varietiesCount[index]} {variety}, with an average of size of{" "}
+                <Bold>
+                  {getTotalLength(filter(kois, { variety })) /
+                    filter(kois, { variety }).length}
+                  cm
+                </Bold>{" "}
+                and a total of{"  "}
+                <Bold>{getTotalLength(filter(kois, { variety }))}cm</Bold>
+              </div>
             </div>
           ))}
         </div>

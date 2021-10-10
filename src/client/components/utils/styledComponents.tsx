@@ -70,13 +70,13 @@ export const SubTitle = styled.div`
   padding: 0.5rem;
   padding-bottom: 0;
   font-size: 1.2rem;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   color: ${(props) => props.theme.mainColor};
 
   ${media.lg} {
     padding: 1rem;
     font-size: 1.5rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
   }
 `;
 
