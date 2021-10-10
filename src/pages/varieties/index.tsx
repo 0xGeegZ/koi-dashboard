@@ -60,16 +60,6 @@ export default function Varieties() {
 
   if (error) return <p>{error.message}</p>;
 
-  if (!data?.currentUser) {
-    if (process.browser) router.push("/login");
-    return (
-      <p>
-        Redirecting to <Link href="/login">/login</Link>
-        ...
-      </p>
-    );
-  }
-
   const kois = data.currentUser.kois;
   const varieties = getVarieties(kois);
   return (

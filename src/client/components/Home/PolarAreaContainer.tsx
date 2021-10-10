@@ -2,12 +2,19 @@
 
 import { PolarArea } from "react-chartjs-2";
 import filter from "lodash/filter";
+import Link from "next/link";
 import styled from "styled-components";
-import { Card, SubTitle } from "../utils/styledComponents";
+import { Card, SubTitle, slugify } from "../utils/styledComponents";
 import { varietiesColor } from "../utils/KoiFromData";
 
 const StyledSubTitle = styled(SubTitle)`
   padding-bottom: 2rem;
+`;
+const VarietyContainer = styled.div`
+  :hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 `;
 const Color = styled.div`
   width: 3rem;
@@ -105,21 +112,26 @@ const PolarAreaContainer = ({ kois }) => {
         </div>
         <div className="cp-c-padding-2 cp-c-lg-padding-3">
           {varietiesList.map((variety, index) => (
-            <div className="cp-c-row cp-c-align-start-center " key={variety}>
-              <Color background={colorList[index]} />
-              <div>
-                {varietiesCount[index]} {variety}, with an average of size of{" "}
-                <Bold>
-                  {(
-                    getTotalLength(filter(kois, { variety })) /
-                    filter(kois, { variety }).length
-                  ).toFixed(1)}
-                  cm
-                </Bold>{" "}
-                and a total of{"  "}
-                <Bold>{getTotalLength(filter(kois, { variety }))}cm</Bold>
-              </div>
-            </div>
+            <Link key={variety} href={`/varieties/${slugify(variety)}`}>
+              <VarietyContainer className="cp-c-row cp-c-align-start-center ">
+                <Color background={colorList[index]} />
+                <div>
+                  <b>
+                    {varietiesCount[index]} {variety}
+                  </b>
+                  , with an average of size of{" "}
+                  <Bold>
+                    {(
+                      getTotalLength(filter(kois, { variety })) /
+                      filter(kois, { variety }).length
+                    ).toFixed(1)}
+                    cm
+                  </Bold>{" "}
+                  and a total of{"  "}
+                  <Bold>{getTotalLength(filter(kois, { variety }))}cm</Bold>
+                </div>
+              </VarietyContainer>
+            </Link>
           ))}
         </div>
       </div>
