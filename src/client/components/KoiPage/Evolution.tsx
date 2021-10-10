@@ -61,7 +61,7 @@ const Overlay = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   text-align: center;
   border-radius: 10px;
 `;
@@ -92,12 +92,6 @@ const mockUpdates = [
     date: "2019-11-30T23:00:00.000Z",
     image:
       "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336739/koi/showablur_alhjww.png",
-  },
-  {
-    length: 59,
-    date: "2020-01-31T23:00:00.000Z",
-    image:
-      "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336916/koi/showa2blur_tabdxq.png",
   },
   {
     length: 65,
@@ -195,6 +189,7 @@ const Evolution = ({ koi }) => {
                         index={index}
                         setPhotoIndex={setPhotoIndex}
                         setVisible={setVisible}
+                        blur
                       />
                     ))}
                     <Overlay>
@@ -229,7 +224,7 @@ const Evolution = ({ koi }) => {
               <Link href={`/koi/${koi.id}/edit`}>
                 <EmptyIframeContainer>
                   <Image
-                    src="https://img.youtube.com/vi/3NSQQDIgJ7s/0.jpg"
+                    src="/blurVideo.png"
                     layout="fill"
                     objectFit="cover"
                     alt="thekoicompany logo"

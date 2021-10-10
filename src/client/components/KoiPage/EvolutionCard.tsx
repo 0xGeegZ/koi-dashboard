@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from "styled-components";
 import { media } from "../utils/styledComponents";
 import Image from "next/image";
@@ -30,19 +31,24 @@ const Date = styled.div`
   font-size: 0.8rem;
   text-align: center;
   font-weight: 300;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => (props.blur ? "transparent" : props.theme.textColor)};
+  text-shadow: ${(props) => props.blur && "0 0 5px rgba(0, 0, 0, 0.6)"};
 `;
 const Size = styled.div`
   font-size: 1.3rem;
   text-align: center;
   font-weight: 600;
-  color: ${(props) => props.theme.mainColor};
   padding-right: 0.4rem;
+
+  color: ${(props) => (props.blur ? "transparent" : props.theme.mainColor)};
+  text-shadow: ${(props) => props.blur && "0 0 5px rgba(12, 65, 132, 0.6)"};
 `;
 const Age = styled.div`
   font-size: 1.3rem;
   text-align: center;
-  color: ${(props) => props.theme.mainColor};
+
+  color: ${(props) => (props.blur ? "transparent" : props.theme.mainColor)};
+  text-shadow: ${(props) => props.blur && "0 0 5px rgba(12, 65, 132, 0.6)"};
 `;
 
 const EvolutionCard = ({
@@ -51,6 +57,7 @@ const EvolutionCard = ({
   birthdate,
   index,
   update,
+  blur,
 }) => {
   return (
     <CardStyle
@@ -70,10 +77,10 @@ const EvolutionCard = ({
             priority
           />
         </ImageContainer>
-        <Date>{getFormattedDate(update.date)}</Date>
+        <Date blur={blur}>{getFormattedDate(update.date)}</Date>
         <div className="cp-c-row cp-c-align-center-center">
-          <Size>{update.length}cm</Size>
-          <Age>{getAgeDifferenceText(birthdate, update.date)}</Age>
+          <Size blur={blur}>{update.length}cm</Size>
+          <Age blur={blur}>{getAgeDifferenceText(birthdate, update.date)}</Age>
         </div>
       </div>
     </CardStyle>

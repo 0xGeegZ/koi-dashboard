@@ -94,12 +94,12 @@ const Loading = () => {
         ]}
         currentBreadcrumbText=""
       />
-      {/* <Title>
+      <Title>
         <StyledSkeleton width="300px" />
 
         <StyledCardTop>
           <SubTitle>Koi evolution</SubTitle>
-          <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
+          {/* <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
             {new Array(2).fill("a").map((a, index) => (
               <Container
                 key={index}
@@ -116,11 +116,11 @@ const Loading = () => {
                 </StyledSkeleton>
               </Container>
             ))}
-          </div>
+          </div> */}
         </StyledCardTop>
       </Title>
 
-      <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
+      {/* <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
           <StyledCard>
             <VideoSize />

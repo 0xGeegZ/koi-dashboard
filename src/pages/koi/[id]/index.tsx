@@ -11,15 +11,13 @@ import {
   withLink,
 } from "../../../client/components/utils/styledComponents";
 import Evolution from "../../../client/components/KoiPage/Evolution";
+import TitleContainer from "../../../client/components/utils/TitleContainer";
 
 const ActionButton = dynamic(
   import("../../../client/components/utils/ActionButton")
 );
 const Loading = dynamic(import("../../../client/components/KoiPage/Loading"));
 const History = dynamic(import("../../../client/components/KoiPage/History"));
-const TitleContainer = dynamic(
-  import("../../../client/components/utils/TitleContainer")
-);
 
 const KoiDetailPage = () => {
   const [, deleteKoi] = useDeleteKoiMutation();
