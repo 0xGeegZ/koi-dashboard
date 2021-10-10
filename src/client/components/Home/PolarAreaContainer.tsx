@@ -96,8 +96,8 @@ const PolarAreaContainer = ({ kois }) => {
     <Card>
       <StyledSubTitle>
         You have a total of <b>{kois.length} koi</b>, with an average of size of{" "}
-        <b>{getTotalLength(kois) / kois.length}cm</b> and a total of{" "}
-        <b>{getTotalLength(kois)}cm</b>
+        <b>{(getTotalLength(kois) / kois.length).toFixed(1)}cm</b> and a total
+        of <b>{getTotalLength(kois)}cm</b>
       </StyledSubTitle>
       <div className="cp-c-row cp-c-align-start-start cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50 cp-i-lg-35">
@@ -110,8 +110,10 @@ const PolarAreaContainer = ({ kois }) => {
               <div>
                 {varietiesCount[index]} {variety}, with an average of size of{" "}
                 <Bold>
-                  {getTotalLength(filter(kois, { variety })) /
-                    filter(kois, { variety }).length}
+                  {(
+                    getTotalLength(filter(kois, { variety })) /
+                    filter(kois, { variety }).length
+                  ).toFixed(1)}
                   cm
                 </Bold>{" "}
                 and a total of{"  "}
