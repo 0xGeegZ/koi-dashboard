@@ -14,6 +14,9 @@ const Loading = dynamic(
 const History = dynamic(
   import("../../../../client/components/KoiPage/History")
 );
+const BackButton = dynamic(
+  import("../../../../client/components/utils/BackButton")
+);
 
 const KoiDetailPage = () => {
   const router = useRouter();
@@ -55,7 +58,8 @@ const KoiDetailPage = () => {
       </div>
       <Evolution koi={koi} />
       {koi.updates.length > 1 && <History koi={koi} />}
-      <div className="cp-md-hide"></div>
+
+      <BackButton src="back" />
     </div>
   );
 };

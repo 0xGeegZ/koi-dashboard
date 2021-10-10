@@ -37,7 +37,7 @@ const AddFriend = () => {
       <Wrapper>
         <Title>Add Friend</Title>
         <FriendsForm currentUserId={currentUserId} />
-        <BackButton src="/friends" />
+        <BackButton src="/" />
       </Wrapper>
     </>
   );

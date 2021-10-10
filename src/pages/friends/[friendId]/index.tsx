@@ -9,6 +9,9 @@ import { Title } from "../../../client/components/utils/styledComponents";
 const VerticalCard = dynamic(
   import("../../../client/components/Verticalcard/Verticalcard")
 );
+const BackButton = dynamic(
+  import("../../../client/components/utils/BackButton")
+);
 
 export const getSortedKois = (kois, order) => {
   if (order == "Recent") {
@@ -62,6 +65,7 @@ export default function AllUsersKoi() {
               />
             </div>
           </div>
+          <BackButton src="/friends" />
         </>
       ) : (
         <div>Your friend has no koi yet</div>
