@@ -5,32 +5,21 @@ import { Skeleton } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { Card, SubTitle, media, Title } from "../utils/styledComponents";
-import { StyledCard } from "./Evolution";
+import { StyledCard, CardContainer } from "./Evolution";
 
 const StyledSkeleton = styled(Skeleton)`
+  background: rgba(58, 56, 120, 0.6);
   transform: scale(1, 1);
   border-radius: 20px;
 `;
-const StyledCardTop = styled(Card)`
-  margin-top: 1rem;
+const StyledTitle = styled(Title)`
+  padding-bottom: 1rem;
 
   ${media.lg} {
-    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 `;
 
-export const CardContainer = styled.div`
-  margin-top: 1rem;
-  padding: 0 1rem;
-
-  ${media.md} {
-    margin-top: 0;
-    padding: 0 1rem;
-  }
-  ${media.lg} {
-    padding: 0 2rem;
-  } ;
-`;
 export const ImageContainer = styled.div`
   position: relative;
   padding-top: 160%;
@@ -48,6 +37,7 @@ const SkeletonTextDate = styled.div`
 
 const SkeletonTextSize = styled.div`
   height: 1.5rem;
+  color: ${(props) => props.theme.mainColor};
 `;
 const Container = styled.div`
   margin-right: 1rem;
@@ -94,12 +84,15 @@ const Loading = () => {
         ]}
         currentBreadcrumbText=""
       />
-      <Title>
+      <StyledTitle>
         <StyledSkeleton width="300px" />
-
-        <StyledCardTop>
+      </StyledTitle>
+      <CardContainer>
+        <Card>
           <SubTitle>Koi evolution</SubTitle>
-          {/* <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
+        </Card>
+      </CardContainer>
+      {/* <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
             {new Array(2).fill("a").map((a, index) => (
               <Container
                 key={index}
@@ -117,8 +110,6 @@ const Loading = () => {
               </Container>
             ))}
           </div> */}
-        </StyledCardTop>
-      </Title>
 
       {/* <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
