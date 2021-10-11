@@ -11,18 +11,31 @@ import {
   KoiSVG,
   Title,
   media,
+  SubTitle,
   priceStyling,
+  Card,
 } from "../client/components/utils/styledComponents";
-
-const PolarAreaContainer = dynamic(
-  import("../client/components/Home/PolarAreaContainer")
-);
+import PolarAreaContainer from "../client/components/Home/PolarAreaContainer";
 
 const StyledTitle = styled(Title)`
   padding-top: 1rem;
 
   ${media.lg} {
     padding-top: 2rem;
+  }
+`;
+const StyledCard = styled(Card)`
+  margin-top: 1rem;
+  ${media.lg} {
+    margin-top: 1.5rem;
+  }
+`;
+export const Text = styled.div`
+  padding: 0.5rem;
+
+  ${media.lg} {
+    padding: 1rem;
+    padding-top: 0rem;
   }
 `;
 
@@ -96,10 +109,15 @@ export default function Dashboard() {
       <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
       <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
         <PolarAreaContainer kois={kois} />
-        <div>
-          Your total value of koi is{" "}
-          <b>{priceStyling(getTotalKoiValue(kois), 0)}</b>
-        </div>
+        <StyledCard>
+          <SubTitle>Koi value</SubTitle>
+          <Text>
+            Your total value of koi is{" "}
+            <b>{priceStyling(getTotalKoiValue(kois), 0)}</b>, which is an
+            average of{" "}
+            <b>{priceStyling(getTotalKoiValue(kois) / kois.length, 0)}</b>
+          </Text>
+        </StyledCard>
       </div>
     </>
   );
