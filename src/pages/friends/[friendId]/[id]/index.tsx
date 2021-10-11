@@ -8,6 +8,7 @@ import {
   media,
 } from "../../../../client/components/utils/styledComponents";
 import Evolution from "../../../../client/components/KoiPage/Evolution";
+import Loading from "../../../../client/components/KoiPage/Loading";
 
 const History = dynamic(
   import("../../../../client/components/KoiPage/History")
@@ -32,7 +33,7 @@ const KoiDetailPage = () => {
     },
   });
 
-  if (fetching || data == null || data.koi == null) return <div />;
+  if (fetching || data == null || data.koi == null) return <Loading />;
 
   if (error) return <p>{error.message}</p>;
 
