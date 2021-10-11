@@ -12,6 +12,10 @@ type Props = {
 };
 
 const Container = styled.div`
+  ${media.xl} {
+    max-width: 16.666666% !important;
+  }
+
   ${media.xxl} {
     max-width: 12.5% !important;
   }
@@ -47,10 +51,7 @@ const StyledSkeleton = styled(Skeleton)`
 const VerticalCard = ({ kois, friendId }: Props) => {
   return kois ? (
     kois.map(({ id, sex, updates, bloodline, birthDate, breeder }) => (
-      <Container
-        className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
-        key={id}
-      >
+      <Container className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 " key={id}>
         <Link href={!friendId ? `/koi/${id}` : `/friends/${friendId}/${id}`}>
           <StyledCard>
             <ImageContainer>
