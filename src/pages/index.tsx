@@ -1,6 +1,9 @@
+// @ts-nocheck
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
+import isEqual from "lodash/isEqual";
 import styled from "styled-components";
 import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
@@ -82,6 +85,23 @@ const getTotalKoiValue = (kois) => {
 export default function Dashboard() {
   const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserDashboardQuery();
+  const [kois, setKois] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setKois(JSON.parse(localStorage.getItem("kois")));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (data?.currentUser && !isEqual(data.currentUser.kois, kois)) {
+      setKois(data.currentUser.kois);
+      window.localStorage.setItem(
+        "kois",
+        JSON.stringify(data.currentUser.kois)
+      );
+    }
+  }, [data]);
 
   if (fetching)
     return (
@@ -103,7 +123,6 @@ export default function Dashboard() {
     );
   }
 
-  const kois = data.currentUser.kois;
   return (
     <>
       <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
