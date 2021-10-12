@@ -105,7 +105,7 @@ export default function Dashboard() {
     }
   }, [data]);
 
-  if (fetching && kois.length == 0)
+  if (fetching)
     return (
       <>
         <StyledTitle>Hello</StyledTitle>
