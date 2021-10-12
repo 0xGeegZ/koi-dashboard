@@ -83,9 +83,9 @@ const getTotalKoiValue = (kois) => {
 };
 
 export default function Dashboard() {
-  const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserDashboardQuery();
   const [kois, setKois] = useState([]);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -96,16 +96,19 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    if (data?.currentUser && !isEqual(data.currentUser.kois, kois)) {
-      setKois(data.currentUser.kois);
-      window.localStorage.setItem(
-        "kois",
-        JSON.stringify(data.currentUser.kois)
-      );
+    if (data?.currentUser) {
+      setName(data?.currentUser.name);
+      if (!isEqual(data.currentUser.kois, kois)) {
+        setKois(data.currentUser.kois);
+        window.localStorage.setItem(
+          "kois",
+          JSON.stringify(data.currentUser.kois)
+        );
+      }
     }
   }, [data]);
 
-  if (fetching)
+  if (fetching && kois.length == 0)
     return (
       <>
         <StyledTitle>Hello</StyledTitle>
@@ -115,19 +118,9 @@ export default function Dashboard() {
 
   if (error) return <p>{error.message}</p>;
 
-  if (!data?.currentUser) {
-    if (process.browser) router.push("/login");
-    return (
-      <p>
-        Redirecting to <Link href="/login">/login</Link>
-        ...
-      </p>
-    );
-  }
-
   return (
     <>
-      <StyledTitle>Hello {data.currentUser.name}!</StyledTitle>
+      <StyledTitle>Hello {name}!</StyledTitle>
       <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
         <PolarAreaContainer kois={kois} />
         <StyledCard>
