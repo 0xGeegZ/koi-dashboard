@@ -94,7 +94,7 @@ export default function AllUsersKoi() {
 
   if (error) return <p>{error.message}</p>;
 
-  const sortedKoi = sortBy(kois, ["modifiedAt", "desc"]);
+  const sortedKoi = sortBy(kois, ["modifiedAt", "asc"]);
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="All koi" />
