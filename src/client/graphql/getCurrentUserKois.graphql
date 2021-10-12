@@ -2,6 +2,7 @@ query GetCurrentUserKois {
   currentUser {
     id
     kois {
+      modifiedAt
       variety
       id
       birthDate

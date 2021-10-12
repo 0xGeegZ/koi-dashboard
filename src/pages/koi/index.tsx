@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import sortBy from "lodash/sortBy";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineClockCircle } from "@react-icons/all-files/ai/AiOutlineClockCircle";
@@ -59,8 +60,28 @@ const options = [
 
 export default function AllUsersKoi() {
   const [{ data, fetching, error }] = useGetCurrentUserKoisQuery();
+  const [kois, setKois] = useState([]);
 
-  if (fetching)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("kois")) {
+        // @ts-ignore: test
+        setKois(JSON.parse(localStorage.getItem("kois")));
+      }
+    }
+  }, []);
+  useEffect(() => {
+    if (data?.currentUser && data.currentUser.kois) {
+      // @ts-ignore: test
+      setKois(data.currentUser.kois);
+      window.localStorage.setItem(
+        "kois",
+        JSON.stringify(data.currentUser.kois)
+      );
+    }
+  }, [data]);
+
+  if (fetching && kois == [])
     return (
       <>
         <Breadcrumbs links={[]} currentBreadcrumbText="All koi" />
@@ -73,7 +94,7 @@ export default function AllUsersKoi() {
 
   if (error) return <p>{error.message}</p>;
 
-  const kois = data?.currentUser ? data.currentUser.kois : [];
+  const sortedKoi = sortBy(kois, ["modifiedAt", "desc"]);
   return (
     <>
       <Breadcrumbs links={[]} currentBreadcrumbText="All koi" />
@@ -82,7 +103,7 @@ export default function AllUsersKoi() {
           <div className="cp-md-hide">
             <Title>All koi</Title>
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-              <VerticalCard kois={kois} />
+              <VerticalCard kois={sortedKoi} />
             </div>
             <ActionButton actions={actions} />
           </div>
@@ -93,7 +114,7 @@ export default function AllUsersKoi() {
               paddingBottom="0"
             />
             <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
-              <VerticalCard kois={kois} />
+              <VerticalCard kois={sortedKoi} />
             </div>
           </div>
         </>

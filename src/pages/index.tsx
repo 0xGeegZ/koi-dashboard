@@ -1,8 +1,6 @@
 // @ts-nocheck
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import isEqual from "lodash/isEqual";
 import styled from "styled-components";
 import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
@@ -82,7 +80,7 @@ const getTotalKoiValue = (kois) => {
   return totalValue;
 };
 
-export default function Dashboard() {
+const Dashboard = () => {
   const [{ data, fetching, error }] = useGetCurrentUserDashboardQuery();
   const [kois, setKois] = useState([]);
   const [name, setName] = useState("");
@@ -108,7 +106,7 @@ export default function Dashboard() {
     }
   }, [data]);
 
-  if (fetching && kois.length == 0)
+  if (fetching && kois == [])
     return (
       <>
         <StyledTitle>Hello</StyledTitle>
@@ -120,19 +118,23 @@ export default function Dashboard() {
 
   return (
     <>
-      <StyledTitle>Hello {name}!</StyledTitle>
-      <div className="cp-c-row cp-c-wrap cp-c-padding-2 cp-c-lg-padding-3">
-        <PolarAreaContainer kois={kois} />
-        <StyledCard>
-          <SubTitle>Koi value</SubTitle>
-          <Text>
-            Your total value of koi is{" "}
-            <b>{priceStyling(getTotalKoiValue(kois), 0)}</b>, which is an
-            average of{" "}
-            <b>{priceStyling(getTotalKoiValue(kois) / kois.length, 0)}</b>
-          </Text>
-        </StyledCard>
+      <StyledTitle>Hello {name}</StyledTitle>
+      <div className="cp-c-padding-2 cp-c-lg-padding-3">
+        <div className="cp-c-row cp-c-wrap ">
+          <PolarAreaContainer kois={kois} />
+          <StyledCard>
+            <SubTitle>Koi value</SubTitle>
+            <Text>
+              Your total value of koi is{" "}
+              <b>{priceStyling(getTotalKoiValue(kois), 0)}</b>, which is an
+              average of{" "}
+              <b>{priceStyling(getTotalKoiValue(kois) / kois.length, 0)}</b>
+            </Text>
+          </StyledCard>
+        </div>
       </div>
     </>
   );
-}
+};
+
+export default Dashboard;

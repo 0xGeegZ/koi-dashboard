@@ -10,9 +10,7 @@ import { varietiesColor } from "../utils/KoiFromData";
 const StyledSubTitle = styled(SubTitle)`
   margin-bottom: 0.5rem;
 `;
-const Text = styled.div`
-  padding: 0.5rem;
-`;
+
 const MainText = styled.div`
   font-size: 1rem;
   line-height: 1.4rem;
@@ -114,7 +112,7 @@ const PolarAreaContainer = ({ kois }) => {
         <div className="cp-i-100 cp-i-md-50 cp-i-lg-35">
           <PolarArea data={data} options={options} />
         </div>
-        <div className="cp-c-padding-2 cp-c-lg-padding-3">
+        <div className="cp-i-flex cp-c-padding-2 cp-c-lg-padding-3">
           <MainText>
             You have a total of <b>{kois.length} koi</b>, with an average of
             size of <b>{(getTotalLength(kois) / kois.length).toFixed(1)}cm</b>{" "}
