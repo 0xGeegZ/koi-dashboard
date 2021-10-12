@@ -89,7 +89,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setKois(JSON.parse(localStorage.getItem("kois")));
+      if (localStorage.getItem("kois")) {
+        setKois(JSON.parse(localStorage.getItem("kois")));
+      }
     }
   }, []);
 
