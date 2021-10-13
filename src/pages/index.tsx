@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import isEqual from "lodash/isEqual";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
@@ -81,6 +83,7 @@ const getTotalKoiValue = (kois) => {
 };
 
 const Dashboard = () => {
+  const router = useRouter();
   const [{ data, fetching, error }] = useGetCurrentUserDashboardQuery();
   const [kois, setKois] = useState([]);
   const [name, setName] = useState("");
@@ -115,6 +118,15 @@ const Dashboard = () => {
     );
 
   if (error) return <p>{error.message}</p>;
+  if (!data?.currentUser) {
+    if (process.browser) router.push("/login");
+    return (
+      <p>
+        Redirecting to <Link href="/login">/login</Link>
+        ...
+      </p>
+    );
+  }
 
   return (
     <>

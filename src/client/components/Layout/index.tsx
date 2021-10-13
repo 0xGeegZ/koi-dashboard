@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { useGetCurrentUserQuery } from "../../graphql/getCurrentUser.generated";
 import { useWindowSize } from "../utils/styledComponents";
@@ -18,7 +16,6 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   const [{ data, fetching }] = useGetCurrentUserQuery();
-  const router = useRouter();
   const isAuthenticated = !!data?.currentUser;
   const width = useWindowSize();
   const isMobile = width < 568;
@@ -33,17 +30,7 @@ export default function Layout({ children }: Props) {
       <DesktopNavigation>{children}</DesktopNavigation>
     );
 
-  if (!fetching && !isAuthenticated) {
-    if (process.browser) router.push("/login");
-    return (
-      <p>
-        Redirecting to <Link href="/login">/login</Link>
-        ...
-      </p>
-    );
-  }
-
-  return (
+  return isAuthenticated ? (
     <>
       {isMobile ? (
         <>
@@ -54,5 +41,7 @@ export default function Layout({ children }: Props) {
         <DesktopNavigation>{children}</DesktopNavigation>
       )}
     </>
+  ) : (
+    <div>{children}</div>
   );
 }

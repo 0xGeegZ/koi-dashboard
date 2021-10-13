@@ -79,7 +79,6 @@ const Friends = () => {
     );
 
   if (error) return <p>{error.message}</p>;
-
   if (!data?.currentUser) {
     if (process.browser) router.push("/login");
     return (
