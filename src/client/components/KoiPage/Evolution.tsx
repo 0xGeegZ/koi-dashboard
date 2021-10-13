@@ -219,6 +219,7 @@ const Evolution = ({ koi }) => {
                         )}?autoplay=1`
                   }
                   frameBorder="0"
+                  allow="fullscreen;"
                 />
               </IframeContainer>
             ) : (
