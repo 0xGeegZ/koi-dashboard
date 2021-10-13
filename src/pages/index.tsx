@@ -117,8 +117,7 @@ const Dashboard = () => {
       </>
     );
 
-  if (error) return <p>{error.message}</p>;
-  if (!data?.currentUser) {
+  if (!fetching && !data?.currentUser) {
     if (process.browser) router.push("/login");
     return (
       <p>
@@ -127,6 +126,8 @@ const Dashboard = () => {
       </p>
     );
   }
+
+  if (error) return <p>{error.message}</p>;
 
   return (
     <>
