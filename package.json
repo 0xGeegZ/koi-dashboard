@@ -69,7 +69,7 @@
     "@graphql-codegen/cli": "1.21.3",
     "@graphql-codegen/near-operation-file-preset": "^1.17.13",
     "@graphql-codegen/plugin-helpers": "^1.18.4",
-    "@graphql-codegen/typed-document-node": "^1.18.4",
+    "@graphql-codegen/typed-document-node": "^2.1.6",
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-operations": "1.17.15",
     "@graphql-codegen/typescript-urql": "^2.0.5",
