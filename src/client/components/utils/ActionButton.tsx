@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
+import toast from "react-hot-toast";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -23,6 +25,7 @@ const Tooltip = styled.span`
   white-space: nowrap;
 `;
 export default function BasicSpeedDial({ actions }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -43,16 +46,38 @@ export default function BasicSpeedDial({ actions }) {
             <SpeedDialAction
               key={title}
               icon={
-                <Link href={src}>
-                  <DeleteIcon onClick={() => handleClick()}>{icon}</DeleteIcon>
-                </Link>
+                <DeleteIcon
+                  onClick={() => {
+                    toast
+                      .promise(handleClick(), {
+                        loading: `Deleting koi ...`,
+                        success: `koi deleted!`,
+                        error: (err) => err,
+                      })
+                      .then(() => {
+                        router.push(src);
+                      });
+                  }}
+                >
+                  {icon}
+                </DeleteIcon>
               }
               tooltipTitle={
-                <Link href={src}>
-                  <div onClick={() => handleClick()}>
-                    <DeleteText>{title}</DeleteText>
-                  </div>
-                </Link>
+                <div
+                  onClick={() => {
+                    toast
+                      .promise(handleClick(), {
+                        loading: `Deleting koi ...`,
+                        success: `koi deleted!`,
+                        error: (err) => err,
+                      })
+                      .then(() => {
+                        router.push(src);
+                      });
+                  }}
+                >
+                  <DeleteText>{title}</DeleteText>
+                </div>
               }
               tooltipOpen
               onClick={handleClose}

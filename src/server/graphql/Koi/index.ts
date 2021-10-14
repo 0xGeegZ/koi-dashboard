@@ -155,6 +155,12 @@ const mutations = extendType({
 
         if (!hasAccess) return null;
 
+        await prisma.koiHistory.deleteMany({
+          where: {
+            koiId: id,
+          },
+        });
+
         const koi = await prisma.koi.delete({
           where: {
             id: id,

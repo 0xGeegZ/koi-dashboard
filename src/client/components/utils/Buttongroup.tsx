@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import toast from "react-hot-toast";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { AiOutlineCaretDown } from "@react-icons/all-files/ai/AiOutlineCaretDown";
@@ -85,7 +86,9 @@ export default function SplitButton({ options }) {
                   {options.map(({ icon, title, src, handleClick }) => (
                     <MenuItem
                       key={title}
-                      onClick={(event) => handleMenuItemClick(event, src)}
+                      onClick={(event) =>
+                        title != "Delete" && handleMenuItemClick(event, src)
+                      }
                     >
                       {title != "Delete" ? (
                         <Text className="cp-c-row cp-c-align-start-center">
@@ -94,7 +97,17 @@ export default function SplitButton({ options }) {
                         </Text>
                       ) : (
                         <TextDelete
-                          onClick={() => handleClick()}
+                          onClick={() => {
+                            toast
+                              .promise(handleClick(), {
+                                loading: `Deleting koi ...`,
+                                success: `koi deleted!`,
+                                error: (err) => err,
+                              })
+                              .then(() => {
+                                router.push(src);
+                              });
+                          }}
                           className="cp-c-row cp-c-align-start-center"
                         >
                           <IconContainer>{icon}</IconContainer>

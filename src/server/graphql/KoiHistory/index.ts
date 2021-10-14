@@ -9,6 +9,7 @@ const KoiHistory = objectType({
     t.model.date();
     t.model.image();
     t.model.id();
+    t.model.koiId();
   },
 });
 

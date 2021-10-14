@@ -23,6 +23,7 @@ type KoiHistory {
   date: DateTime!
   id: String!
   image: String!
+  koiId: String!
   length: Int!
 }
 
