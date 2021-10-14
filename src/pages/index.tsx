@@ -19,6 +19,7 @@ import {
   Card,
 } from "../client/components/utils/styledComponents";
 import PolarAreaContainer from "../client/components/Home/PolarAreaContainer";
+import EmptyKoi from "../client/components/Koi/EmptyKoi";
 
 const StyledTitle = styled(Title)`
   padding-top: 1rem;
@@ -129,7 +130,7 @@ const Dashboard = () => {
 
   if (error) return <p>{error.message}</p>;
 
-  return (
+  return kois.length > 0 ? (
     <>
       <StyledTitle>Hello {name}</StyledTitle>
       <div className="cp-c-padding-2 cp-c-lg-padding-3">
@@ -147,6 +148,8 @@ const Dashboard = () => {
         </div>
       </div>
     </>
+  ) : (
+    <EmptyKoi />
   );
 };
 
