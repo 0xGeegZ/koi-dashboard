@@ -22,7 +22,11 @@ const Header = styled.div`
   font-weight: 600;
   text-align: center;
 `;
-const Value = styled.div`
+
+interface Background {
+  readonly background: string;
+}
+const Value = styled.div<Background>`
   background: ${(props) => props.background};
   padding: 0.3rem;
 `;
