@@ -94,6 +94,9 @@ const Text = styled.span`
   font-size: 0.9rem;
   padding-bottom: 0.5rem;
 `;
+const Bottom = styled.span`
+  padding-top: 3rem;
+`;
 const StyledKoiIcon = styled.svg`
   margin-bottom: 0.4rem;
   width: 1.1rem;
@@ -109,6 +112,9 @@ const DrawerKoiIcon = styled.svg`
   stroke-width: 120px;
   stroke: ${(props) =>
     props.active ? props.theme.secondaryColor : props.theme.textColor};
+`;
+const StyledButton = styled(Button)`
+  background: #fff;
 `;
 
 export const KoiIcon = (props) => <KoiSVG {...props} />;
@@ -203,16 +209,16 @@ export default function LabelBottomNavigation() {
             </Link>
           ))}
         </div>
-
+        <Bottom />
         <ButtonContainer>
-          <Button
+          <StyledButton
             fullWidth
             onClick={() => setDrawer(false)}
             variant="outlined"
             size="large"
           >
             Close
-          </Button>
+          </StyledButton>
         </ButtonContainer>
       </StyledDrawer>
     </Paper>

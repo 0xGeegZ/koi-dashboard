@@ -9,6 +9,7 @@ import { AiOutlineSetting } from "@react-icons/all-files/ai/AiOutlineSetting";
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { AiOutlineApartment } from "@react-icons/all-files/ai/AiOutlineApartment";
 import { AiOutlineUsergroupAdd } from "@react-icons/all-files/ai/AiOutlineUsergroupAdd";
+import { IoIosWater } from "@react-icons/all-files/io/IoIosWater";
 import { useGetCurrentUserDashboardQuery } from "../client/graphql/getCurrentUserDashboard.generated";
 import {
   KoiSVG,
@@ -60,7 +61,11 @@ export const links = [
     path: "/varieties",
     icon: <AiOutlineApartment />,
   },
-
+  {
+    title: "Pond",
+    path: "/pond",
+    icon: <IoIosWater />,
+  },
   {
     title: "Friends",
     path: "/friends",
