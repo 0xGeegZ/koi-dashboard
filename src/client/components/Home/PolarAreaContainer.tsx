@@ -34,8 +34,22 @@ const Bold = styled.span`
   padding: 0 0.2rem;
 `;
 
+let delayed;
+
 const options = {
   responsive: true,
+  animation: {
+    onComplete: () => {
+      delayed = true;
+    },
+    delay: (context) => {
+      let delay: 0;
+      if (context.type === "data" && context.mode === "default" && !delayed) {
+        delay = context.dataIndex * 200 + context.datasetIndex * 100;
+      }
+      return delay;
+    },
+  },
   plugins: {
     legend: {
       display: false,

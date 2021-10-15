@@ -5,7 +5,7 @@ import { Skeleton } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { Card, SubTitle, media, Title } from "../utils/styledComponents";
-import { StyledCard, CardContainer } from "./Evolution";
+import { StyledCard, CardContainer, options } from "./Evolution";
 
 const StyledSkeleton = styled(Skeleton)`
   background: rgba(58, 56, 120, 0.6);
@@ -49,29 +49,13 @@ const VideoSize = styled.div`
 const data = {
   datasets: [
     {
-      label: "Size Evolution (cm)",
+      label: "Size Evolution",
       data: [],
       borderColor: "#3A3878",
       backgroundColor: "#3A3878",
       tension: 0.4,
     },
   ],
-};
-
-const options = {
-  aspectRatio: 1.82,
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-    },
-  },
 };
 
 const Loading = () => {

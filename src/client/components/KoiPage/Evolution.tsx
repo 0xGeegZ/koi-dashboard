@@ -101,8 +101,24 @@ const mockUpdates = [
       "https://res.cloudinary.com/djapnmv8y/image/upload/v1633336992/koi/showa3blur_czifhh.png",
   },
 ];
-const options = {
+let delayed;
+
+export const options = {
   aspectRatio: 1.82,
+  hitRadius: 30,
+  hoverRadius: 6,
+  animation: {
+    onComplete: () => {
+      delayed = true;
+    },
+    delay: (context) => {
+      let delay: 0;
+      if (context.type === "data" && context.mode === "default" && !delayed) {
+        delay = context.dataIndex * 150 + context.datasetIndex * 100;
+      }
+      return delay;
+    },
+  },
   scales: {
     x: {
       grid: {
@@ -110,6 +126,11 @@ const options = {
       },
     },
     y: {
+      ticks: {
+        callback: function (value) {
+          return `${value} cm`;
+        },
+      },
       grid: {
         display: false,
       },
@@ -146,12 +167,12 @@ const Evolution = ({ koi }) => {
           },
         ])
     );
-    return data;
+    return [{ x: "0 months", y: 0 }, ...data];
   };
   const data = {
     datasets: [
       {
-        label: "Size Evolution (cm)",
+        label: "Size Evolution",
         data: getData(koi),
         borderColor: "#3A3878",
         backgroundColor: "#3A3878",
