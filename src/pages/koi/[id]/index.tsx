@@ -39,7 +39,6 @@ const KoiDetailPage = () => {
     if (typeof window !== "undefined") {
       if (localStorage.getItem("kois")) {
         setKoi(filter(JSON.parse(localStorage.getItem("kois")), { id })[0]);
-        console.log(JSON.parse(localStorage.getItem("kois")));
       }
     }
   }, []);
